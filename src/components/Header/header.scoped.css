@@ -1,0 +1,140 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+/* tambahan */
+.range-right{
+    margin-right: 38px;
+}
+
+/* donat atau ban */
+.donut-up{
+    position: absolute;
+    right: 52px;
+    top: 4px;
+}
+.circle-black{
+    position: absolute;
+    width: 44px;
+    height: 42.9px;
+    border-radius: 50%;
+    
+    background: #393939;
+}
+.circle-yellow{
+    position: absolute;
+    width: 20px;
+    height: 19px;
+
+    border-radius: 50%;
+
+    background-color: #FFCD61;
+    border: 3px solid #fff;
+
+    left: 12px;
+    top: 12px;
+}
+
+/* navigasi */
+.nav-item{
+    position: relative;
+    padding-right: 35px;
+}
+.nav-link:hover{
+    color: #202336 !important;
+    font-weight: bold;
+}
+
+
+/* button */
+.btn-login{
+    width: 55%;
+    position: relative;
+    border: 1px solid #FFCD61;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+
+    padding: 8px 46px 8px 46px;
+
+    color: #393939;
+}
+.btn-login:active{
+    background-color: #393939;
+    color: #FFCD61;
+}
+.btn-register{
+    width: 55%;
+    position: relative;
+    background: #FFCD61;
+    border-radius: 8px;
+    border: none;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+
+    color: #393939;
+
+    top: 8px;
+}
+.btn-register:active{
+    background-color: #393939;
+    color: #FFCD61;
+}
+
+.email-logo{
+    width: 36px;
+    height: 36px;
+    /* margin-right: 41px */
+}
+
+.user-profile-img{
+    position: relative;
+    width: 54.62px;
+    height: 54.15px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: 10px;
+    /* bottom: 12px; */
+    cursor: pointer;
+}
+
+/* tablet */
+@media (min-width:768px){
+    .btn-login{
+        width: 20%;   
+    }
+    .btn-register{
+        width: 20%;
+    }
+}
+
+@media (min-width:992px){
+    .donut-up{
+        left: 18px;
+        top: 24px;
+    }
+    .nav-pad{
+        padding: 15px;
+    }
+    .nav-item{
+        left: 19px;
+    }
+    .btn-login{
+        width: 132px;
+        height: 44px;
+    }
+    .btn-register{
+        width: 132px;
+        height: 44px;
+        left: 12px;
+        top: 0;
+    }
+    .user-profile-img{
+        top: -8px;
+    }
+}

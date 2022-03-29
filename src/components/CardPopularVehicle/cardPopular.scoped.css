@@ -1,0 +1,163 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+.popular{
+    position: relative;
+
+    font-family: Playfair Display;
+    font-weight: bold;
+    top: 5px;
+}
+
+.view-all{
+    position: relative;
+    font-family: Nunito;
+    font-weight: normal;
+
+    color: #FB8F1D;
+
+    cursor: pointer;
+}
+
+.view-all:active{
+    color: #000;
+}
+
+.popular-town-list{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.img-vehicle{
+    position: relative;
+    width: 140px;
+    height: 207px;
+    background-size: cover;
+    background-position: center;
+
+    cursor: pointer;
+
+    z-index: 1;
+    margin-bottom: 22px;
+}
+
+.img-vehicle-default{
+    position: absolute;
+    width: 140px;
+    height: 207px;
+    background-size: cover;
+    background-position: center;
+
+    cursor: pointer;
+    z-index: 1;
+    margin-bottom: 22px;
+}
+
+.text-block{
+    position: relative;
+    width: 100px;
+    height: 46px;
+
+    background-color: #fff;
+    border-radius: 0px 6px 0px 0px;
+
+    padding-left: 2px;
+
+    top: 161px;
+    z-index: 2;
+}
+
+.location-name{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+
+    opacity: 0.4;
+
+    mix-blend-mode: normal;
+    top: 1px;
+}
+
+@media(min-width:375px){
+    .img-vehicle{
+        width: 170px;
+        height: 237px;
+    }
+    .img-vehicle-default{
+        width: 170px;
+        height: 237px;
+    }
+    .text-block{
+        top: 192px;
+    }
+}
+
+/* tablet */
+@media(min-width:768px){
+    .popular{
+        width: 231px;
+        font-style: normal;
+        font-size: 36px;
+        line-height: 50px;
+
+        top: 12px;
+    }
+    .popular-town-list{
+        top: 12px;
+    }
+    .view-all{
+        top: 22px;
+        /* font-size: 17px; */
+        /* line-height: 10px; */
+        width: 78px;
+        float: right;
+    }
+}
+
+/* laptop S */
+@media(min-width:1024px){
+    .img-vehicle{
+        width: 222px;
+        height: 282px;
+    }
+    .img-vehicle-default{
+        width: 222px;
+        height: 282px;
+    }
+    .text-block{
+        top: 236px;
+    }
+}
+
+/* laptop M */
+@media(min-width:1200px){
+    .img-vehicle{
+        width: 244px;
+        height: 297px;
+    }
+    .img-vehicle-default{
+        width: 244px;
+        height: 297px;
+    }
+    .text-block{
+        top: 251px;
+    }
+}
+
+/* laptop L */
+@media(min-width:1440px){
+    .img-vehicle{
+        width: 284px;
+        height: 337px;
+    }
+    .img-vehicle-default{
+        width: 284px;
+        height: 337px;
+    }
+    .text-block{
+        top: 291px;
+    }
+}

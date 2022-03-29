@@ -1,0 +1,384 @@
+.ring-gradient-list{
+    position: relative;
+    bottom:25px;
+    margin-left: 45%;
+    top: 3px;
+}
+
+.circle-gradient-list{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(156.14deg, #BFF0DD 12.18%, #57D2A3 87.99%);
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin{
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+.circle-white-list{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    left: 5px;
+    top: 5px;
+}
+
+.testimony{
+    position: relative;
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+
+    text-align: center;
+    top: 32px;
+}
+.ratings {
+    position: relative;
+    top: 38px;
+    text-align: center;
+
+}
+
+.ratings i {
+    position: relative;
+    color: #cecece;
+    font-size: 22px;
+
+    margin-right: 5px;
+
+}
+.rating-color {
+    color: #FFBB0C !important;
+}
+
+.small-ratings i {
+    color: #cecece;
+}
+
+.review-comment{
+    position: relative;
+    font-family: Mulish;
+
+    height: 144.03px;
+    line-height: 18px;
+    font-size: 14px;
+
+    color: #393939;
+
+
+    text-align: center;
+    top: 42px;
+}
+
+.testimony-name{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+
+    text-align: center;
+
+    top: 42px;
+}
+
+.testimony-role{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+
+    color: rgba(57, 57, 57, 0.85);
+    text-align: center;
+
+    top: 42px;
+}
+
+.ring-gradient-profile{
+    position: relative;
+    left: 58px;
+    display: inline-block;
+    size: 12px;
+
+    top: 38px;
+}
+
+.circle-gradient-profile{
+    position: absolute;
+    /* display: none; */
+    width: 185px;
+    height: 185px;
+    background: linear-gradient(156.14deg, #BFF0DD 12.18%, #57D2A3 87.99%);
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+
+   
+ 
+}
+/* .circle-white-profile{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    left: 5px;
+    top: 5px;
+} */
+
+.testimony-img{
+    position: relative;
+    height: 170px;
+    width: 170px;
+    /* object-fit: cover; */
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+
+    /* left: 72px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    top: 8px;
+    left: 8px;
+    /* bottom: 12px; */
+    /* top: 42px; */
+}
+
+.testimony-img-default{
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    /* object-fit: cover; */
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+
+    /* left: 72px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    top: 8px;
+    left: 8px;
+    /* bottom: 12px; */
+    /* top: 42px; */
+}
+
+.arrow-left{
+    position: relative;
+    top: 8px;
+    left: 10px;
+    
+    cursor: pointer;
+
+}
+
+.circle-arrow{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #D7D7D7;
+
+    cursor: pointer;
+}
+
+.circle-arrow:active{
+    border: 3px solid #000000;
+    background-color: #FFBB0C;
+}
+
+
+.arrow-right{
+    position: relative;
+    top: 8px;
+    right: 5px;
+    transform: scaleX(-1);
+}
+
+.profile-block{
+    position: relative;
+    /* height: 170px; */
+    height: 46px;
+
+    background-color: #fff;
+    /* border-radius: 0px 6px 0px 0px; */
+
+    /* padding-left: 2px; */
+
+    top: 181px;
+    z-index: -1;
+}
+
+/* mobile M */
+@media(min-width:375px){
+    .ring-gradient-profile{
+        left: 83px;
+    }
+}
+/* mobile L */
+@media(min-width:425px){
+    .ring-gradient-profile{
+        left: 113px;
+    }
+}
+
+/* tablet */
+@media(min-width:768px){
+    .testimony{
+        text-align: left;
+    }
+    .ratings{
+        text-align: left;
+    }
+    .ratings i {
+        font-size: 28px;
+    }
+    .review-comment{
+        text-align: left;
+        line-height: 36px;
+    }
+    .testimony-name{
+        text-align: left;
+    }
+    .testimony-role{
+        text-align: left;
+    }
+    .ring-gradient-profile{
+        top: 0;
+    }
+}
+
+/* laptop S */
+@media(min-width:1024px){
+    .rivew-testimony{
+        position: relative;
+        top: 70px;
+    }
+    
+    .ring-gradient-list{
+        top: 38px;
+    }
+    .ring-gradient-profile{
+        left: 253px;
+        
+    }
+    .testimony-img{
+        border-radius: 14px;
+        width: 163px;
+        height: 216px;
+
+        top: 32px;
+        /* right: 623px; */
+    }
+    .testimony-img-default{
+        border-radius: 14px;
+        width: 163px;
+        height: 216px;
+
+        top: 32px;
+        /* right: 623px; */
+    }
+    .circle-gradient-profile{
+        position: absolute;
+        width: 42px;
+        height: 42px;
+
+        /* top: 123px; */
+        bottom: 163px;
+        left: 148px;
+        /* z-index: 2; */
+    }
+    .circle-white-profile{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border-radius: 50%;
+
+        /* top: 136px; */
+        left: 154px;
+        top: 16px;
+        /* z-index: 2; */
+    }
+    .profile-block{
+
+        width: 132px;
+        height: 60px;
+
+
+        border-radius: 6px 0px 0px 0px;
+
+        left: 33px;
+        z-index: 1;
+    }
+}
+
+@media(min-width:1200px){
+
+    
+    .testimony{
+        font-size: 36px;
+        line-height: 50px;
+    }
+    .review-comment{
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .testimony-name{
+        font-size: 22px;
+        line-height: 48px;
+    }
+
+    .testimony-role{
+        font-size: 18px;
+        line-height: 48px;
+    }
+
+    .testimony-img{
+        width: 256px;
+        height: 327px;
+    }
+    .testimony-img-default{
+        width: 256px;
+        height: 327px;
+    }
+    .circle-gradient-profile{
+        bottom: 273px;
+        left: 238px;
+    }
+    .circle-white-profile{
+        left: 244px;
+        top: 18px;
+    }
+    .profile-block{
+        left: 124px;
+        top: 267px;
+    }
+    .circle-arrow{
+        left: 2px;
+        top: 8px;
+    }
+}
+
+@media (min-width:1440px){
+    .testimony-img{
+        left: 133px;
+    }
+    .testimony-img-default{
+        left: 133px;
+    }
+    .circle-gradient-profile{
+        left: 363px;
+    }
+    .circle-white-profile{
+        left: 369px;
+    }
+}

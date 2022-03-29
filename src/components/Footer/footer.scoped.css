@@ -1,0 +1,94 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.donut-down{
+    position: relative;
+    top: 12px;
+    /* bottom: 12px; */
+    margin-bottom: 70px;
+    margin-left: 0;
+}
+.bg-footer{
+    background: #F9F9FB;
+}
+.space-top-footer{
+    padding-top: 12px;
+}
+.plan{
+    position: relative;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 28px;
+
+    color: #848484 !important;
+    mix-blend-mode: normal;
+}
+.copyright{
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 28px;
+    
+    color: #848484;
+    
+    mix-blend-mode: normal;
+}
+.directory-list{
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 60px;
+
+    color: #393939;
+
+    mix-blend-mode: normal;
+}
+.item-list{
+    position: relative;
+    list-style: none;
+
+    position: relative;
+    text-decoration: none;
+    
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 38px;
+    
+    color: #848484;
+
+    mix-blend-mode: normal;
+
+    cursor: pointer;
+
+    padding: 0;
+}
+li:active{
+    font-weight: bold;
+    color: #000;
+}
+.bg-icon-footer{
+    position: relative;
+    background: #F9F9FB;
+    border-top: 1px solid #C4C4C4;
+    padding: 10px 0px 10px 0px;
+}
+.items-justify{
+    justify-content: space-evenly;
+}
+
+.logo{
+    width: 29.01px;
+    height: 20.01px;
+}
+
+/* tablet */
+@media (min-width:768px){
+    .items-justify{
+        justify-content: center;
+    }
+}
