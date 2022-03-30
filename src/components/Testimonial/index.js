@@ -9,16 +9,14 @@ import plusHome from '../../assets/svg/plusHome.svg'
 
 const Testimonial = () => {
     const [dataTesti, setDataTesti] = useState({})
+    const [ratingTesti, setRatingTesti] = useState([])
+    const [imgTesti, setImgTesti] = useState('')
+    const [nameTesti, setNameTesti] = useState('')
+    const [testimonyTesti, setTestiMonyTesti] = useState('')
     const [meta, setMeta] = useState({})
 
-    const { rating, image, name, testimony } = dataTesti
     const { next, page, prev } = meta
-
     let ratingArr = []
-
-    for (let i = 0; i < rating; i++) {
-        ratingArr.push(i)
-    }
 
     useEffect(() => {
         const params = {
@@ -34,6 +32,19 @@ const Testimonial = () => {
                 console.log(err)
             })
     }, [])
+
+    useEffect(() => {
+        if (dataTesti !== undefined) {
+            const { rating, image, name, testimony } = dataTesti
+            setRatingTesti(rating)
+            setImgTesti(image)
+            setNameTesti(name)
+            setTestiMonyTesti(testimony)
+            for (let i = 0; i < ratingTesti; i++) {
+                ratingTesti.push(i)
+            }
+        }
+    }, [dataTesti, ratingTesti])
 
     const nextTestiHandler = () => {
         if (next !== null) {
@@ -77,65 +88,69 @@ const Testimonial = () => {
             </div>
             <article className='container rivew-testimony'>
                 <h3 className='testimony'>Testimonials</h3>
-                <main className='row'>
-                    <section className='col-sm'>
-                        <div className='ratings'>
-                            {ratingArr.map((data) => (
-                                <React.Fragment key={data}>
-                                    <i className="fa fa-star rating-color"></i>
-                                </React.Fragment>
-                            ))}
-                        </div>
-                        <p className='review-comment'>{testimony}</p>
-                        <h3 className='testimony-name'>{name !== null ? name : 'users'}</h3>
-                    </section>
+                {dataTesti !== undefined ? (
+                    <main className='row'>
+                        <section className='col-sm'>
+                            <div className='ratings'>
+                                {ratingArr.map((data) => (
+                                    <React.Fragment key={data}>
+                                        <i className="fa fa-star rating-color"></i>
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                            <p className='review-comment'>{testimonyTesti}</p>
+                            <h3 className='testimony-name'>{nameTesti !== null ? nameTesti : 'users'}</h3>
+                        </section>
 
-                    <section className='col-sm'>
-                        <div className='ring-gradient-profile'>
-                            <span className='circle-gradient-profile'></span>
-                            <span className='circle-white-profile'></span>
-                            <div>
-                                <div style={{ backgroundImage: `url(${profileImgDefault})` }} className='testimony-img-default'>
-                                    <div className='profile-block'>
-                                        <div className='arrow-left'>
-                                            <span className='circle-arrow'></span>
-                                            <span className='arrow-up'></span>
-                                            <span className='arrow-down'></span>
-                                        </div>
-                                        <div className='arrow-right'>
-                                            <span className='circle-arrow'></span>
-                                            <span className='arrow-up'></span>
-                                            <span className='arrow-down'></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style={{ backgroundImage: `url(${process.env.REACT_APP_HOST}/${image})` }} className='testimony-img'>
-                                    <div className='profile-block'>
-                                        <div className='arrow-left'>
-                                            <span className='circle-arrow' onClick={prevTestiHandler}>
-                                                <img src={arrow} alt='avatar' style={{
-                                                    position: 'absolute',
-                                                    top: 6,
-                                                    left: 8,
-                                                }} />
-                                            </span>
-                                        </div>
-                                        <div className='arrow-right bg-danger'>
-                                            <div className='circle-arrow' onClick={nextTestiHandler}>
-                                                <img src={arrow} alt='avatar' style={{
-                                                    position: 'absolute',
-                                                    top: 6,
-                                                    left: 8,
-                                                }} />
+                        <section className='col-sm'>
+                            <div className='ring-gradient-profile'>
+                                <span className='circle-gradient-profile'></span>
+                                <span className='circle-white-profile'></span>
+                                <div>
+                                    <div style={{ backgroundImage: `url(${profileImgDefault})` }} className='testimony-img-default'>
+                                        <div className='profile-block'>
+                                            <div className='arrow-left'>
+                                                <span className='circle-arrow'></span>
+                                                <span className='arrow-up'></span>
+                                                <span className='arrow-down'></span>
+                                            </div>
+                                            <div className='arrow-right'>
+                                                <span className='circle-arrow'></span>
+                                                <span className='arrow-up'></span>
+                                                <span className='arrow-down'></span>
                                             </div>
                                         </div>
                                     </div>
+                                    <div style={{ backgroundImage: `url(${process.env.REACT_APP_HOST}/${imgTesti})` }} className='testimony-img'>
+                                        <div className='profile-block'>
+                                            <div className='arrow-left'>
+                                                <span className='circle-arrow' onClick={prevTestiHandler}>
+                                                    <img src={arrow} alt='avatar' style={{
+                                                        position: 'absolute',
+                                                        top: 6,
+                                                        left: 8,
+                                                    }} />
+                                                </span>
+                                            </div>
+                                            <div className='arrow-right bg-danger'>
+                                                <div className='circle-arrow' onClick={nextTestiHandler}>
+                                                    <img src={arrow} alt='avatar' style={{
+                                                        position: 'absolute',
+                                                        top: 6,
+                                                        left: 8,
+                                                    }} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src={plusHome} alt='avatar' style={{ position: 'absolute', bottom: -10, left: -5 }} />
                                 </div>
-                                <img src={plusHome} alt='avatar' style={{ position: 'absolute', bottom: -10, left: -5 }} />
                             </div>
-                        </div>
-                    </section>
-                </main>
+                        </section>
+                    </main>
+                ) : (
+                    <></>
+                )}
             </article>
         </React.Fragment>
     )

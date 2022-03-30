@@ -5,6 +5,9 @@ import { Provider } from 'react-redux'
 import { store, pStore } from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 
+import NotFound from './pages/NotFound'
+
+import VertificationAccount from './pages/VertificationAccount'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -29,10 +32,12 @@ const main = () => {
                         <Route path='home' element={<Home />} />
                         <Route path='vehicle/type' element={<VehicleType />} />
 
+
                         {/* route Auth */}
                         <Route element={<AuthRoutes />}>
                             <Route path='login' element={<Login />} />
                             <Route path='register' element={<Register />} />
+                            <Route path='auth/verify/:pin' element={<VertificationAccount />} />
                         </Route>
 
                         {/* private owner */}
@@ -41,6 +46,8 @@ const main = () => {
                                 <Route path='vehicle/add' element={<AddVehicle />} />
                             </Route>
                         </Route>
+
+                        <Route path='*' element={<NotFound />} />
 
                     </Routes>
                 </BrowserRouter>

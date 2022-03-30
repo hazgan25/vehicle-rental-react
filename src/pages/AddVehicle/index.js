@@ -1,5 +1,5 @@
 import React from 'react'
-import './addVehicle.scoped.css'
+import './AddVehicle.scoped.scss'
 
 import Main from '../../components/Main'
 
@@ -18,9 +18,12 @@ const AddVehicle = () => {
                     <h3 className='addNewItem'>Add new item</h3>
                 </section>
 
-                <section>
+                <section className='flex-main'>
+                    <div >
 
+                    </div>
                 </section>
+
             </main>
         </Main>
     )

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import './Home.scoped.scss'
 
-
-import './home.scoped.css'
 import Main from '../../components/Main'
 import { getAllLocation } from '../../modules/utils/location'
 
@@ -18,6 +17,11 @@ const Home = () => {
     const state = useSelector(state => state)
     const [locationArr, setLocationArr] = useState([])
 
+    const [selectLocation, seSelectLocation] = useState('')
+    const [selectType, setSelectType] = useState('')
+    const [selectPayment, setSelectPayment] = useState('')
+
+
     const { token, userData } = state.auth
     const { role } = userData
 
@@ -28,6 +32,8 @@ const Home = () => {
             })
             .catch(err => console.log(err))
     }, [])
+    console.log('ini type', selectType)
+    console.log('ini payment', selectPayment, selectLocation)
     return (
         <Main>
             <section className='contailer-fluid menu-bg home'
@@ -46,28 +52,33 @@ const Home = () => {
                                     <form>
                                         <div className='row'>
                                             <div className='col-sm'>
-                                                <select className='forms-select' defaultValue={''}>
-                                                    <option value='' disabled>Location</option>
-                                                    {Array.isArray(locationArr) && locationArr.length > 0 &&
-                                                        locationArr.map((data) => (
-                                                            <React.Fragment key={data.id}>
-                                                                <option value={data.id}>{data.name}</option>
-                                                            </React.Fragment>
-                                                        ))
-                                                    }
+                                                <select className='forms-select' defaultValue='' onChange={e => seSelectLocation(e.target.value)}>
+                                                    <option selected value='' >Location</option>
+                                                    {locationArr !== [] ? (
+                                                        <React.Fragment>
+                                                            {Array.isArray(locationArr) && locationArr.length > 0 &&
+                                                                locationArr.map((data) => (
+                                                                    <React.Fragment key={data.id}>
+                                                                        <option value={data.id}>{data.name}</option>
+                                                                    </React.Fragment>
+                                                                ))
+                                                            }
+                                                        </React.Fragment>
+                                                    ) : (
+                                                        <></>
+                                                    )}
                                                 </select>
-                                                <select className="forms-select" defaultValue="">
+                                                <select className="forms-select" defaultValue='' onChange={e => setSelectType(e.target.value)}>
                                                     <option selected value='' disabled>Type</option>
                                                     <option value={1}>car</option>
                                                     <option value={2}>motorbike</option>
                                                     <option value={3}>bike</option>
                                                 </select>
-                                                <div className="col-sm">
-                                                    <select className="forms-select" defaultValue="">
-                                                        <option value='' disabled>Payment</option>
-                                                        <option value='1'>One</option>
-                                                        <option value='1'>Two</option>
-                                                        <option value='1'>Three</option>
+                                                <div className="col-sm" >
+                                                    <select className="forms-select" defaultValue='' onChange={e => setSelectPayment(e.target.value)}>
+                                                        <option selected value='' disabled>Payment</option>
+                                                        <option value='expensive'>expensive</option>
+                                                        <option value='inexpensive'>inexpensive</option>
                                                     </select>
                                                     <input type="date" className="form-dates" />
                                                 </div>
@@ -83,8 +94,8 @@ const Home = () => {
                                             <div className='col-sm'>
                                                 <input type='text' placeholder="Type the vehicle (ex. motorbike" className='forms-select input-vehicle' />
                                                 <div className='col-sm'>
-                                                    <select className="forms-select">
-                                                        <option value='' disabled>Location</option>
+                                                    <select className="forms-select" defaultValue=''>
+                                                        <option selected value='' disabled>Location</option>
                                                         {Array.isArray(locationArr) && locationArr.length > 0 &&
                                                             locationArr.map((data) => (
                                                                 <React.Fragment key={data.id}>
@@ -114,15 +125,7 @@ const Home = () => {
                 <React.Fragment>
                     <div style={{ display: "flex", justifyContent: 'center', marginTop: 93, marginBottom: 15 }}>
                         <Link to='/vehicle/add'>
-                            <button style={{
-                                background: '#393939',
-                                width: '80%',
-                                height: 89,
-                                borderRadius: 10,
-                                color: '#FFCD61',
-                                fontSize: 24,
-                                fontWeight: 'bold'
-                            }}>Add new item </button>
+                            <button className='btn-add-new-item w-5'>Add new item </button>
                         </Link>
                     </div>
                 </React.Fragment>

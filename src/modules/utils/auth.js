@@ -11,6 +11,11 @@ export const SignUp = (body) => {
     return axios.post(urlRegister, body)
 }
 
+export const verify = (params) => {
+    const urlVerify = urlAuth + `/verify/${params.pin}`
+    return axios.get(urlVerify)
+}
+
 export const Logout = (token) => {
     const urlLogout = urlAuth + '/logout'
     return axios.delete(urlLogout, { headers: { 'x-access-token': token } })

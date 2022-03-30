@@ -19,6 +19,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-promise-middleware": "^6.1.2",
+    "sass": "^1.49.9",
     "sweetalert2": "^11.4.7",
     "web-vitals": "^2.1.4"
   },

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './vehicleType.scoped.css'
+import './VehicleType.scoped.scss'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Main from '../../components/Main'
