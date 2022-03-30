@@ -61,10 +61,11 @@ const VehicleType = () => {
                                                             {data.name}
                                                         </p>
                                                     </div>
+                                                    {console.log(`url(${process.env.REACT_APP_HOST}/${data.image})`)}
                                                 </div>
                                                 <div style={{
                                                     backgroundImage: data.image ?
-                                                        `url(${process.env.REACT_APP_HOST})/${data.image}` :
+                                                        `url(${process.env.REACT_APP_HOST}/${data.image})` :
                                                         `url(${vehicleImgDefault})`
                                                 }} className='img-vehicle'>
                                                     <div className='text-block'>
@@ -114,10 +115,11 @@ const VehicleType = () => {
                                                             {data.name}
                                                         </p>
                                                     </div>
+                                                    {console.log(`url(${process.env.REACT_APP_HOST}/${data.image})`)}
                                                 </div>
                                                 <div style={{
                                                     backgroundImage: data.image ?
-                                                        `url(${process.env.REACT_APP_HOST})/${data.image}` :
+                                                        `url(${process.env.REACT_APP_HOST}/${data.image})` :
                                                         `url(${vehicleImgDefault})`
                                                 }} className='img-vehicle'>
                                                     <div className='text-block'>
@@ -167,10 +169,11 @@ const VehicleType = () => {
                                                             {data.name}
                                                         </p>
                                                     </div>
+                                                    {console.log(`url(${process.env.REACT_APP_HOST}/${data.image})`)}
                                                 </div>
                                                 <div style={{
                                                     backgroundImage: data.image ?
-                                                        `url(${process.env.REACT_APP_HOST})/${data.image}` :
+                                                        `url(${process.env.REACT_APP_HOST}/${data.image})` :
                                                         `url(${vehicleImgDefault})`
                                                 }} className='img-vehicle'>
                                                     <div className='text-block'>
