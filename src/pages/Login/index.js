@@ -39,7 +39,6 @@ const Login = () => {
                 }, 1500)
             })
             .catch(({ ...err }) => {
-                console.log(err)
                 Swal.fire({
                     icon: 'error',
                     title: 'There is an error ?',
