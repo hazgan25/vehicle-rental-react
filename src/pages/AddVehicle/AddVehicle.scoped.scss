@@ -17,6 +17,27 @@
     color: #000000;
 }
 
+.addImg1{
+    width: auto;
+}
+
 .flex-main{
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input-forms-add-item{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-add-item{
+    width: 520px;
+    padding-bottom: 33px;
+    
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #000000;
 }

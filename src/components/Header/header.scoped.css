@@ -105,6 +105,9 @@
 
 /* tablet */
 @media (min-width:768px){
+    .donut-up{
+        right: 72px;
+    }
     .btn-login{
         width: 20%;   
     }
@@ -115,7 +118,7 @@
 
 @media (min-width:992px){
     .donut-up{
-        left: 18px;
+        left: 58px;
         top: 24px;
     }
     .nav-pad{
@@ -136,5 +139,17 @@
     }
     .user-profile-img{
         top: -8px;
+    }
+}
+
+@media(min-width:1440px){
+    .donut-up{
+        left: 88px;
+    }
+}
+
+@media(min-width:2460px){
+    .donut-up{
+        left: 688px;
     }
 }

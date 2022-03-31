@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './VehicleType.scoped.scss'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import Main from '../../components/Main'
 
@@ -16,6 +17,7 @@ import { paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 
 const VehicleType = () => {
+    const navigate = useNavigate()
     const state = useSelector(state => state)
     const dispatch = useDispatch()
 
@@ -55,19 +57,18 @@ const VehicleType = () => {
                                                 <div style={{
                                                     backgroundImage: `url(${vehicleImgDefault})`,
                                                     position: 'absolute'
-                                                }} className='img-vehicle'>
+                                                }} className='img-vehicle' onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                                     <div className='text-block'>
                                                         <p className='location-name opacity'>
                                                             {data.name}
                                                         </p>
                                                     </div>
-                                                    {console.log(`url(${process.env.REACT_APP_HOST}/${data.image})`)}
                                                 </div>
                                                 <div style={{
                                                     backgroundImage: data.image ?
                                                         `url(${process.env.REACT_APP_HOST}/${data.image})` :
                                                         `url(${vehicleImgDefault})`
-                                                }} className='img-vehicle'>
+                                                }} className='img-vehicle' onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                                     <div className='text-block'>
                                                         <p className='location-name opacity'>
                                                             {data.name}
@@ -109,19 +110,18 @@ const VehicleType = () => {
                                                 <div style={{
                                                     backgroundImage: `url(${vehicleImgDefault})`,
                                                     position: 'absolute'
-                                                }} className='img-vehicle'>
+                                                }} className='img-vehicle' onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                                     <div className='text-block'>
                                                         <p className='location-name opacity'>
                                                             {data.name}
                                                         </p>
                                                     </div>
-                                                    {console.log(`url(${process.env.REACT_APP_HOST}/${data.image})`)}
                                                 </div>
                                                 <div style={{
                                                     backgroundImage: data.image ?
                                                         `url(${process.env.REACT_APP_HOST}/${data.image})` :
                                                         `url(${vehicleImgDefault})`
-                                                }} className='img-vehicle'>
+                                                }} className='img-vehicle' onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                                     <div className='text-block'>
                                                         <p className='location-name opacity'>
                                                             {data.name}
@@ -163,19 +163,18 @@ const VehicleType = () => {
                                                 <div style={{
                                                     backgroundImage: `url(${vehicleImgDefault})`,
                                                     position: 'absolute'
-                                                }} className='img-vehicle'>
+                                                }} className='img-vehicle' onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                                     <div className='text-block'>
                                                         <p className='location-name opacity'>
                                                             {data.name}
                                                         </p>
                                                     </div>
-                                                    {console.log(`url(${process.env.REACT_APP_HOST}/${data.image})`)}
                                                 </div>
                                                 <div style={{
                                                     backgroundImage: data.image ?
                                                         `url(${process.env.REACT_APP_HOST}/${data.image})` :
                                                         `url(${vehicleImgDefault})`
-                                                }} className='img-vehicle'>
+                                                }} className='img-vehicle' onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                                     <div className='text-block'>
                                                         <p className='location-name opacity'>
                                                             {data.name}

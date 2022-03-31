@@ -35,7 +35,7 @@ const Login = () => {
                     progress: undefined,
                 })
                 setTimeout(() => {
-                    navigate(-1)
+                    navigate('/')
                 }, 1500)
             })
             .catch(({ ...err }) => {

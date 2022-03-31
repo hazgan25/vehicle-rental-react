@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './cardPopular.scoped.css'
 
+import { useNavigate } from 'react-router-dom'
+
 import { listVehiclePopularAction } from '../../redux/actions/listVehicles'
 import { paramsPopulerVehicle } from '../../modules/helper/listVehicle'
 
@@ -10,6 +12,7 @@ import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 const CardPopularVehicle = () => {
     const state = useSelector(state => state)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const { listPopularVehicle } = state.listVehicle
 
@@ -34,7 +37,8 @@ const CardPopularVehicle = () => {
                             listPopularVehicle.map((data) => (
                                 <React.Fragment key={data.id}>
                                     <div>
-                                        <div style={{ backgroundImage: `url(${vehicleImgDefault})` }} className='img-vehicle-default'>
+                                        <div style={{ backgroundImage: `url(${vehicleImgDefault})` }} className='img-vehicle-default'
+                                            onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                             <div className='text-block'>
                                                 <p className='location-name opacity'>
                                                     {data.name}
@@ -45,7 +49,8 @@ const CardPopularVehicle = () => {
                                             backgroundImage: data.image ?
                                                 `url(${process.env.REACT_APP_HOST}/${data.image})` :
                                                 `url(${vehicleImgDefault})`
-                                        }} className='img-vehicle'>
+                                        }} className='img-vehicle'
+                                            onClick={() => { navigate(`/vehicle/detail/${data.id}`) }}>
                                             <div className='text-block'>
                                                 <p className='location-name opacity'>
                                                     {data.name}

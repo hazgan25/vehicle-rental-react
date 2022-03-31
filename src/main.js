@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import VehicleType from './pages/VehicleType'
+import VehicleDetail from './pages/VehicleDetail'
 import AddVehicle from './pages/AddVehicle'
 
 // private route
@@ -31,7 +32,7 @@ const main = () => {
                         <Route path='/' element={<Navigate to='home' />} />
                         <Route path='home' element={<Home />} />
                         <Route path='vehicle/type' element={<VehicleType />} />
-
+                        <Route path='vehicle/detail/:id' element={<VehicleDetail />} />
 
                         {/* route Auth */}
                         <Route element={<AuthRoutes />}>
