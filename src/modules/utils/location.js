@@ -6,6 +6,11 @@ export const getAllLocation = () => {
     return axios.get(urlLocation + '/all')
 }
 
+export const locationByName = (name, token) => {
+    const urlLocationByName = urlLocation + `/name/${name}`
+    return axios.get(urlLocationByName, { headers: { 'x-access-token': token } })
+}
+
 export const getLocationByRenterId = (token) => {
     return axios.get(urlLocation, { headers: { 'x-access-token': token } })
 }

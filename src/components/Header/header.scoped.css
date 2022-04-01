@@ -39,9 +39,18 @@
     position: relative;
     padding-right: 35px;
 }
+.nav-link{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 'bold';
+    font-size: 18px;
+    /* line-height: 22px; */
+
+    color: #B8BECD;
+}
+
 .nav-link:hover{
     color: #202336 !important;
-    font-weight: bold;
 }
 
 

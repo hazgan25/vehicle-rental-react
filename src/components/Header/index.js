@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { NavLink, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import './header.scoped.css'
@@ -12,9 +12,12 @@ import emailImg from '../../assets/img/email.png'
 import profileImgDefault from '../../assets/img/profile-default.png'
 
 const Header = () => {
+    const params = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    // console.log(first
+    console.log(NavLink)
     const state = useSelector(state => state)
 
     const [showImg, setShowImg] = useState(profileImgDefault)
@@ -87,7 +90,7 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink to="/" className="nav-link">
+                            <NavLink to="/home" className="nav-link">
                                 <p>Home</p>
                             </NavLink>
                         </li>

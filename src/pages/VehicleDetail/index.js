@@ -20,8 +20,6 @@ const VehicleDetail = () => {
     const { id } = params
     const { userData, token } = state.auth
 
-    console.log(params)
-
     const [dataVehicle, setDataVehicle] = useState({})
     const [vehicleImgArr, setVehicleImgArr] = useState([])
     const [img1, setImg1] = useState('')
@@ -35,8 +33,9 @@ const VehicleDetail = () => {
         dateArr.push(i)
     }
 
-    const { vehicle, location, price, stock } = dataVehicle
+    const { vehicle, location, price, stock, owner_id } = dataVehicle
     const totalPrice = price * selectDate * quantity
+    console.log(dataVehicle)
 
     useEffect(() => {
         vehicleDetail(id)
@@ -73,7 +72,7 @@ const VehicleDetail = () => {
             const image3 = vehicleImgArr[2].images
             setImg3(image3)
         }
-    }, [vehicleImgArr])
+    }, [dataVehicle, vehicleImgArr])
 
     const reservationHandler = () => {
         if (quantity > stock) {
@@ -90,17 +89,16 @@ const VehicleDetail = () => {
                 text: 'You need to login first'
             })
         }
+        navigate(`/payment/vehicle=${id}&location=${location}&quantity=${quantity}&day=${selectDate}&total=${totalPrice}`)
     }
 
     return (
         <Main>
-            {userData && userData.role !== 'owner' ? (
+            {userData && userData.id !== owner_id ? (
                 <React.Fragment>
                     <main className='container mt-3'>
                         <section className='backHome justify-content-between'>
-                            <Link to='/'>
-                                <img src={arrowBack} alt='avatar' className='backArrow' />
-                            </Link>
+                            <img src={arrowBack} alt='avatar' className='backArrow' style={{ cursor: 'pointer' }} onClick={() => { navigate(-1) }} />
                             <h3 className='addNewItem'>Reservation</h3>
                         </section>
 

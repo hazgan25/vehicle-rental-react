@@ -13,6 +13,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import VehicleType from './pages/VehicleType'
 import VehicleDetail from './pages/VehicleDetail'
+import Payment from './pages/Payment'
 import AddVehicle from './pages/AddVehicle'
 
 // private route
@@ -39,6 +40,11 @@ const main = () => {
                             <Route path='login' element={<Login />} />
                             <Route path='register' element={<Register />} />
                             <Route path='auth/verify/:pin' element={<VertificationAccount />} />
+                        </Route>
+
+                        {/* Private Router */}
+                        <Route element={<PrivateRoutes />}>
+                            <Route path={`payment/vehicle=:id&location=:location&quantity=:quantity&day=:day&total=:totalPrice`} element={<Payment />} />
                         </Route>
 
                         {/* private owner */}
