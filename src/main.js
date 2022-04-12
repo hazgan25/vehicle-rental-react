@@ -11,6 +11,7 @@ import VertificationAccount from './pages/VertificationAccount'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import EditProfile from './pages/EditProfile'
 import VehicleType from './pages/VehicleType'
 import VehicleDetail from './pages/VehicleDetail'
 import Payment from './pages/Payment'
@@ -44,6 +45,7 @@ const main = () => {
 
                         {/* Private Router */}
                         <Route element={<PrivateRoutes />}>
+                            <Route path='edit/profile' element={<EditProfile />} />
                             <Route path={`payment/vehicle=:id&location=:location&quantity=:quantity&day=:day&total=:totalPrice`} element={<Payment />} />
                         </Route>
 

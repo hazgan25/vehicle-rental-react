@@ -142,7 +142,7 @@ const Header = () => {
                                         />
                                     </div>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><Link to='' className="dropdown-item">Edit Profile</Link></li>
+                                        <li><Link to='/edit/profile' className="dropdown-item">Edit Profile</Link></li>
                                         <li><Link to='' className="dropdown-item" >Help</Link></li>
                                         <li><Link to='' className="dropdown-item" onClick={logoutHandler} >Log out</Link></li>
                                     </ul>

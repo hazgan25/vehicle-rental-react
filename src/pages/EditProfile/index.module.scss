@@ -1,0 +1,343 @@
+/* main */
+.profile-font{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+
+    color: #000000;
+    text-align: center;
+    top: 10px;
+}
+
+.profile-edit{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photo-profile{
+    position: relative;
+    width: 218.46px;
+    height: 214.62px;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    background-position: top;
+    top: 53px;
+}
+.box-pencil{
+    position: relative;
+    background-color: #FFCD61;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    left: 150px;
+}
+.user-data{
+    position: relative;
+    text-align: center;
+    bottom: 53px;
+}
+.user-name{
+    position: relative;
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 24px;
+    top: 106px;
+}
+.info-data{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #B8BECD;
+
+    top: 146px;
+}
+
+.form-gender{
+    position: relative;
+    top: 112px;
+    display: flex;
+    justify-content: center;
+}
+.radio-orange-male{
+    position: relative;
+
+    /* right:2px; */
+    right: -25px;
+    top: 3px;
+}
+.radio-orange-female{
+    position: relative;
+    left: 175px;
+    top: 3px;
+}
+#male-text{
+    position: relative;
+    left: 40px;
+    bottom: 5px;
+}
+#female-text{
+    position: relative;
+    left: 40px;
+    bottom: 5px;
+}
+
+.gender{
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    right: 120px;
+}
+
+.gender .select-gender{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+.check-mark {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border: 4px solid #9F9F9F;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+.gender:hover .select-gender ~ .check-mark {
+    background-color: #ccc;
+}
+.gender .select-gender:checked ~ .check-mark {
+    background: #FFCD61;
+    border: 4px solid #393939;
+}
+.check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.gender .select-gender:checked ~ .check-mark:after {
+    display: block;
+}
+
+/* section form */
+.contacts{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 33px;
+
+    color: #4F5665;
+}
+
+.contacts-edit{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.label{
+    margin-top: 20px;
+    color: #9F9F9F;
+}
+
+.input-contacts{
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 16px;
+    top: 12px;
+}
+
+.identity-edit{
+    position: relative;
+}
+.large-date{
+    display: none;
+}
+.input-identity{
+    border: none;
+    border-bottom: 1px solid #000000;
+
+    padding-bottom: 16px;
+    margin-bottom: 50px;
+    
+    width: 100%;
+}
+
+.select-button{
+    position: relative;
+    display: grid;
+    grid-template-rows: auto;
+    // top: 334px;
+    /* justify-content: center; */
+}
+
+.btn-save-change{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 33px;
+
+    color: #393939;
+
+    width: 100%;
+    height: 39px;
+    background: #FFCD61;
+    border-radius: 10px;
+    
+}
+
+.btn-edit-password{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 33px;
+    
+    color: #FFCD61;
+
+    width: 100%;
+    height: 39px;
+    background: #393939;
+    border-radius: 10px;
+    top: 20px;
+}
+
+.btn-cancel{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 33px;
+    
+    color: #393939;
+
+    width: 100%;
+    height: 39px;
+    background: rgba(203, 203, 212, 0.27);
+    border-radius: 10px;
+    top: 40px;
+}
+
+
+.space-top{
+    position: relative;
+    top: 250px;
+}
+
+.bg-icon-footer{
+    position: relative;
+    top: 250px;
+}
+
+@media (min-width:768px){
+    .profile-font{
+        text-align: left;
+        top: 20px;
+    }
+    .identity-edit{
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+    }
+    .large-date{
+        display: inline;
+        margin-top: 20px;
+        color: #9F9F9F;
+    }
+    .input-identity{
+        width: 324px;
+    }
+    .mobile-date{
+        display: none;
+    }
+    .select-button{
+        grid-template-rows: none;
+        grid-template-columns: auto auto auto;
+        justify-content: space-between;
+    }
+    .btn-save-change{
+        /* width: 322px; */
+        width: 214px;
+        height: 59px;
+    }
+    .btn-edit-password{
+        width: 214px;
+        height: 59px;
+        top: 0;
+    }
+    .btn-cancel{
+        width: 214px;
+        height: 59px;
+        top: 0;
+    }
+    .space-top{
+        top: 213px; 
+    }
+    .bg-icon-footer{
+        top: 150px;
+    }
+}
+
+/* laptop xs */
+@media (min-width:1024px){
+    .input-identity{
+        width: 424px;
+    }
+    .btn-save-change{
+        width: 302px;
+        height: 89px;
+    }
+    .btn-edit-password{
+        width: 302px;
+        height: 89px;
+    }
+    .btn-cancel{
+        width: 302px;
+        height: 89px;
+    }
+}
+
+@media (min-width:1200px){
+    .input-identity{
+        width: 524px;
+    }
+    .btn-save-change{
+        width: 322px;
+        height: 89px;
+    }
+    .btn-edit-password{
+        width: 322px;
+        height: 89px;
+    }
+    .btn-cancel{
+        width: 322px;
+        height: 89px;
+    }
+}
