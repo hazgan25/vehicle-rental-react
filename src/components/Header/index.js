@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { NavLink, Link } from 'react-router-dom'
+import styles from './index.module.css'
+import { useNavigate, NavLink, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import './header.scoped.css'
 
 import { userAction, logoutAction } from '../../redux/actions/auth'
 
@@ -12,13 +11,10 @@ import emailImg from '../../assets/img/email.png'
 import profileImgDefault from '../../assets/img/profile-default.png'
 
 const Header = () => {
-    const params = useParams()
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-
-    // console.log(first
-    console.log(NavLink)
     const state = useSelector(state => state)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [showImg, setShowImg] = useState(profileImgDefault)
 
@@ -29,9 +25,9 @@ const Header = () => {
     useEffect(() => {
         if (token) {
             dispatch(userAction(token))
-        }
-        if (token && image !== null) {
-            setShowImg(`${process.env.REACT_APP_HOST}/${image}`)
+            if (image !== null) {
+                setShowImg(`${process.env.REACT_APP_HOST}/${image}`)
+            }
         }
     }, [dispatch, token, image])
 
@@ -64,7 +60,6 @@ const Header = () => {
                     navigate('/')
                 }, 2500)
             } else if (
-                /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
             ) {
                 swalWithBootstrapButtons.fire(
@@ -78,104 +73,84 @@ const Header = () => {
 
     return (
         <header className="navbar navbar-expand-lg navbar-light bg-white">
-            <nav className=" container nav-pad">
+            <nav className={`container ${styles['nav-pad']}`}>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="donut-up">
-                    <span className="circle-black"></span>
-                    <span className="circle-yellow"></span>
-                </div>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <NavLink to="/home" className="nav-link">
+
+                <section className={styles['donut-up']}>
+                    <span className={styles['circle-black']}></span>
+                    <span className={styles['circle-yellow']}></span>
+                </section>
+
+
+                <section className="collapse navbar-collapse" id="navbarNav">
+                    <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
+                        <li className={`nav-item ${styles['nav-item']}`}>
+                            <NavLink to={'/home'} className={`nav-link ${styles['nav-link']}`}>
                                 <p>Home</p>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/vehicle/type" className="nav-link">
+
+                        <li className={`nav-item ${styles['nav-item']}`}>
+                            <NavLink to={'/vehicle/type'} className={`nav-link ${styles['nav-link']}`}>
                                 <p>Vehicle Type</p>
                             </NavLink>
                         </li>
-                        <li className="nav-item nunito">
-                            <NavLink to="/" className="nav-link">
+
+                        <li className={`nav-item ${styles['nav-item']}`}>
+                            <NavLink to={'/history'} className={`nav-link ${styles['nav-link']}`}>
                                 <p>History</p>
                             </NavLink>
                         </li>
-                        <li className='nav-item nunito'>
-                            <NavLink to='/' className='nav-link'>
+
+                        <li className={`nav-item ${styles['nav-item']}`}>
+                            <NavLink to={'/about'} className={`nav-link ${styles['nav-link']}`}>
                                 <p>About</p>
                             </NavLink>
                         </li>
+
                         {!token ? (
                             <React.Fragment>
                                 <li>
-                                    <Link to='/login'>
-                                        <button className="btn-login">Login</button>
+                                    <Link to={'/login'}>
+                                        <button className={styles['btn-login']}>Login</button>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to='/register'>
-                                        <button className="btn-register">Register</button>
+                                    <Link to={'/register'}>
+                                        <button className={styles['btn-register']}>Register</button>
                                     </Link>
                                 </li>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
-
                                 <li>
-                                    <Link to='/'>
-                                        <img src={emailImg} alt="avatar" className="email-logo" />
+                                    <Link to={'/'}>
+                                        <img src={emailImg} alt='avatar' className={styles['email-logo']} />
                                     </Link>
                                 </li>
-                                <li className="nav-item dropdown">
-                                    <li className="nav-item dropdown">
-                                        <Link to="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src={showImg} alt="avatar" className="user-profile-img"
-                                                onError={e => {
-                                                    e.onError = null
-                                                    setShowImg(profileImgDefault)
-                                                }}
-                                            />
-                                        </Link>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><Link to='' className="dropdown-item">Edit Profile</Link></li>
-                                            <li><Link to='' className="dropdown-item" >Help</Link></li>
-                                            <li><Link to='' className="dropdown-item" onClick={logoutHandler} >Log out</Link></li>
-                                        </ul>
-                                    </li>
-                                </li>
 
-
-                                {/* <li>
-                                    <Link to='/'>
-                                        <img src={emailImg} alt="avatar" className="email-logo" />
-                                    </Link>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <div to="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src={profileImgDefault} alt='avatar' className='user-profile-img'
-                                        //  onError={(e) => {
-                                        //     e.onError = null
-                                        //     setShowImg(profileImgDefault)
-                                        // }}
+                                <li className={`dropdown ${styles['nav-item']}`}>
+                                    <div id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src={showImg} alt="avatar" className={styles['user-profile-img']}
+                                            onError={e => {
+                                                e.onError = null
+                                                setShowImg(profileImgDefault)
+                                            }}
                                         />
                                     </div>
-                                    <li className="nav-item dropdown">
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><Link to='/profile' className="dropdown-item">Edit Profile</Link></li>
-                                            <li><Link to='/help' className="dropdown-item" >Help</Link></li>
-                                            <li><Link to='' className="dropdown-item" onClick={logoutHandler} >Log out</Link></li>
-                                        </ul>
-                                    </li>
-                                </li> */}
-
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><Link to='' className="dropdown-item">Edit Profile</Link></li>
+                                        <li><Link to='' className="dropdown-item" >Help</Link></li>
+                                        <li><Link to='' className="dropdown-item" onClick={logoutHandler} >Log out</Link></li>
+                                    </ul>
+                                </li>
                             </React.Fragment>
                         )}
                     </ul>
-                </div>
+                </section>
             </nav>
         </header>
     )

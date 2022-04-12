@@ -1,25 +1,25 @@
 import React from 'react'
-import './NotFound.scoped.scss'
-import Footer from '../../components/Footer'
 import { Link } from 'react-router-dom'
 
+import styles from './index.module.scss'
+
 const NotFound = () => {
+
     return (
         <React.Fragment>
-            <main className="not-found">
-                <div className='transparan-bg container-fluid'>
-                    <div className="container">
-                        <div className="err-page">
-                            <h1 className="font-err-page">404</h1>
-                            <h3 className="page-not-found">Page Not Found</h3>
-                            <Link to='/'>
-                                <button className="btn-to-home">Back to Home</button>
+            <main className={styles['not-found']}>
+                <div className={`container-fluid ${styles['transparan-bg']}`}>
+                    <div className='container'>
+                        <div className={styles['err-page']}>
+                            <h1 className={styles['font-err-page']}>404</h1>
+                            <h3 className={styles['page-not-found']}>Page Not Found</h3>
+                            <Link to={'/'}>
+                                <button className={styles['btn-to-home']}>Back to Home</button>
                             </Link>
                         </div>
                     </div>
                 </div>
             </main>
-            <Footer />
         </React.Fragment>
     )
 }

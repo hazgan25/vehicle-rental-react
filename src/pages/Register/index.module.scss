@@ -1,0 +1,27 @@
+/* tablet */
+@media (min-width:576px){
+    /* tengah */
+    .dotdown{
+        top: 350px;
+    }
+}
+
+/* laptop M */
+@media (min-width:1200px){
+    .input-form{
+        position: relative;
+        top: 0;
+        right: 111px;
+    }
+    .dotdown{
+        top: 501px;
+    }
+}
+
+/* Laptop L */
+@media (min-width:1400px){
+  /* kanan */
+    .dotdown{
+        top: 511px;
+    }
+}

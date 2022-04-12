@@ -1,3 +1,23 @@
+.back-home{
+    display: flex;
+    width: 290px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.backArrow{
+    position: relative;
+    left: 12px;
+    height: 32px;
+}
+
+.reservation-text{
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000000;
+}
+
 .flex-reservation{
     display: flex;
 }

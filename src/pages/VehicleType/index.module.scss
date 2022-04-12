@@ -1,0 +1,87 @@
+.popular{
+    position: relative;
+
+    font-family: Playfair Display;
+    font-weight: bold;
+    top: 5px;
+}
+.view-all{
+    position: relative;
+    font-family: Nunito;
+    font-weight: normal;
+
+    color: #FB8F1D;
+
+    cursor: pointer;
+}
+.view-all:active{
+    color: #000;
+}
+.popular-town-list{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.top-vehicle-type{
+    position: relative;
+    top: 12px;
+    /* margin-bottom: 123px; */
+}
+
+.search-vehicle{
+    width: 100%;
+
+    border: 0.8px solid #AFB0B9;
+    box-sizing: border-box;
+    border-radius: 6px;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    /* font-size: 24px;
+    line-height: 33px; */
+    padding: 12px;
+
+}
+
+.search{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    float: right;
+    right: 22px;
+    bottom: 40px;
+    cursor: pointer;
+}
+
+.search-vehicle::placeholder{
+    color: #B8BECD !important;
+}
+
+.space-top-vehicle{
+    /* position: relative; */
+    margin-top: 84px;
+}
+
+@media(min-width:768px){
+    .popular{
+        width: 231px;
+        font-style: normal;
+        font-size: 36px;
+        line-height: 50px;
+
+        top: 12px;
+    }
+    .view-all{
+        top: 22px;
+        /* font-size: 17px; */
+        /* line-height: 10px; */
+        width: 78px;
+        float: right;
+    }
+    .popular-town-list{
+        top: 12px;
+    }
+}

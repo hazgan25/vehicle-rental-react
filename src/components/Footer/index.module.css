@@ -7,6 +7,28 @@
     margin-bottom: 70px;
     margin-left: 0;
 }
+.circle-black{
+    position: absolute;
+    width: 44px;
+    height: 42.9px;
+    border-radius: 50%;
+    
+    background: #393939;
+}
+.circle-yellow{
+    position: absolute;
+    width: 20px;
+    height: 19px;
+
+    border-radius: 50%;
+
+    background-color: #FFCD61;
+    border: 3px solid #fff;
+
+    left: 12px;
+    top: 12px;
+}
+
 .bg-footer{
     background: #F9F9FB;
 }

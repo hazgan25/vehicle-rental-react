@@ -1,4 +1,7 @@
 import React from 'react'
+import styles from './index.module.scss'
+import stylesLogin from '../Login/index.module.scss'
+
 import { Link } from 'react-router-dom'
 import { SignUp } from '../../modules/utils/auth'
 
@@ -8,6 +11,7 @@ import Footer from '../../components/Footer'
 import googleIcon from '../../assets/img/google-icon.png'
 
 const Register = () => {
+
     const submitHandler = (e) => {
         e.preventDefault()
         const body = {
@@ -33,32 +37,33 @@ const Register = () => {
                 })
             })
     }
+
     return (
         <React.Fragment>
-            <main className="login-bg">
-                <div className="transparan-bg">
-                    <section className="container content-login">
+            <main className={stylesLogin['login-bg']}>
+                <div className={`container-fluid ${stylesLogin['transparan-bg']}`}>
+                    <section className={`container ${stylesLogin['content-login']} ${styles['content-login']}`}>
                         <div className="row">
-                            <div className="col-sm guest-form">
-                                <h1 className="explore-world">Le’ts Explore The World</h1>
-                                <p className="guest">Don’t have account?</p>
+                            <div className={`col-sm ${stylesLogin['guest-form']}`}>
+                                <h1 className={stylesLogin['explore-world']}>Le&#x2019;ts Explore The World</h1>
+                                <p className={stylesLogin['guest']}>Don&#x2019;t have account?</p>
                                 < Link to='/login'>
-                                    <button className="btn-gray">Login</button>
+                                    <button className={stylesLogin['btn-gray']}>Login</button>
                                 </Link>
                             </div>
-                            <div className="col-sm line-center">
-                                <span className="dotup"></span>
-                                <span className="dotdown"></span>
+                            <div className={`col-sm ${stylesLogin['line-center']}`}>
+                                <span className={`${stylesLogin['dotup']} ${styles['dotup']}`}></span>
+                                <span className={`${stylesLogin['dotdown']} ${styles['dotdown']}`}></span>
                             </div>
-                            <form className="col-sm login-form" onSubmit={submitHandler}>
-                                <input type="text" name='name' id='name' className="input-login" placeholder="Name" required />
-                                <input type="text" name='email' id='email' className="input-login" placeholder="Email" required />
-                                <input type="Password" name='password' id='password' className="input-login" placeholder="Password" required />
-                                <Link to="/" className='forgot-pass'>
-                                    <p className="forgot-pass">Forgot Password?</p>
+                            <form className={`col-sm ${styles['input-form']}`} onSubmit={submitHandler}>
+                                <input type="text" name='name' id='name' className={stylesLogin['input']} placeholder="Name" required />
+                                <input type="text" name='email' id='email' className={stylesLogin['input']} placeholder="Email" required />
+                                <input type="Password" name='password' id='password' className={stylesLogin['input']} placeholder="Password" required />
+                                <Link to="/forgot/password" className={stylesLogin['forgot-pass']}>
+                                    <p className={stylesLogin['forgot-pass']}>Forgot Password?</p>
                                 </Link>
-                                <button type="submit" className="btn-yellow">Sign Up</button>
-                                <button type="button" className="btn-login-google">
+                                <button type="submit" className={stylesLogin['btn-yellow']}>Sign Up</button>
+                                <button type="button" className={stylesLogin['btn-login-google']}>
                                     <img src={googleIcon} alt="Google Login" />
                                     Sign Up With Google
                                 </button>

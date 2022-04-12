@@ -30,7 +30,7 @@ export const paramMotorbikeVehicle = {
 
 export const paramBikeVehicle = {
     search: '',
-    type: 2,
+    type: 3,
     location: '',
     by: 'rating',
     order: 'desc',

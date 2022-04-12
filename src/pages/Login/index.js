@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import './Login.scoped.scss'
+import styles from './index.module.scss'
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginAction } from '../../redux/actions/auth'
 
-import Swal from 'sweetalert2'
 import { ToastContainer, toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 
 import Footer from '../../components/Footer'
 
@@ -49,30 +48,30 @@ const Login = () => {
 
     return (
         <React.Fragment>
-            <main className='login-bg'>
-                <div className='transparan-bg container-fluid'>
-                    <section className='container content-login'>
+            <main className={styles['login-bg']}>
+                <div className={`container-fluid ${styles['transparan-bg']}`}>
+                    <section className={`container ${styles['content-login']}`}>
                         <div className='row'>
-                            <div className="col-sm guest-form">
-                                <h1 className="explore-world">Le’ts Explore The World</h1>
-                                <p className="guest">Don’t have account?</p>
+                            <div className={`col-sm ${styles['guest-form']}`}>
+                                <h1 className={styles['explore-world']}>Le&#x2019;ts Explore The World</h1>
+                                <p className={styles['guest']}>Don’t have account?</p>
                                 <Link to="/register">
-                                    <button className="btn-gray">Sign Up</button>
+                                    <button className={styles['btn-gray']}>Sign Up</button>
                                 </Link>
                             </div>
-                            <div className="col-sm line-center">
-                                <span className="dotup"></span>
-                                <span className="dotdown"></span>
+                            <div className={`col-sm ${styles['line-center']}`}>
+                                <span className={styles.dotup}></span>
+                                <span className={styles.dotdown}></span>
                             </div>
                             <div className='col-sm'>
-                                <form className='input-form-login' onSubmit={submitHandler}>
-                                    <input type="text" name="email" id="email" className="input-login" placeholder="Email" required />
-                                    <input type="password" name="passwor" id="password" className="input-login" placeholder="Password" required />
-                                    <Link to="/password" className='forgot-pass'>
+                                <form className={styles['input-form-login']} onSubmit={submitHandler}>
+                                    <input type="text" name="email" id="email" className={styles['input']} placeholder="Email" required />
+                                    <input type="password" name="passwor" id="password" className={styles['input']} placeholder="Password" required />
+                                    <Link to="/forgot/password" className={styles['forgot-pass']}>
                                         <p className="forgot-pass">Forgot Password?</p>
                                     </Link>
-                                    <button type="submit" className="btn-yellow">Login</button>
-                                    <button type="button" className="btn-login-google">
+                                    <button type="submit" className={styles['btn-yellow']}>Login</button>
+                                    <button type="button" className={styles['btn-login-google']}>
                                         <img src={googleIcon} alt="Google Login" />
                                         Login With Google
                                     </button>

@@ -8,10 +8,7 @@ const Main = ({ children }) => {
         <React.Fragment>
             <Header />
             {children}
-
-            <div style={{ marginTop: 179 }}>
-                <Footer />
-            </div>
+            <Footer />
         </React.Fragment>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import './Payment.scoped.scss'
+import styles from './index.module.scss'
+import stylesReservation from '../VehicleDetail/index.module.scss'
 
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -98,62 +99,63 @@ const Payment = () => {
         <Main>
             {userData && userData.id !== owner_id ? (
                 <React.Fragment>
-                    <main className='container mt-3'>
-                        <section className='backHome justify-content-between'>
-                            <img src={arrowBack} alt='avatar' className='backArrow' style={{ cursor: 'pointer' }} onClick={() => { navigate(-1) }} />
-                            <h3 className='addNewItem' style={{ left: 23 }}>Payment</h3>
+                    <main className='container mt-3' style={{ marginBottom: 180 }}>
+                        <section className={styles['back-home']}>
+                            <img src={arrowBack} alt='avatar' className={styles['backArrow']} style={{ cursor: 'pointer' }} onClick={() => { navigate(-1) }} />
+                            <h3 className={styles['payment-text']} style={{ left: 23 }}>Payment</h3>
                         </section>
 
-                        <section className='container flex-reservation mt-5'>
-                            <img src={vehicleImgDefault} alt='avater' className='img-payment' style={{ position: 'absolute' }} />
-                            <img src={vehicleImgDefault} alt='avater' className='img-payment' />
-                            <div className='dekstop-mode-reservation-pos-rel'>
-                                <h3 className='vehicle-text-reservation'>{vehicle}</h3>
-                                <h4 className='location-text-reservation mt-5'>{location}</h4>
-                                <h5 className='no-prepayment-reservation mt-4' style={{ color: 'gray' }}>No Prepayment</h5>
-                                <h5 className='code-text mt-5'>#FG1209878YZS</h5>
-                                <button className='btn-copy'>Copy booking code</button>
+                        <section className={`container mt-5 ${styles['flex-payment']}`}>
+                            <img src={vehicleImgDefault} alt='avater' className={styles['img-payment']} style={{ position: 'absolute' }} />
+                            <img src={vehicleImgDefault} alt='avater' className={styles['img-payment']} />
+                            <div className={styles['dekstop-mode-payment-pos-rel']}>
+                                <h3 className={stylesReservation['vehicle-text-reservation']}>{vehicle}</h3>
+                                <h4 className={`mt-5 ${stylesReservation['location-text-reservation']}`}>{location}</h4>
+                                <h5 className={`mt-4 ${stylesReservation['no-prepayment-reservation']}`}>No Prepayment</h5>
+                                <h5 className={`mt-5 ${styles['code-text']}`}>#FG1209878YZS</h5>
+                                <button className={styles['btn-copy']}>Copy booking code</button>
                             </div>
                         </section>
 
-                        <section className='container flex-reservation mt-5'>
+                        <section className={`container mt-5 ${stylesReservation['flex-reservation']}`}>
                             <div>
                                 <div className='box-payment-left'>
-                                    <p className='payment-bold'>{`Quantity : ${quantity} ${types}`}</p>
+                                    <p className={styles['payment-bold']}>{`Quantity : ${quantity} ${types}`}</p>
                                 </div>
 
-                                <div className='box-noflex-left mt-4'>
-                                    <p className='payment-bold'>Order Detail :</p>
+                                <div className={`mt-4 ${styles['box-noflex-left']}`}>
+                                    <p className={styles['payment-bold']}>Order Detail :</p>
                                     {quantityArr.map((data) => (
                                         <React.Fragment key={data}>
                                             <p>{`1 ${types} : Rp. ${formatRupiah(vehiclePrice)}`}</p>
                                         </React.Fragment>
                                     ))}
-                                    <p className='payment-bold'>{`total : Rp. ${formatRupiah(totalPrice)}`}</p>
+                                    <p className={styles['payment-bold']}>{`total : Rp. ${formatRupiah(totalPrice)}`}</p>
                                 </div>
                             </div>
 
-                            <div className='dekstop-mode-reservation-pos-rel'>
-                                <div className='box-payment-flex'>
-                                    <p className='payment-bold'>Reservation Date :</p>
+                            <div className={stylesReservation['dekstop-mode-reservation-pos-rel']}>
+                                <div className={styles['box-payment-flex']}>
+                                    <p className={styles['payment-bold']}>Reservation Date :</p>
                                     <p>{`${dateNow} for ${day} day`}</p>
                                 </div>
-                                <div className='box-payment-noFlex mt-4'>
-                                    <p className='payment-bold'>Identity :</p>
+                                <div className={`mt-4 ${styles['box-payment-noFlex']}`}>
+                                    <p className={styles['payment-bold']}>Identity :</p>
                                     <p>{`${name === null || name === '' ? 'no name' : name} (${phone === null || phone === '' ? 'no number phone' : phone})`}</p>
                                     <p>{email}</p>
                                 </div>
                             </div>
                         </section>
 
-                        <section className='container flex-reservation mt-3 code-flex'>
-                            <p className='payment-bold'>{`Payment Code : `}</p>
-                            <div className='box-code'>
+                        <section className={`container ${stylesReservation['flex-reservation']} ${styles['code-flex']}`}>
+                            <p>{``}</p>
+                            <p className={styles['payment-bold']}>{`Payment Code : `}</p>
+                            <div className={styles['box-code']}>
                                 #FG1209878YZS
                             </div>
                         </section>
 
-                        <button className='btn-payment m-5' onClick={handlePayment}>
+                        <button className={`mt-5 ${styles['btn-payment']}`} onClick={handlePayment}>
                             Finish Payment
                         </button>
 

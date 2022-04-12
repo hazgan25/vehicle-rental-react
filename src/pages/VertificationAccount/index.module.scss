@@ -1,0 +1,39 @@
+.vertification-bg{
+    background: url('../../assets/gif/car-jump.gif');
+    background-size: cover;
+    height: 758px;
+    background-position: center;
+    padding: 0;
+}
+
+.transparan-bg{
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: auto;
+}
+
+.success-vertify{
+    position: relative;
+    text-align: center;
+    top: 10%;
+}
+
+.btn-to-home{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 33px;
+
+    color: #393939;
+    background: #FFCD61;
+    box-shadow: 0px 0px 20px rgba(218, 218, 218, 0.25);
+    border-radius: 10px;
+
+    width: 320px;
+    height: 62px;
+
+    left: 5%;
+    top: 42px;
+}

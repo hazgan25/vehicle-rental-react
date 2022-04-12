@@ -1,6 +1,33 @@
+.back-home{
+    display: flex;
+    width: 220px;
+    align-items: center;
+    justify-content: space-between;
+}
+.backArrow{
+    position: relative;
+    left: 12px;
+    height: 32px;
+}
+.payment-text{
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000000;
+}
+
 .img-payment{
     width: 452px;
     height: 317px;
+}
+
+.flex-payment{
+    display: flex;
+}
+
+.dekstop-mode-payment-pos-rel{
+    position: relative;
+    left: 65px;
 }
 
 .code-text{
@@ -35,6 +62,8 @@
     box-sizing: border-box;
     border-radius: 10px;
 }
+
+
 
 .payment-bold{
     font-family: 'Nunito';

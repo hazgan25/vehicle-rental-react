@@ -1,4 +1,3 @@
-
 .menu-bg{
     height: 763px;
     width: auto;
@@ -104,7 +103,36 @@
     border-radius: 5%;
 }
 
+// bagian list vehicle
+.popular{
+    position: relative;
 
+    font-family: Playfair Display;
+    font-weight: bold;
+    top: 5px;
+}
+
+.view-all{
+    position: relative;
+    font-family: Nunito;
+    font-weight: normal;
+
+    color: #FB8F1D;
+
+    cursor: pointer;
+}
+
+.view-all:active{
+    color: #000;
+}
+
+// list vehicle
+.popular-town-list{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
 /* main testimony/bahawnya lagi */
 .ratings {
@@ -186,6 +214,25 @@
     }
     .btn-add-new-item{
         width: 738px;
+    }
+
+    .popular{
+        width: 231px;
+        font-style: normal;
+        font-size: 36px;
+        line-height: 50px;
+
+        top: 12px;
+    }
+    .view-all{
+        top: 22px;
+        /* font-size: 17px; */
+        /* line-height: 10px; */
+        width: 78px;
+        float: right;
+    }
+    .popular-town-list{
+        top: 12px;
     }
 }
 
