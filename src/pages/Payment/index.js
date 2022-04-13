@@ -13,7 +13,7 @@ import Main from '../../components/Main'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 import arrowBack from '../../assets/svg/arrowBack.svg'
 
-import formatRupiah from '../../modules/helper/FormatRupiah'
+import formatRupiah from '../../modules/helper/formatRupiah'
 import Swal from 'sweetalert2'
 
 const Payment = () => {

@@ -15,7 +15,7 @@ import { getLocationByRenterId, postLocationbyRenterId } from '../../modules/uti
 import { useSelector, useDispatch } from 'react-redux'
 
 import { listVehiclePopularAction, listVehicleCarAction, listVehicleMotorbikeAction, listVehicleBikeAction } from '../../redux/actions/listVehicles'
-import { paramsPopulerVehicle, paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/ListVehicle'
+import { paramsPopulerVehicle, paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/listVehicle'
 import { postVehicle } from '../../modules/utils/vehicle'
 
 const AddVehicle = () => {

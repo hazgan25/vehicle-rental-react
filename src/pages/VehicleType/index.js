@@ -11,7 +11,7 @@ import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 
 import { listVehicleCarAction, listVehicleMotorbikeAction, listVehicleBikeAction } from '../../redux/actions/listVehicles'
 
-import { paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/ListVehicle'
+import { paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/listVehicle'
 
 
 const VehicleType = () => {

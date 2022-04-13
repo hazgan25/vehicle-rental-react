@@ -15,7 +15,7 @@ import Testimonial from '../../components/Testimonial'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 
 import { listVehiclePopularAction } from '../../redux/actions/listVehicles'
-import { paramsPopulerVehicle } from '../../modules/helper/ListVehicle'
+import { paramsPopulerVehicle } from '../../modules/helper/listVehicle'
 
 const Home = () => {
     const state = useSelector(state => state)
