@@ -3,9 +3,13 @@ import styles from './index.module.scss'
 import Main from '../../components/Main'
 
 import { useDispatch, useSelector } from 'react-redux'
+import { userAction } from '../../redux/actions/auth'
+import { editUserProfile, editPasswordUser } from '../../modules/utils/user'
 
 import profileDefaultImg from '../../assets/img/profile-default.png'
 import pencilIcon from '../../assets/svg/pencil.svg'
+
+import Swal from 'sweetalert2'
 
 const EditProfile = () => {
     const state = useSelector(state => state)
@@ -51,7 +55,55 @@ const EditProfile = () => {
         body.append('gender_id', selectGender)
         body.append('dob', userDob)
         body.append('address', userAddress)
-        body.append('image', imgFile)
+        if (imgFile !== '') body.append('image', imgFile)
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-secondary'
+            },
+            buttonsStyling: true
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure change profile?',
+            // text: "You won't be able to revert this!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Change Profile',
+            cancelButtonText: 'No, Cancel',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                editUserProfile(body, token)
+                    .then((res) => {
+                        swalWithBootstrapButtons.fire(
+                            'Success!',
+                            `${res.data.result.msg}`,
+                            'success'
+                        )
+                        dispatch(userAction(token))
+                    })
+                    .catch(({ ...err }) => {
+                        swalWithBootstrapButtons.fire(
+                            'There is an error ?',
+                            `${err.response.data.result}`,
+                            'question'
+                        )
+                    })
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your profile cancel change',
+                    'info'
+                )
+            }
+        })
+
         for (var pair of body.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }

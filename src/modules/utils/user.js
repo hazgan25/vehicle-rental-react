@@ -6,6 +6,11 @@ export const userProfile = (token) => {
     return axios.get(urlUserProfile, { headers: { 'x-access-token': token } })
 }
 
+export const editUserProfile = (body, token) => {
+    const urlEditUserProfile = urlUser + '/edit'
+    return axios.patch(urlEditUserProfile, body, { headers: { 'x-access-token': token } })
+}
+
 // export const editUserProfile = (body, token) => {
 //     const urlEditUserProfile = urlUser + '/edit'
 //     return axios.patch(urlEditUserProfile, body, {
@@ -17,24 +22,24 @@ export const userProfile = (token) => {
 //     })
 // }
 
-export const editUserProfile = (body, token) => {
-    const urlEditUserProfile = urlUser + '/edit'
-    return fetch(urlEditUserProfile, {
-        method: 'PATCH',
-        headers: {
-            'x-access-token': token,
-            Accept: 'application/json',
-            'Content-Type': 'multipart/form-data',
-        },
-        body: body,
-    })
-        .then(res => {
-            return res.json()
-        })
-        .catch((err) => {
-            console.log('ini err', err)
-        })
-}
+// export const editUserProfile = (body, token) => {
+//     const urlEditUserProfile = urlUser + '/edit'
+//     return fetch(urlEditUserProfile, {
+//         method: 'PATCH',
+//         headers: {
+//             'x-access-token': token,
+//             Accept: 'application/json',
+//             'Content-Type': 'multipart/form-data',
+//         },
+//         body: body,
+//     })
+//         .then(res => {
+//             return res.json()
+//         })
+//         .catch((err) => {
+//             console.log('ini err', err)
+//         })
+// }
 
 export const editPasswordUser = (body, token) => {
     const urlEditPasswordUser = urlUser + '/edit/password'

@@ -45,7 +45,7 @@ const Header = () => {
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, Logout',
-            cancelButtonText: 'No, cancel!',
+            cancelButtonText: 'No, Cancel!',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {
