@@ -183,9 +183,9 @@ const AddVehicle = () => {
             }
         })
 
-        for (var pair of body.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
+        // for (var pair of body.entries()) {
+        //     console.log(pair[0] + ', ' + pair[1]);
+        // }
     }
 
     return (
