@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import Main from '../../components/Main'
 
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { userAction } from '../../redux/actions/auth'
+import { userAction, logoutAction } from '../../redux/actions/auth'
 import { editUserProfile, editPasswordUser } from '../../modules/utils/user'
 
 import profileDefaultImg from '../../assets/img/profile-default.png'
 import pencilIcon from '../../assets/svg/pencil.svg'
 
 import Swal from 'sweetalert2'
+import { Modal, Button } from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify'
 
 const EditProfile = () => {
     const state = useSelector(state => state)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [showImg, setShowImg] = useState(profileDefaultImg)
     const [imgFile, setImgFile] = useState('')
@@ -23,6 +27,11 @@ const EditProfile = () => {
     const [userDob, setUserDob] = useState('')
     const [userAddress, setUserAddress] = useState('')
     const [userPhone, setUserPhone] = useState('')
+
+    const [isModal, setIsModal] = useState(false)
+    const [curPass, setCurrPass] = useState('')
+    const [newPass, setNewPass] = useState('')
+    const [rePass, SetRePass] = useState('')
 
     const { auth } = state
     const { token, userData } = auth
@@ -103,10 +112,73 @@ const EditProfile = () => {
                 )
             }
         })
+    }
 
-        for (var pair of body.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
+    const editPasswordHandler = () => {
+        if (curPass === '' || newPass === '' || rePass === '') {
+            toast.error('All must be filled!', {
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
         }
+        if (newPass !== rePass) {
+            toast.error('Re-type Password is Wrong!', {
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
+        }
+        if (curPass !== '' && newPass !== '' && rePass !== '') {
+            const body = {
+                'currentPass': curPass,
+                'newPass': newPass
+            }
+            editPasswordUser(body, token)
+                .then((res) => {
+                    Swal.fire(
+                        `${res.data.result.msg}`,
+                        'Please Login Again!',
+                        'success'
+                    )
+                    setIsModal(false)
+                    setCurrPass('')
+                    setNewPass('')
+                    SetRePass('')
+                    dispatch(logoutAction(token))
+                    localStorage.clear('persist:root')
+                    setTimeout(() => {
+                        navigate('/login')
+                        window.location.reload(true)
+                    }, 1500)
+                })
+                .catch(({ ...err }) => {
+                    toast.error(`${err.response.data.result}`, {
+                        position: "top-center",
+                        autoClose: 1500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    })
+                })
+        }
+    }
+
+    const cancelPassHandler = () => {
+        setCurrPass('')
+        setNewPass('')
+        SetRePass('')
+        setIsModal(false)
     }
 
     const cancelHandler = () => {
@@ -124,7 +196,6 @@ const EditProfile = () => {
         setUserEmail(email)
         setUserPhone(phone)
     }
-
 
     return (
         <Main>
@@ -189,16 +260,50 @@ const EditProfile = () => {
                             </div>
                             <div className={styles['select-button']}>
                                 <button className={styles['btn-save-change']} onClick={saveHandler}>Save Change</button>
-                                <button className={styles['btn-edit-password']}>Edit Password</button>
+                                <button className={styles['btn-edit-password']} onClick={() => setIsModal(true)}>Edit Password</button>
                                 <button className={styles['btn-cancel']} onClick={cancelHandler}>Cancel</button>
                             </div>
                         </div>
                     </section>
 
+                    <Modal show={isModal} onHide={() => { setIsModal(false) }} size='xl' aria-labelledby="contained-modal-title-vcenter" centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title-vcenter">
+                                Change Your Password
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <h5>Current Password :</h5>
+                            <input type={'password'} style={{ width: '100%' }} onChange={e => setCurrPass(e.target.value)} />
+                            <h5 style={{ marginTop: 13 }}>New Password :</h5>
+                            <input type={'password'} style={{ width: '100%' }} onChange={e => setNewPass(e.target.value)} />
+                            <h5 style={{ marginTop: 13 }}>Re-type Password :</h5>
+                            <input type={'password'} style={{ width: '100%' }} onChange={e => SetRePass(e.target.value)} />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button className='btn-secondary' onClick={cancelPassHandler}>Cancel</Button>
+                            <Button className='btn-warning' onClick={editPasswordHandler}>Confirm</Button>
+                        </Modal.Footer>
+                    </Modal>
+
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={2500}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
+
                 </section>
             </main>
+            {console.log(isModal)}
         </Main>
     )
 }
+
 
 export default EditProfile
