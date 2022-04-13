@@ -15,7 +15,7 @@ import Testimonial from '../../components/Testimonial'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 
 import { listVehiclePopularAction } from '../../redux/actions/listVehicles'
-import { paramsPopulerVehicle } from '../../modules/helper/listVehicle'
+import { paramsPopulerVehicle } from '../../modules/helper/ListVehicle'
 
 const Home = () => {
     const state = useSelector(state => state)
@@ -30,16 +30,15 @@ const Home = () => {
     const { role } = userData
     const { listPopularVehicle } = listVehicle
 
-    console.log('ini state pop', listPopularVehicle)
-
     const dispatch = useDispatch()
 
     useEffect(() => {
         getAllLocation()
             .then((res) => {
                 setLocationArr(res.data.result)
+                console.log(res)
             })
-            .catch(err => console.log(err))
+            .catch((...err) => console.log(err))
 
         dispatch(listVehiclePopularAction(paramsPopulerVehicle))
     }, [dispatch])
@@ -60,8 +59,8 @@ const Home = () => {
                                 <form>
                                     <div className='row'>
                                         <div className='col-sm'>
-                                            <select className={styles['forms-select']} defaultValue='' onChange={e => setSelectLocation(e.target.value)}>
-                                                <option selected value='' >Location</option>
+                                            <select className={styles['forms-select']} onChange={e => setSelectLocation(e.target.value)}>
+                                                <option value='' disabled={true}>Location</option>
                                                 {locationArr !== [] ? (
                                                     <React.Fragment>
                                                         {Array.isArray(locationArr) && locationArr.length > 0 &&
@@ -107,6 +106,7 @@ const Home = () => {
                                                     {Array.isArray(locationArr) && locationArr.length > 0 &&
                                                         locationArr.map((data) => (
                                                             <React.Fragment key={data.id}>
+                                                                {console.log(data)}
                                                                 <option value={data.id}>{data.name}</option>
                                                             </React.Fragment>
                                                         ))

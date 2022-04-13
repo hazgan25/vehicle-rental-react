@@ -1,0 +1,267 @@
+// ::placeholder{
+//     color: #8091BE !important;
+// }
+
+.back-home{
+    display: flex;
+    width: 290px;
+    align-items: center;
+}
+.back-arrow{
+    position: relative;
+    left: 12px;
+    height: 32px;
+}
+.add-new-item-text{
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000000;
+}
+
+.flex-main{
+    margin-top: 17px;
+}
+.img-one{
+    width: 100%;
+    border-radius: 10px;
+}
+.img-input-one{
+    position: absolute;
+    // background: #FFCD61;
+    opacity: 0;
+    height: 31%;
+    width: 53%;
+    cursor: pointer;
+    top: 30%;
+}
+.img-two{
+    width: 46%;
+    // height: 30%;
+    border-radius: 10px;
+}
+.img-input-two{
+    position: absolute;
+    background: #FFCD61;
+    opacity: 0;
+    height: 11%;
+    width: 15%;
+    cursor: pointer;
+    margin-left: 15%;
+    margin-top: 5%;
+    @media (min-width:768px) {
+        margin-left:10%;
+    }
+    @media (min-width:1280px) {
+        margin-left:5%;
+    }
+}
+.img-three{
+    width: 46%;
+    border-radius: 10px;
+}
+.img-input-three{
+    position: absolute;
+    background: #FFCD61;
+    opacity: 0;
+    height: 11%;
+    width: 15%;
+    margin-top: 5%;
+    margin-left: 65%;
+    cursor: pointer;
+    @media (min-width: 768px){
+        margin-left: 39%;
+    }
+    @media (min-width:1280px) {
+        margin-left:30%;
+    }
+}
+.flex-img{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.form-right{
+    margin-top: 12px;
+}
+.input{
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
+    width: 100%;
+    margin-bottom: 23px;
+}
+.input::placeholder{
+    color: #8091BE !important;
+}
+.label{
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #393939;
+    margin-bottom: 20px;
+}
+.input-box{
+    width: 100%;
+    background: #F5F5F6;
+    border: none;
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 23px;
+}
+.input-box::placeholder{
+    color: #8091BE !important;
+}
+
+.stock-flex{
+    display: flex;
+    justify-content: space-between;
+}
+.box-flex{
+    display: flex;
+    width: 193px;
+    justify-content: space-between;
+}
+.box-plus{
+    font-size: 24px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    background: rgba($color: #CBCBD4, $alpha: 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+.box-plus:active{
+    background: rgba($color: #FFCD61, $alpha: 1.0);
+}
+.box-min{
+    font-size: 24px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    background: rgba($color: #CBCBD4, $alpha: 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+.box-min:active{
+    background: rgba($color: #FFCD61, $alpha: 1.0);
+}
+
+.btn-item-to{
+    width: 100%;
+    padding: 20px;
+
+    background: #393939;
+    color: #FFCD61;
+    border-radius: 10px;
+
+    font-size: 24px;
+    font-weight: 700px;
+
+    cursor: pointer;
+}
+.btn-save-item{
+    width: 100%;
+    padding: 20px;
+
+    margin-top: 23px;
+
+    background: #FFCD61;
+    color: #393939;
+    border-radius: 10px;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+.btn-save-item:active{
+    background: #393939;
+    color: #FFCD61;
+}
+
+@media(min-width:768px){
+    .flex-main{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 117px;
+    }
+    .img-one{
+        width: 95%;
+        height: 62%;
+    }
+    .img-input-one{
+        width: 29%;
+        height: 20%;
+        top: 50%;
+    }
+    .img-three{
+        position: relative;
+        right: 5%;
+    }
+
+    .form-right{
+        margin-top: 0;
+        width: 55%;
+    }
+    .input{
+    width: 100%;
+    }
+    .box-flex{
+        width: 112px;
+    }
+
+    .btn-flex{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3%;
+    }
+    .btn-item-to{
+        width: 40%;
+    }
+    .btn-save-item{
+        width: 57%;
+        margin-top: 0;
+    }
+}
+
+@media(min-width:1024px){
+    .box-flex{
+        width: 193px;
+    }
+    .input{
+        margin-bottom: 10%;
+    }
+    .label{
+        margin-bottom: 10%;
+    }
+    .input-box{
+        margin-bottom: 10%;
+    }
+    .img-input-one{
+        top: 40%;
+        @media(min-width:1280px){
+            top:70%;
+            height: 30%;
+        }
+        @media (min-width:1440px) {
+            top: 35%;
+        }
+        @media(min-width:2560px){
+            top: 10%;
+        }
+    }
+}

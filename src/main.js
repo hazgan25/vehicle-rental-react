@@ -15,7 +15,7 @@ import EditProfile from './pages/EditProfile'
 import VehicleType from './pages/VehicleType'
 import VehicleDetail from './pages/VehicleDetail'
 import Payment from './pages/Payment'
-// import AddVehicle from './pages/AddVehicle'
+import AddVehicle from './pages/AddVehicle'
 
 // private route
 import AuthRoutes from './components/AuthRoutes'
@@ -52,7 +52,7 @@ const main = () => {
                         {/* private owner */}
                         <Route element={<PrivateRoutes />}>
                             <Route element={<OwnerRoutes />}>
-                                {/* <Route path='vehicle/add' element={<AddVehicle />} /> */}
+                                <Route path='vehicle/add' element={<AddVehicle />} />
                             </Route>
                         </Route>
 

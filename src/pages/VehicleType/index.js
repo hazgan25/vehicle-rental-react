@@ -9,11 +9,9 @@ import searchIcon from '../../assets/svg/search.svg'
 import CardVehicle from '../../components/CardVehicles'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 
-import { listVehicleCarAction } from '../../redux/actions/listVehicles'
-import { listVehicleMotorbikeAction } from '../../redux/actions/listVehicles'
-import { listVehicleBikeAction } from '../../redux/actions/listVehicles'
+import { listVehicleCarAction, listVehicleMotorbikeAction, listVehicleBikeAction } from '../../redux/actions/listVehicles'
 
-import { paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/listVehicle'
+import { paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/ListVehicle'
 
 
 const VehicleType = () => {

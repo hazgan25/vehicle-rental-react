@@ -80,8 +80,6 @@ const Testimonial = () => {
         }
     }
 
-    console.log(dataTesti)
-
     return (
         <React.Fragment>
             <div className={styles['ring-gradient-list']}>
