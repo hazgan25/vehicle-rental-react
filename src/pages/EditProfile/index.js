@@ -31,7 +31,7 @@ const EditProfile = () => {
     const [isModal, setIsModal] = useState(false)
     const [curPass, setCurrPass] = useState('')
     const [newPass, setNewPass] = useState('')
-    const [rePass, SetRePass] = useState('')
+    const [rePass, setRePass] = useState('')
 
     const { auth } = state
     const { token, userData } = auth
@@ -152,7 +152,7 @@ const EditProfile = () => {
                     setIsModal(false)
                     setCurrPass('')
                     setNewPass('')
-                    SetRePass('')
+                    setRePass('')
                     dispatch(logoutAction(token))
                     localStorage.clear('persist:root')
                     setTimeout(() => {
@@ -177,7 +177,7 @@ const EditProfile = () => {
     const cancelPassHandler = () => {
         setCurrPass('')
         setNewPass('')
-        SetRePass('')
+        setRePass('')
         setIsModal(false)
     }
 
@@ -278,7 +278,7 @@ const EditProfile = () => {
                             <h5 style={{ marginTop: 13 }}>New Password :</h5>
                             <input type={'password'} style={{ width: '100%' }} onChange={e => setNewPass(e.target.value)} />
                             <h5 style={{ marginTop: 13 }}>Re-type Password :</h5>
-                            <input type={'password'} style={{ width: '100%' }} onChange={e => SetRePass(e.target.value)} />
+                            <input type={'password'} style={{ width: '100%' }} onChange={e => setRePass(e.target.value)} />
                         </Modal.Body>
                         <Modal.Footer>
                             <Button className='btn-secondary' onClick={cancelPassHandler}>Cancel</Button>
