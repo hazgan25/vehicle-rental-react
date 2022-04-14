@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './index.module.scss'
 import Main from '../../components/Main'
 
@@ -9,29 +9,49 @@ import searchIcon from '../../assets/svg/search.svg'
 import CardVehicle from '../../components/CardVehicles'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 
-import { listVehicleCarAction, listVehicleMotorbikeAction, listVehicleBikeAction } from '../../redux/actions/listVehicles'
+import { listVehicleCarAction, listVehicleMotorbikeAction, listVehicleBikeAction, listVehiclePopularAction } from '../../redux/actions/listVehicles'
 
-import { paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/listVehicle'
+import { paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle, paramsPopulerVehicle } from '../../modules/helper/listVehicle'
 
 
 const VehicleType = () => {
     const state = useSelector(state => state)
 
+    const [search, setSearch] = useState('')
+
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { listCarHome, listMotorbikeHome, listBikeHome, listPopularVehicle } = state.listVehicle
 
     useEffect(() => {
+        dispatch(listVehiclePopularAction(paramsPopulerVehicle))
         dispatch(listVehicleCarAction(paramCarVehicle))
         dispatch(listVehicleMotorbikeAction(paramMotorbikeVehicle))
         dispatch(listVehicleBikeAction(paramBikeVehicle))
     }, [dispatch])
 
+    const searchHandler = () => {
+        navigate(`/view-more?search=${search}&type=&location=`)
+    }
+    const viewAllPopularHandler = () => {
+        navigate(`/view-more?search=&type=&location=&by=rating&order=desc`)
+    }
+    const viewAllCarHandler = () => {
+        navigate('/view-more?search=&type=1&location=&by=id&order=desc')
+    }
+    const viewAllMotorbikeHandler = () => {
+        navigate('/view-more?search=&type=2&location=&by=id&order=desc')
+    }
+    const ViewAllBikeHandler = () => {
+        navigate('/view-more?search=&type=3&location=&by=id&order=desc')
+    }
+
     return (
         <Main>
             <main className={`container ${styles['top-vehicle-type']}`}>
-                <input type={'text'} placeholder='Search vehicle (ex. cars, cars, name)' className={styles['search-vehicle']} />
-                <img src={searchIcon} alt='' className={styles['search']} />
+                <input type={'text'} placeholder='Search vehicle (ex. type vehicle, vehicle name, location name)' className={styles['search-vehicle']} onChange={e => setSearch(e.target.value)} />
+                <img src={searchIcon} alt='avatar' className={styles['search']} onClick={searchHandler} />
 
                 <section className='container'>
                     <div className='row justify-content-between'>
@@ -39,7 +59,7 @@ const VehicleType = () => {
                             <h2 className={styles['popular']}>Popular Town</h2>
                         </div>
                         <div className='col-sm-1'>
-                            <p className={styles['view-all']}>View All {'>'}</p>
+                            <p className={styles['view-all']} onClick={viewAllPopularHandler}>View All {'>'}</p>
                         </div>
                     </div>
 
@@ -75,7 +95,7 @@ const VehicleType = () => {
                             <h2 className={styles['popular']}>Cars</h2>
                         </div>
                         <div className='col-sm-1'>
-                            <p className={styles['view-all']}>View All {'>'}</p>
+                            <p className={styles['view-all']} onClick={viewAllCarHandler}>View All {'>'}</p>
                         </div>
                     </div>
 
@@ -111,7 +131,7 @@ const VehicleType = () => {
                             <h2 className={styles['popular']}>Motorbike</h2>
                         </div>
                         <div className='col-sm-1'>
-                            <p className={styles['view-all']}>View All {'>'}</p>
+                            <p className={styles['view-all']} onClick={viewAllMotorbikeHandler}>View All {'>'}</p>
                         </div>
                     </div>
 
@@ -147,7 +167,7 @@ const VehicleType = () => {
                             <h2 className={styles['popular']}>Bike</h2>
                         </div>
                         <div className='col-sm-1'>
-                            <p className={styles['view-all']}>View All {'>'}</p>
+                            <p className={styles['view-all']} onClick={ViewAllBikeHandler}>View All {'>'}</p>
                         </div>
                     </div>
 

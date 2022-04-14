@@ -41,7 +41,6 @@ const AddVehicle = () => {
     const [imgFile2, setImgFile2] = useState('')
     const [imgFile3, setImgFile3] = useState('')
 
-
     const { auth } = state
     const { token } = auth
 

@@ -4,7 +4,7 @@ import Main from '../../components/Main'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllLocation } from '../../modules/utils/location'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import backgrounBefore from '../../assets/img/Home-bg-before.webp'
 import backgroundAfter from '../../assets/img/Home-bg-after.webp'
@@ -17,13 +17,15 @@ import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 import { listVehiclePopularAction } from '../../redux/actions/listVehicles'
 import { paramsPopulerVehicle } from '../../modules/helper/listVehicle'
 
+
 const Home = () => {
     const state = useSelector(state => state)
+    const navigate = useNavigate()
 
     const [locationArr, setLocationArr] = useState([])
+    const [search, setSearch] = useState('')
     const [selectLocation, setSelectLocation] = useState('')
     const [selectType, setSelectType] = useState('')
-    const [selectPayment, setSelectPayment] = useState('')
 
     const { auth, listVehicle } = state
     const { token, userData } = auth
@@ -43,6 +45,17 @@ const Home = () => {
         dispatch(listVehiclePopularAction(paramsPopulerVehicle))
     }, [dispatch])
 
+    const viewAllPopularHandler = () => {
+        navigate(`/view-more?search=&type=&location=&by=rating&order=desc`)
+    }
+
+    const exploreHandlerBeforeLogin = () => {
+        navigate(`/view-more?search=&type=${selectType}&location=${selectLocation}&by=id&order=desc`)
+    }
+    const exploreHandlerAfterLogin = () => {
+        navigate(`/view-more?search=${search}&type=${selectType}&location=${selectLocation}&by=id&order=desc`)
+    }
+
     return (
         <Main>
             <section className={styles['menu-bg']} style={{ backgroundImage: !token ? `url('${backgrounBefore}')` : `url(${backgroundAfter})` }}>
@@ -59,8 +72,8 @@ const Home = () => {
                                 <form>
                                     <div className='row'>
                                         <div className='col-sm'>
-                                            <select className={styles['forms-select']} onChange={e => setSelectLocation(e.target.value)}>
-                                                <option value='' disabled={true}>Location</option>
+                                            <select className={styles['forms-select']} defaultValue='' onChange={e => setSelectLocation(e.target.value)}>
+                                                <option value={''} disabled={true}>Location</option>
                                                 {locationArr !== [] ? (
                                                     <React.Fragment>
                                                         {Array.isArray(locationArr) && locationArr.length > 0 &&
@@ -82,14 +95,14 @@ const Home = () => {
                                                 <option value={3}>bike</option>
                                             </select>
                                             <div className="col-sm" >
-                                                <select className={styles['forms-select']} defaultValue='' onChange={e => setSelectPayment(e.target.value)}>
+                                                <select className={styles['forms-select']} defaultValue=''>
                                                     <option selected value='' disabled>Payment</option>
                                                     <option value='expensive'>expensive</option>
                                                     <option value='inexpensive'>inexpensive</option>
                                                 </select>
                                                 <input type="date" className={styles['form-dates']} />
                                             </div>
-                                            <button className={styles['btn-explore']}>Explore</button>
+                                            <button className={styles['btn-explore']} onClick={exploreHandlerBeforeLogin}>Explore</button>
                                         </div>
                                     </div>
                                 </form>
@@ -99,14 +112,13 @@ const Home = () => {
                                 <form>
                                     <div className='row'>
                                         <div className='col-sm'>
-                                            <input type='text' placeholder="Type the vehicle (ex. motorbike" className={`${styles['forms-select']} ${styles['input-vehicle']}`} />
+                                            <input type='text' placeholder="ex. type vehicle, vehicle name, location name" className={`${styles['forms-select']} ${styles['input-vehicle']}`} onChange={e => setSearch(e.target.value)} />
                                             <div className='col-sm'>
-                                                <select className={styles['forms-select']} defaultValue=''>
-                                                    <option selected value='' disabled>Location</option>
+                                                <select className={styles['forms-select']} defaultValue='' onChange={e => setSelectLocation(e.target.value)}>
+                                                    <option value={''} disabled>Location</option>
                                                     {Array.isArray(locationArr) && locationArr.length > 0 &&
                                                         locationArr.map((data) => (
                                                             <React.Fragment key={data.id}>
-                                                                {console.log(data)}
                                                                 <option value={data.id}>{data.name}</option>
                                                             </React.Fragment>
                                                         ))
@@ -114,7 +126,7 @@ const Home = () => {
                                                 </select>
                                                 <input type="date" className={styles['form-dates']} />
                                             </div>
-                                            <button className={styles['btn-explore']}>Search</button>
+                                            <button className={styles['btn-explore']} onClick={exploreHandlerAfterLogin}>Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -130,7 +142,7 @@ const Home = () => {
                         <h2 className={styles['popular']}>Popular Town</h2>
                     </div>
                     <div className='col-sm-1'>
-                        <p className={styles['view-all']}>View All {'>'}</p>
+                        <p className={styles['view-all']} onClick={viewAllPopularHandler}>View All {'>'}</p>
                     </div>
                 </div>
 

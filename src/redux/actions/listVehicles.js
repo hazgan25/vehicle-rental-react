@@ -1,5 +1,5 @@
 import { ACTION_STRING } from './actionString'
-import { vehicleTypeLimit } from '../../modules/utils/vehicle'
+import { vehicleTypeLimit, vehicleSearchFilter } from '../../modules/utils/vehicle'
 
 const { listVehicle, listPopularVehicle, listCar, listMotorbike, listBike } = ACTION_STRING
 
@@ -13,7 +13,7 @@ export const listVehiclePopularAction = (params) => {
 export const listVechileAction = (params) => {
     return {
         type: listVehicle,
-        payload: vehicleTypeLimit(params)
+        payload: vehicleSearchFilter(params)
     }
 }
 
