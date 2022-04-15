@@ -81,10 +81,6 @@ const ViewMore = () => {
         }
     }
 
-    console.log('ini Next', next, 'ini prev', prev)
-
-    console.log('ini search filter', urlSearchFilter, 'ini new search', newUrlSearchFilter)
-
     return (
         <Main>
             <main className={`container ${styles['top-view-more']}`}>
@@ -126,7 +122,7 @@ const ViewMore = () => {
 
                 {vehicleArr.length !== 0 ? (
                     <React.Fragment>
-                        <p className={styles['data-vehicle']}>{`Total vehicle ${meta.totalData} remaining ${meta.totalRemainingData === null ? 'empty' : meta.totalRemainingData}`}</p>
+                        <p className={styles['data-vehicle']}>{`Total vehicle ${meta.totalData}`}</p>
                         <section className={`${styles['all-vehicle']}`}>
                             {Array.isArray(vehicleArr) && vehicleArr.length > 0 &&
                                 vehicleArr.map((data) => (

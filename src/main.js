@@ -17,6 +17,7 @@ import VehicleDetail from './pages/VehicleDetail'
 import Payment from './pages/Payment'
 import AddVehicle from './pages/AddVehicle'
 import ViewMore from './pages/ViewMore'
+import History from './pages/History'
 
 // private route
 import AuthRoutes from './components/AuthRoutes'
@@ -35,8 +36,9 @@ const main = () => {
                         <Route path='/' element={<Navigate to='home' />} />
                         <Route path='home' element={<Home />} />
                         <Route path='vehicle/type' element={<VehicleType />} />
-                        <Route path='/view-more' element={<ViewMore />} />
+                        <Route path='view-more' element={<ViewMore />} />
                         <Route path='vehicle/detail/:id' element={<VehicleDetail />} />
+                        <Route path='history' element={<History />} />
 
                         {/* route Auth */}
                         <Route element={<AuthRoutes />}>

@@ -74,6 +74,7 @@ const Home = () => {
                                         <div className='col-sm'>
                                             <select className={styles['forms-select']} defaultValue='' onChange={e => setSelectLocation(e.target.value)}>
                                                 <option value={''} disabled={true}>Location</option>
+                                                <option value={''}>All</option>
                                                 {locationArr !== [] ? (
                                                     <React.Fragment>
                                                         {Array.isArray(locationArr) && locationArr.length > 0 &&
@@ -90,6 +91,7 @@ const Home = () => {
                                             </select>
                                             <select className={styles['forms-select']} defaultValue='' onChange={e => setSelectType(e.target.value)}>
                                                 <option selected value='' disabled>Type</option>
+                                                <option value={''}>All</option>
                                                 <option value={1}>car</option>
                                                 <option value={2}>motorbike</option>
                                                 <option value={3}>bike</option>
@@ -97,6 +99,7 @@ const Home = () => {
                                             <div className="col-sm" >
                                                 <select className={styles['forms-select']} defaultValue=''>
                                                     <option selected value='' disabled>Payment</option>
+                                                    <option value={''}>Default</option>
                                                     <option value='expensive'>expensive</option>
                                                     <option value='inexpensive'>inexpensive</option>
                                                 </select>
@@ -116,6 +119,7 @@ const Home = () => {
                                             <div className='col-sm'>
                                                 <select className={styles['forms-select']} defaultValue='' onChange={e => setSelectLocation(e.target.value)}>
                                                     <option value={''} disabled>Location</option>
+                                                    <option value={''}>All</option>
                                                     {Array.isArray(locationArr) && locationArr.length > 0 &&
                                                         locationArr.map((data) => (
                                                             <React.Fragment key={data.id}>
