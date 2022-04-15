@@ -7,10 +7,9 @@ import CardVehicle from '../../components/CardVehicles'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 import vehicleNotFound from '../../assets/img/vehiclenotfound.png'
 
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { listVechileAction } from '../../redux/actions/listVehicles'
 import { getAllLocation } from '../../modules/utils/location'
-
 
 import { useDispatch } from 'react-redux'
 
@@ -18,6 +17,8 @@ const urlVehicles = process.env.REACT_APP_HOST + '/vehicles'
 
 const ViewMore = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const locationParams = useLocation()
 
     const [locationArr, setLocationArr] = useState([])
     const [vehicleArr, setVehileArr] = useState([])
@@ -30,10 +31,11 @@ const ViewMore = () => {
     const [order, setOrder] = useState('id')
     const [sort, setSort] = useState('desc')
 
-    const locationParams = useLocation()
     const urlSearchFilter = urlVehicles + locationParams.search + `&limit=12&page=${vehiclePage}`
 
-    const newUrlSearchFilter = `${urlVehicles}?search=${search}&type=${types}&location=${location}&by=${order}&order=${sort}&limit=12&page=${vehiclePage}`
+    const newUrlSearchFilter = `/view-more?search=${search}&type=${types}&location=${location}&by=${order}&order=${sort}`
+
+    const { next, prev } = meta
 
     useEffect(() => {
         dispatch(listVechileAction(urlSearchFilter))
@@ -45,6 +47,10 @@ const ViewMore = () => {
                 console.log(err)
             })
 
+
+    }, [urlSearchFilter, dispatch])
+
+    useEffect(() => {
         getAllLocation()
             .then((res) => {
                 setLocationArr(res.data.result)
@@ -52,7 +58,7 @@ const ViewMore = () => {
             .catch(({ ...err }) => {
                 console.log(err)
             })
-    }, [urlSearchFilter, dispatch])
+    }, [])
 
     useEffect(() => {
         const { page } = meta
@@ -60,27 +66,24 @@ const ViewMore = () => {
     }, [meta])
 
     const searchFilterHandler = () => {
-        dispatch(listVechileAction(newUrlSearchFilter))
-            .then((res) => {
-                setVehileArr(res.value.data.result.data)
-                setMeta(res.value.data.result.meta)
-            })
-            .catch(({ ...err }) => {
-                console.log(err)
-            })
+        navigate(`${newUrlSearchFilter}`)
     }
 
     const nextHandler = () => {
-        if (meta.next !== null) {
+        if (next !== null) {
             setVehiclePage(vehiclePage + 1)
         }
     }
 
     const prevHandler = () => {
-        if (meta.prev !== null) {
+        if (prev !== null) {
             setVehiclePage(vehiclePage - 1)
         }
     }
+
+    console.log('ini Next', next, 'ini prev', prev)
+
+    console.log('ini search filter', urlSearchFilter, 'ini new search', newUrlSearchFilter)
 
     return (
         <Main>
@@ -91,12 +94,14 @@ const ViewMore = () => {
                 <section className={`container-fluid ${styles['flex-search-filter']}`}>
                     <select className={styles['box-select']} defaultValue='' onChange={e => setTypes(e.target.value)}>
                         <option value={''} disabled>Choose Type Vehicle</option>
+                        <option value={''}>All</option>
                         <option value={1}>Car</option>
                         <option value={2}>Motorbike</option>
                         <option value={3}>Bike</option>
                     </select>
                     <select className={styles['box-select']} defaultValue='' onChange={e => setLocation(e.target.value)}>
                         <option value={''} disabled>Choose Location</option>
+                        <option value={''}>All</option>
                         {Array.isArray(locationArr) && locationArr.length > 0 &&
                             locationArr.map((data) => (
                                 <React.Fragment key={data.id}>
@@ -107,6 +112,7 @@ const ViewMore = () => {
                     </select>
                     <select className={styles['box-select']} defaultValue='' onChange={e => setOrder(e.target.value)}>
                         <option value={''} disabled>Order</option>
+                        <option value={'id'}>Default</option>
                         <option value={'name'}>Vehicles</option>
                         <option value={'locations'}>locations</option>
                         <option value={'rating'}>Ratings</option>
