@@ -10,6 +10,9 @@ import Swal from 'sweetalert2'
 import emailImg from '../../assets/img/email.png'
 import profileImgDefault from '../../assets/img/profile-default.png'
 
+import storage from 'redux-persist/lib/storage'
+
+
 const Header = () => {
     const state = useSelector(state => state)
 
@@ -25,9 +28,20 @@ const Header = () => {
     useEffect(() => {
         if (token) {
             dispatch(userAction(token))
-            if (image !== null) {
-                setShowImg(`${process.env.REACT_APP_HOST}/${image}`)
-            }
+                .then((res) => {
+                    if (res) {
+                        if (image !== null) {
+                            setShowImg(`${process.env.REACT_APP_HOST}/${image}`)
+                        }
+                    }
+                })
+                .catch(({ ...err }) => {
+                    if (token && err) {
+                        storage.removeItem('persist:root')
+                        window.location.reload(false)
+                    }
+                })
+
         }
     }, [dispatch, token, image])
 

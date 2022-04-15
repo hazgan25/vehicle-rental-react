@@ -38,7 +38,6 @@ const Home = () => {
         getAllLocation()
             .then((res) => {
                 setLocationArr(res.data.result)
-                console.log(res)
             })
             .catch((...err) => console.log(err))
 

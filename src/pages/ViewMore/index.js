@@ -32,10 +32,8 @@ const ViewMore = () => {
     const [sort, setSort] = useState('desc')
 
     const urlSearchFilter = urlVehicles + locationParams.search + `&limit=12&page=${vehiclePage}`
-
     const newUrlSearchFilter = `/view-more?search=${search}&type=${types}&location=${location}&by=${order}&order=${sort}`
-
-    const { next, prev } = meta
+    const remamagingData = meta.totalData - 12 * vehiclePage
 
     useEffect(() => {
         dispatch(listVechileAction(urlSearchFilter))
@@ -66,18 +64,22 @@ const ViewMore = () => {
     }, [meta])
 
     const searchFilterHandler = () => {
+        setVehiclePage(1)
         navigate(`${newUrlSearchFilter}`)
+        window.scrollTo(0, 0)
     }
 
     const nextHandler = () => {
-        if (next !== null) {
+        if (meta.next !== null) {
             setVehiclePage(vehiclePage + 1)
+            window.scrollTo(0, 0)
         }
     }
 
     const prevHandler = () => {
-        if (prev !== null) {
+        if (meta.prev !== null) {
             setVehiclePage(vehiclePage - 1)
+            window.scrollTo(0, 0)
         }
     }
 
@@ -122,7 +124,7 @@ const ViewMore = () => {
 
                 {vehicleArr.length !== 0 ? (
                     <React.Fragment>
-                        <p className={styles['data-vehicle']}>{`Total vehicle ${meta.totalData}`}</p>
+                        <p className={styles['data-vehicle']}>{`Total vehicle ${meta.totalData} remaining vehicle ${remamagingData < 0 ? 0 : remamagingData}`}</p>
                         <section className={`${styles['all-vehicle']}`}>
                             {Array.isArray(vehicleArr) && vehicleArr.length > 0 &&
                                 vehicleArr.map((data) => (
@@ -167,7 +169,7 @@ const ViewMore = () => {
                 </section>
 
                 <section className={styles['meta-flex']} style={{ marginTop: 23 }}>
-                    <p>{`Page ${vehiclePage} to remaining ${meta.pageRemaining === null ? 'empty' : meta.pageRemaining} from total page ${meta.totalPage}`}</p>
+                    <p>{`Page ${vehiclePage} to remaining ${meta.totalPage - vehiclePage} from total page ${meta.totalPage}`}</p>
                 </section>
 
             </main>
