@@ -7,7 +7,7 @@ import CardVehicle from '../../components/CardVehicles'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 import vehicleNotFound from '../../assets/img/vehiclenotfound.png'
 
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { listVechileAction } from '../../redux/actions/listVehicles'
 import { getAllLocation } from '../../modules/utils/location'
 
@@ -24,8 +24,16 @@ const ViewMore = () => {
     const [vehiclePage, setVehiclePage] = useState(1)
     const [meta, setMeta] = useState({})
 
+    const [search, setSearch] = useState('')
+    const [types, setTypes] = useState('')
+    const [location, setLocation] = useState('')
+    const [order, setOrder] = useState('id')
+    const [sort, setSort] = useState('desc')
+
     const locationParams = useLocation()
     const urlSearchFilter = urlVehicles + locationParams.search + `&limit=12&page=${vehiclePage}`
+
+    const newUrlSearchFilter = `${urlVehicles}?search=${search}&type=${types}&location=${location}&by=${order}&order=${sort}&limit=12&page=${vehiclePage}`
 
     useEffect(() => {
         dispatch(listVechileAction(urlSearchFilter))
@@ -51,20 +59,43 @@ const ViewMore = () => {
         setVehiclePage(page)
     }, [meta])
 
+    const searchFilterHandler = () => {
+        dispatch(listVechileAction(newUrlSearchFilter))
+            .then((res) => {
+                setVehileArr(res.value.data.result.data)
+                setMeta(res.value.data.result.meta)
+            })
+            .catch(({ ...err }) => {
+                console.log(err)
+            })
+    }
+
+    const nextHandler = () => {
+        if (meta.next !== null) {
+            setVehiclePage(vehiclePage + 1)
+        }
+    }
+
+    const prevHandler = () => {
+        if (meta.prev !== null) {
+            setVehiclePage(vehiclePage - 1)
+        }
+    }
+
     return (
         <Main>
             <main className={`container ${styles['top-view-more']}`}>
-                <input type={'text'} placeholder='Search vehicle (ex. type vehicle, vehicle name, location name)' className={styles['search-vehicle']} />
-                <img src={searchIcon} alt='avatar' className={styles['search']} />
+                <input type={'text'} placeholder='Search vehicle (ex. type vehicle, vehicle name, location name)' className={styles['search-vehicle']} onChange={e => setSearch(e.target.value)} />
+                <img src={searchIcon} alt='avatar' className={styles['search']} onClick={searchFilterHandler} />
 
                 <section className={`container-fluid ${styles['flex-search-filter']}`}>
-                    <select className={styles['box-select']} defaultValue=''>
+                    <select className={styles['box-select']} defaultValue='' onChange={e => setTypes(e.target.value)}>
                         <option value={''} disabled>Choose Type Vehicle</option>
                         <option value={1}>Car</option>
                         <option value={2}>Motorbike</option>
                         <option value={3}>Bike</option>
                     </select>
-                    <select className={styles['box-select']} defaultValue=''>
+                    <select className={styles['box-select']} defaultValue='' onChange={e => setLocation(e.target.value)}>
                         <option value={''} disabled>Choose Location</option>
                         {Array.isArray(locationArr) && locationArr.length > 0 &&
                             locationArr.map((data) => (
@@ -74,13 +105,13 @@ const ViewMore = () => {
                             ))
                         }
                     </select>
-                    <select className={styles['box-select']} defaultValue=''>
+                    <select className={styles['box-select']} defaultValue='' onChange={e => setOrder(e.target.value)}>
                         <option value={''} disabled>Order</option>
                         <option value={'name'}>Vehicles</option>
                         <option value={'locations'}>locations</option>
                         <option value={'rating'}>Ratings</option>
                     </select>
-                    <select className={styles['box-select']} defaultValue=''>
+                    <select className={styles['box-select']} defaultValue='' onChange={e => setSort(e.target.value)}>
                         <option value={''} disabled>Sort</option>
                         <option value={'asc'}>Ascending</option>
                         <option value={'desc'}>Descending</option>
@@ -127,10 +158,14 @@ const ViewMore = () => {
 
                 <section className={styles['meta-flex']}>
                     <div className={styles['flex-beetwen']}>
-                        <button className={styles['btn-prev']}>Prev</button>
+                        <button className={styles['btn-prev']} onClick={prevHandler}>Prev</button>
                         <h3 className={styles['page-text']}>{meta.page}</h3>
-                        <button className={styles['btn-next']}>Next</button>
+                        <button className={styles['btn-next']} onClick={nextHandler}>Next</button>
                     </div>
+                </section>
+
+                <section className={styles['meta-flex']} style={{ marginTop: 23 }}>
+                    <p>{`Page ${vehiclePage} to remaining ${meta.pageRemaining === null ? 'empty' : meta.pageRemaining} from total page ${meta.totalPage}`}</p>
                 </section>
 
             </main>

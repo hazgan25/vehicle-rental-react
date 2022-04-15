@@ -79,12 +79,31 @@
     background: #AFB0B9;
     border: none;
     margin-right: 23px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+
+    border-radius: 10px;
 }
 .btn-next{
     width: 120px;
     background: #AFB0B9;
     border: none;
     margin-left: 23px;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+
+    border-radius: 10px;
+}
+.btn-next:active{
+    background: #FFCD61;
 }
 .page-text{
     display: flex;
@@ -92,4 +111,7 @@
     align-content: center;
     align-self: center;
     justify-content: center;
+}
+.btn-prev:active{
+    background: #FFCD61;
 }
