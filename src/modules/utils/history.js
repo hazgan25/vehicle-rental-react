@@ -10,6 +10,11 @@ export const listHistoryUser = (token, urlParams) => {
     return axios.get(urlParams, { headers: { 'x-access-token': token } })
 }
 
+export const returnEdit = (token, body, id) => {
+    const urlReturnEdit = ulrHistory + `/${id}`
+    return axios.patch(urlReturnEdit, body, { headers: { 'x-access-token': token } })
+}
+
 export const delHistoryUser = (token, body) => {
     return axios.delete(ulrHistory, body, { headers: { 'x-access-token': token } })
 }

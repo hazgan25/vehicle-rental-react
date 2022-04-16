@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Main from '../../components/Main'
 import styles from './index.module.scss'
 
+import Swal from 'sweetalert2'
+import { Modal, Button } from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify'
+
 import vehicleNotFound from '../../assets/img/vehiclenotfound.png'
 import CardVehicle from '../../components/CardVehicles'
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
@@ -12,7 +16,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { vehicleSearchFilter } from '../../modules/utils/vehicle'
-import { listHistoryUser, delHistoryUser } from '../../modules/utils/history'
+import { listHistoryUser, returnEdit, delHistoryUser } from '../../modules/utils/history'
 import formatRupiah from '../../modules/helper/formatRupiah'
 
 import { listVehiclePopularAction, listVehicleCarAction, listVehicleMotorbikeAction, listVehicleBikeAction } from '../../redux/actions/listVehicles'
@@ -31,10 +35,15 @@ const History = () => {
     const { token } = auth
 
     const [search, setSearch] = useState('')
-    const [by, setBy] = useState('create_at')
+    const [by, setBy] = useState('id')
     const [order, setOrder] = useState('desc')
     const [page, setPage] = useState(1)
-    const [checkDel, setCheckDel] = useState('')
+    const [checkDel, setCheckDel] = useState([])
+    const [returnEditUser, setReturnEditUser] = useState('')
+    const [iseReturnEdit, setIsRetunEdit] = useState(false)
+    const [isModal, setIsModal] = useState(false)
+    const [rating, setRating] = useState()
+    const [input, setInput] = useState('')
 
     const [newArrival, setNewArrival] = useState([])
     const [historyUser, setHistoryUser] = useState([])
@@ -77,13 +86,36 @@ const History = () => {
         window.scrollTo(0, 0)
     }
 
+    const returnEditHandler = () => {
+        const body = {
+            'rating': rating,
+            'testimony': input
+        }
+        returnEdit(token, body, returnEditUser)
+            .then((res) => {
+                setIsModal(false)
+                setIsRetunEdit(false)
+                Swal.fire(
+                    'Succes Return Or Edit',
+                    `${res.data.result.msg}`,
+                    'success'
+                )
+                setTimeout(() => {
+                    window.location.reload(false)
+                }, 1500)
+            })
+            .catch(({ ...err }) => {
+                console.log(err)
+            })
+    }
+
     const deleteItemHandler = () => {
         // dispatch(listVehiclePopularAction(paramsPopulerVehicle))
         // dispatch(listVehicleCarAction(paramCarVehicle))
         // dispatch(listVehicleMotorbikeAction(paramMotorbikeVehicle))
         // dispatch(listVehicleBikeAction(paramBikeVehicle))
         const body = {
-            'id': 1
+            'id': checkDel
         }
         delHistoryUser(token, body)
             .then((res) => {
@@ -111,7 +143,7 @@ const History = () => {
         }
     }
 
-    console.log(checkDel)
+    console.log(iseReturnEdit)
     return (
         <Main>
             <main className={`container ${styles['top-history']}`}>
@@ -146,7 +178,11 @@ const History = () => {
                                                                 <div className={styles['text-bold']}>{`Pre Payment : Rp. ${formatRupiah(data.payment)}`}</div>
                                                                 <div className={styles['text-history']} style={data.status === 'Not been returned' ? { color: 'red' } : { color: 'green' }}>{data.status}</div>
                                                             </div>
-                                                            <button className={styles['btn-return']}>{data.status === 'Not been returned' ? 'Return' : 'Edit Rating'}</button>
+                                                            <button className={styles['btn-return']} onClick={() => {
+                                                                setReturnEditUser(data.id)
+                                                                setIsModal(true)
+                                                                setIsRetunEdit(true)
+                                                            }} >{data.status === 'Not been returned' ? 'Return' : 'Edit Rating'}</button>
                                                             <input type={'checkbox'} value={data.id} onChange={e => setCheckDel(e.target.value)} />
                                                         </div>
                                                     </React.Fragment>
@@ -245,6 +281,72 @@ const History = () => {
                         </section>
                     </React.Fragment>
                 )}
+
+                <Modal show={isModal} onHide={() => {
+                    setIsModal(false)
+                    setIsRetunEdit(false)
+                }} size='md' aria-labelledby="contained-modal-title-vcenter" centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title id='contained-modal-title-vcenter'>
+                            {iseReturnEdit !== false ? 'Return Or Edit Rating' : 'Delte History'}
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {iseReturnEdit !== false ? (
+                            <React.Fragment>
+                                <label>
+                                    <h5>Rating :</h5>
+                                </label>
+                                <select defaultValue={''} style={{
+                                    marginLeft: 23,
+                                    padding: 12,
+                                    borderRadius: 10
+                                }} onChange={e => setRating(e.target.value)}>
+                                    <option value={''} disabled >Choose Rating</option>
+                                    <option value={1} >1</option>
+                                    <option value={2} >2</option>
+                                    <option value={3} >3</option>
+                                    <option value={4} >4</option>
+                                    <option value={5} >5</option>
+                                </select>
+                                <h5 style={{ marginTop: 23 }}>Testimony :</h5>
+                                <input type={'text'} style={{ width: '100%', height: 'auto' }} onChange={e => setInput(e.target.value)} />
+                            </React.Fragment>
+                        ) : (
+                            <React.Fragment>
+
+                            </React.Fragment>
+                        )}
+                    </Modal.Body>
+                    <Modal.Footer>
+                        {iseReturnEdit !== false ? (
+                            <React.Fragment>
+                                <Button className='btn-secondary w-25' onClick={() => {
+                                    setIsModal(false)
+                                    setIsRetunEdit(false)
+                                }} >Cancel</Button>
+                                <Button className='btn-warning w-25' onClick={returnEditHandler}>Yes</Button>
+                            </React.Fragment>
+                        ) : (
+                            <React.Fragment>
+                                <Button className='btn-warning w-25'>Yes</Button>
+                                <Button className='btn-dark text-warning w-25'>No</Button>
+                            </React.Fragment>
+                        )}
+                    </Modal.Footer>
+                </Modal>
+
+                <ToastContainer
+                    position="top-center"
+                    autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </main>
         </Main>
     )

@@ -138,6 +138,8 @@ main{
     width: 100px;
     height: 100px;
 
+    object-fit: cover;
+
     @media (min-width:768px) {
     width: 197px;
     height: 165px;
@@ -214,6 +216,9 @@ main{
         height: 52px;
         font-size: 16px;
     }
+}
+.btn-return:active{
+    background: #FFCD61;
 }
 
 .meta-flex{
