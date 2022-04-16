@@ -112,7 +112,7 @@ const Header = () => {
                         </li>
 
                         <li className={`nav-item ${styles['nav-item']}`}>
-                            <NavLink to={'/history'} className={`nav-link ${styles['nav-link']}`}>
+                            <NavLink to={'/history?search=&by=id&order=desc'} className={`nav-link ${styles['nav-link']}`}>
                                 <p>History</p>
                             </NavLink>
                         </li>

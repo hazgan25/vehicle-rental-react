@@ -64,8 +64,18 @@ main{
     border: 0.8px solid #AFB0B9;
     box-sizing: border-box;
     border-radius: 6px;
-    width: 220px;
-    height: 52px;
+    font-size: 8px;
+    width: 120px;
+    height: 22px;
+    @media (min-width:375px) {
+        width: 160px;
+        height: 32px;
+    }
+    @media (min-width:1024px) {        
+        width: 220px;
+        height: 52px;
+        font-size: 16px;
+    }
     margin-top: 5px;
 }
 

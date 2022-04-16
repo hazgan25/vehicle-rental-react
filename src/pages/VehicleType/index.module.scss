@@ -40,19 +40,34 @@
     font-family: Nunito;
     font-style: normal;
     font-weight: normal;
- 
+
     padding: 12px;
 
+    font-size: 8px;
+    @media(min-width:357px){
+        font-size: 10px;
+    }
+    @media(min-width:768px){
+        font-size: 16px;
+    }
 }
 
 .search{
     position: relative;
+
+    width: 20px;
+    height: 20px;
+    float: right;
+
+    right: 22px;
+    bottom: 30px;
+    cursor: pointer;
+    @media(min-width: 768px){
     width: 30px;
     height: 30px;
-    float: right;
     right: 22px;
     bottom: 40px;
-    cursor: pointer;
+    }
 }
 
 .search-vehicle::placeholder{
