@@ -78,7 +78,6 @@ const Payment = () => {
         }
         reservationPayment(id, token, body)
             .then((res) => {
-                // console.log(res)
                 if (res) {
                     Swal.fire({
                         icon: 'success',

@@ -22,7 +22,6 @@ const Register = () => {
         }
         SignUp(body)
             .then((res) => {
-                console.log(res)
                 Swal.fire({
                     icon: 'success',
                     title: 'Register Success',

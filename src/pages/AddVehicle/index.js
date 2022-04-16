@@ -133,11 +133,11 @@ const AddVehicle = () => {
         })
 
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure change profile?',
+            title: 'Are you sure add vehicle?',
             // text: "You won't be able to revert this!",
             icon: 'question',
             showCancelButton: true,
-            confirmButtonText: 'Yes, Change Profile',
+            confirmButtonText: 'Yes, add item',
             cancelButtonText: 'No, Cancel',
             reverseButtons: true
         }).then((result) => {
@@ -158,7 +158,6 @@ const AddVehicle = () => {
                         }, 1500)
                     })
                     .catch(({ ...err }) => {
-                        console.log(err)
                         toast.error(`${err.response.data.result.err}`, {
                             position: "top-center",
                             autoClose: 1500,
@@ -181,10 +180,6 @@ const AddVehicle = () => {
                 )
             }
         })
-
-        // for (var pair of body.entries()) {
-        //     console.log(pair[0] + ', ' + pair[1]);
-        // }
     }
 
     return (

@@ -12,7 +12,6 @@ import profileImgDefault from '../../assets/img/profile-default.png'
 
 import storage from 'redux-persist/lib/storage'
 
-
 const Header = () => {
     const state = useSelector(state => state)
 
@@ -41,7 +40,6 @@ const Header = () => {
                         window.location.reload(false)
                     }
                 })
-
         }
     }, [dispatch, token, image])
 

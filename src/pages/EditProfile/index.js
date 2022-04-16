@@ -300,7 +300,6 @@ const EditProfile = () => {
 
                 </section>
             </main>
-            {console.log(isModal)}
         </Main>
     )
 }
