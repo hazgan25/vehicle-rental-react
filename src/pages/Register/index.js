@@ -41,11 +41,11 @@ const Register = () => {
         <React.Fragment>
             <main className={stylesLogin['login-bg']}>
                 <div className={`container-fluid ${stylesLogin['transparan-bg']}`}>
-                    <section className={`container ${stylesLogin['content-login']} ${styles['content-login']}`}>
+                    <section className={`container ${styles['content-register']}`}>
                         <div className="row">
                             <div className={`col-sm ${stylesLogin['guest-form']}`}>
                                 <h1 className={stylesLogin['explore-world']}>Le&#x2019;ts Explore The World</h1>
-                                <p className={stylesLogin['guest']}>Don&#x2019;t have account?</p>
+                                <p className={stylesLogin['guest']}>Have an account?</p>
                                 < Link to='/login'>
                                     <button className={stylesLogin['btn-gray']}>Login</button>
                                 </Link>
@@ -62,10 +62,10 @@ const Register = () => {
                                     <p className={stylesLogin['forgot-pass']}>Forgot Password?</p>
                                 </Link>
                                 <button type="submit" className={stylesLogin['btn-yellow']}>Sign Up</button>
-                                <button type="button" className={stylesLogin['btn-login-google']}>
+                                {/* <button type="button" className={stylesLogin['btn-login-google']}>
                                     <img src={googleIcon} alt="Google Login" />
                                     Sign Up With Google
-                                </button>
+                                </button> */}
                             </form>
                         </div>
                     </section>

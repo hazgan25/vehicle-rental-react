@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+
+
+
+/* main */
+.forgotPass-bg{
+    background: url('../../assets/img/forgot-pass.webp');
+    background-size: cover;
+    height: 588px;
+    background-position: center;
+    padding: 0;
+}
+
+.transparan-bg{
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: auto;
+}
+
+
+.arrow-back-login{
+    position: relative;
+
+    background: #fff;
+    cursor: pointer;
+}
+
+.bck-arrow-up{
+    position: absolute;
+    height: 7px;
+    width: 43px;
+    background: #FFFFFF;
+    transform: rotate(-20deg);
+
+    border-radius: 12px;
+    top: 74px;
+}
+
+.bck-arrow-down{
+    position: absolute;
+    height: 7px;
+    width: 43px;
+    background: #FFFFFF;
+    transform: rotate(20deg);
+
+    border-radius: 12px;
+    top: 87px;
+}
+
+.back-login{
+    position: absolute;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    color: #fff;
+
+    top: 73px;
+    left: 76px;
+
+    cursor: pointer;
+}
+
+.dontWorry{
+    position: relative;
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    /* font-size: 64px;
+    line-height: 85px; */
+
+    color: #FFFFFF;
+
+    top: 30px;
+}
+
+.emailReq{
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 10px;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    /* font-size: 24px;
+    line-height: 33px; */
+    /* identical to box height */
+    color: #FFFFFF;
+    text-align: center;
+
+    width: 100%;
+    height: 42px;
+    top: 83px;
+}
+
+.btn-resend-pass{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 33px;
+    /* identical to box height */
+    
+    color: #393939;
+
+    background: #FFCD61;
+    box-shadow: 0px 0px 20px rgba(248, 161, 112, 0.47);
+    border-radius: 10px;
+
+    width: 100%;
+    height: 42px;
+
+    top: 103px;
+}
+
+.btn-resend-pass:active{
+    background: #393939;
+    color: #fff;
+}
+
+.resend-pass{
+    position: relative;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    /* font-size: 24px;
+    line-height: 33px; */
+    text-align: center;
+
+    color: #FFFFFF;
+
+    top: 133px;
+}
+
+/* tablet */
+@media(min-width:768px){
+    .back-login{
+        left: 100px;
+        font-size: 32px;
+    }
+    .dontWorry{
+            font-size: 42px;
+            line-height: 85px;
+    }
+    .emailReq{
+        width: 447px;
+        height: 49px;
+        /* top: 63px; */
+    }
+    .btn-resend-pass{
+        width: 447px;
+        height: 49px;
+        font-size: 18px;
+        /* top: 83px; */
+    }
+}
+
+/* laptop S */
+@media(min-width:1024px){
+
+    .forgotPass-bg{
+        height: 688px;
+    }
+
+    .emailReq{
+        text-align: center;
+        left: 248px;
+    }
+    .btn-resend-pass{
+        top: 193px;
+        right: 198px;
+    }
+    .resend-pass{
+        top: 283px;
+    }
+}
+
+/* laptop M */
+@media (min-width:1200px){
+    .back-login{
+        left: 154px;
+    }
+    .dontWorry{
+        height: 85px;
+        font-size: 64px;
+        line-height: 85px;
+    }
+    .emailReq{
+        width: 447px;
+        height: 79px;
+
+        font-size: 24px;
+        line-height: 33px;
+    }
+    .btn-resend-pass{
+        width: 447px;
+        height: 79px;
+
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 33px;
+    }
+    .resend-pass{
+        font-size: 14px;
+        line-height: 33px;
+    }
+}

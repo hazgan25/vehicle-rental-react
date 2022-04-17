@@ -1,8 +1,29 @@
+.content-register{
+    position: relative;
+    text-align: center;
+    top: 53px;
+    @media (min-width:768px){
+            top: 180px;
+            text-align: left;
+    }
+    @media (min-width:992px){
+            top: 160px;
+    }
+    @media (min-width: 1200px){
+            left: 49px;
+            top: 127px;
+    }
+    @media (min-width:1400px){
+            top:107px;
+            left: 69px;
+    }
+}
+
 /* tablet */
 @media (min-width:576px){
     /* tengah */
     .dotdown{
-        top: 350px;
+        top: 320px;
     }
 }
 

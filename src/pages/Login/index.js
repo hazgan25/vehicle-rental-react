@@ -54,7 +54,7 @@ const Login = () => {
                         <div className='row'>
                             <div className={`col-sm ${styles['guest-form']}`}>
                                 <h1 className={styles['explore-world']}>Le&#x2019;ts Explore The World</h1>
-                                <p className={styles['guest']}>Don’t have account?</p>
+                                <p className={styles['guest']}>Don&#x2019;t have account?</p>
                                 <Link to="/register">
                                     <button className={styles['btn-gray']}>Sign Up</button>
                                 </Link>
@@ -71,10 +71,10 @@ const Login = () => {
                                         <p className="forgot-pass">Forgot Password?</p>
                                     </Link>
                                     <button type="submit" className={styles['btn-yellow']}>Login</button>
-                                    <button type="button" className={styles['btn-login-google']}>
+                                    {/* <button type="button" className={styles['btn-login-google']}>
                                         <img src={googleIcon} alt="Google Login" />
                                         Login With Google
-                                    </button>
+                                    </button> */}
                                 </form>
                             </div>
                         </div>

@@ -11,6 +11,7 @@ import VertificationAccount from './pages/VertificationAccount'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import ForgotPassword from './pages/ForgotPassword'
 import EditProfile from './pages/EditProfile'
 import VehicleType from './pages/VehicleType'
 import VehicleDetail from './pages/VehicleDetail'
@@ -45,6 +46,7 @@ const main = () => {
                             <Route path='login' element={<Login />} />
                             <Route path='register' element={<Register />} />
                             <Route path='auth/verify/:pin' element={<VertificationAccount />} />
+                            <Route path='forgot/password' element={<ForgotPassword />} />
                         </Route>
 
                         {/* Private Router */}
