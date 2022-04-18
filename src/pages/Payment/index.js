@@ -84,9 +84,7 @@ const Payment = () => {
                         title: 'Success Payment',
                         text: `success payment rental ${vehicle}`
                     })
-                    setTimeout(() => {
-                        navigate('/')
-                    }, 2500)
+                    navigate('/')
                 }
             })
             .catch(({ ...err }) => {
