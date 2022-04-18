@@ -14,20 +14,16 @@ import arrowIcon from '../../assets/svg/arrowBack.svg'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { vehicleSearchFilter } from '../../modules/utils/vehicle'
 import { listHistoryUser, returnEdit, delHistoryUser } from '../../modules/utils/history'
 import formatRupiah from '../../modules/helper/formatRupiah'
-
-import { listVehiclePopularAction, listVehicleCarAction, listVehicleMotorbikeAction, listVehicleBikeAction } from '../../redux/actions/listVehicles'
-import { paramsPopulerVehicle, paramCarVehicle, paramMotorbikeVehicle, paramBikeVehicle } from '../../modules/helper/listVehicle'
 
 const urlVehicles = process.env.REACT_APP_HOST + '/vehicles'
 const ulrHistory = process.env.REACT_APP_HOST + '/history'
 
 const History = () => {
     const state = useSelector(state => state)
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -100,29 +96,72 @@ const History = () => {
                     `${res.data.result.msg}`,
                     'success'
                 )
-                setTimeout(() => {
-                    window.location.reload(false)
-                }, 1500)
+                listHistoryUser(token, ulrHistoryUser)
+                    .then((res) => {
+                        setHistoryUser(res.data.result.data)
+                        setMeta(res.data.result.meta)
+                    })
+                    .catch(({ ...err }) => {
+                        console.log(err)
+                    })
             })
             .catch(({ ...err }) => {
                 console.log(err)
             })
     }
 
-    const deleteItemHandler = () => {
-        // dispatch(listVehiclePopularAction(paramsPopulerVehicle))
-        // dispatch(listVehicleCarAction(paramCarVehicle))
-        // dispatch(listVehicleMotorbikeAction(paramMotorbikeVehicle))
-        // dispatch(listVehicleBikeAction(paramBikeVehicle))
-        const body = {
-            'id': checkDel
+    const checkDelHandler = (e) => {
+        if (e.target.checked === true) {
+            setCheckDel([...checkDel, e.target.value])
         }
-        delHistoryUser(token, body)
+        if (e.target.checked === false) {
+            const arrCheck = [...checkDel]
+            arrCheck.splice(e.target.checked, 1)
+            setCheckDel(arrCheck)
+        }
+    }
+
+    const modalDeleteItem = () => {
+        if (checkDel.length === 0) {
+            toast.error(`Have to choose first`, {
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
+        } else {
+            setIsModal(true)
+        }
+    }
+
+    const deleteItemHandler = () => {
+        delHistoryUser(token, checkDel)
             .then((res) => {
-                console.log(res)
+                Swal.fire(
+                    `Process Complete`,
+                    `${res.data.result.msg}`,
+                    'success'
+                )
+                setIsModal(false)
+                listHistoryUser(token, ulrHistoryUser)
+                    .then((res) => {
+                        setHistoryUser(res.data.result.data)
+                        setMeta(res.data.result.meta)
+                    })
+                    .catch(({ ...err }) => {
+                        console.log(err)
+                    })
             })
             .catch(({ ...err }) => {
-                console.log(err)
+                Swal.fire(
+                    'There an error?',
+                    `${err.response.data.err}`,
+                    'error'
+                )
+                setIsModal(false)
             })
     }
 
@@ -143,7 +182,6 @@ const History = () => {
         }
     }
 
-    console.log(iseReturnEdit)
     return (
         <Main>
             <main className={`container ${styles['top-history']}`}>
@@ -162,7 +200,7 @@ const History = () => {
                                 </select>
                                 <button className={styles['btn-search']} onClick={searchFilterHandler}>Search</button>
                                 <div style={{ marginTop: 23 }}>
-                                    {historyUser !== [] ? (
+                                    {historyUser.length > 0 ? (
                                         <React.Fragment>
                                             {Array.isArray(historyUser) && historyUser.length > 0 &&
                                                 historyUser.map((data) => (
@@ -183,7 +221,7 @@ const History = () => {
                                                                 setIsModal(true)
                                                                 setIsRetunEdit(true)
                                                             }} >{data.status === 'Not been returned' ? 'Return' : 'Edit Rating'}</button>
-                                                            <input type={'checkbox'} value={data.id} onChange={e => setCheckDel(e.target.value)} />
+                                                            <input type={'checkbox'} value={data.id} onChange={checkDelHandler} />
                                                         </div>
                                                     </React.Fragment>
                                                 ))
@@ -198,7 +236,7 @@ const History = () => {
                                             <section className={styles['meta-flex']} style={{ marginTop: 23 }}>
                                                 <p>{`Page ${meta.page} to remaining ${meta.totalPage - meta.page} from total page ${meta.totalPage}`}</p>
                                             </section>
-                                            <button className={styles['btn-select-item']} onClick={deleteItemHandler}>Delete selected item</button>
+                                            <button className={styles['btn-select-item']} onClick={modalDeleteItem}>Delete selected item</button>
                                         </React.Fragment>
                                     ) : (
                                         <React.Fragment>
@@ -275,7 +313,8 @@ const History = () => {
                         <section
                             style={{
                                 display: 'flex',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                textAlign: 'center'
                             }}>
                             <h5>Data history not found! please login first</h5>
                         </section>
@@ -288,7 +327,7 @@ const History = () => {
                 }} size='md' aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header closeButton>
                         <Modal.Title id='contained-modal-title-vcenter'>
-                            {iseReturnEdit !== false ? 'Return Or Edit Rating' : 'Delte History'}
+                            {iseReturnEdit !== false ? 'Return Or Edit Rating' : 'Delete History'}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -314,7 +353,7 @@ const History = () => {
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
-
+                                <h6 style={{ textAlign: 'center' }}>Are you sure do you want to delete selected item?</h6>
                             </React.Fragment>
                         )}
                     </Modal.Body>
@@ -329,8 +368,8 @@ const History = () => {
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
-                                <Button className='btn-warning w-25'>Yes</Button>
-                                <Button className='btn-dark text-warning w-25'>No</Button>
+                                <Button className='btn-warning w-25' onClick={deleteItemHandler}>Yes</Button>
+                                <Button className='btn-dark text-warning w-25' onClick={() => { setIsModal(false) }}>No</Button>
                             </React.Fragment>
                         )}
                     </Modal.Footer>

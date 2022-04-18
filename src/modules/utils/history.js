@@ -16,5 +16,6 @@ export const returnEdit = (token, body, id) => {
 }
 
 export const delHistoryUser = (token, body) => {
-    return axios.delete(ulrHistory, body, { headers: { 'x-access-token': token } })
+    console.log(body)
+    return axios.delete(ulrHistory, { headers: { 'x-access-token': token }, data: { 'id': body } })
 }
