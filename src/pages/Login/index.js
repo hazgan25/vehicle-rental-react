@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 
 import Footer from '../../components/Footer'
 
-import googleIcon from '../../assets/img/google-icon.png'
+// import googleIcon from '../../assets/img/google-icon.png'
 
 const Login = () => {
     const dispatch = useDispatch()

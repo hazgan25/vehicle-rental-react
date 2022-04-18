@@ -8,7 +8,7 @@ import { SignUp } from '../../modules/utils/auth'
 import Swal from 'sweetalert2'
 import Footer from '../../components/Footer'
 
-import googleIcon from '../../assets/img/google-icon.png'
+// import googleIcon from '../../assets/img/google-icon.png'
 
 const Register = () => {
 
@@ -54,7 +54,7 @@ const Register = () => {
                                 <span className={`${stylesLogin['dotup']} ${styles['dotup']}`}></span>
                                 <span className={`${stylesLogin['dotdown']} ${styles['dotdown']}`}></span>
                             </div>
-                            <form className={`col-sm ${styles['input-form']}`} onSubmit={submitHandler}>
+                            <form className={`col-sm ${stylesLogin['input-form']}`} onSubmit={submitHandler}>
                                 <input type="text" name='name' id='name' className={stylesLogin['input']} placeholder="Name" required />
                                 <input type="text" name='email' id='email' className={stylesLogin['input']} placeholder="Email" required />
                                 <input type="Password" name='password' id='password' className={stylesLogin['input']} placeholder="Password" required />
