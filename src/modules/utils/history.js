@@ -10,14 +10,13 @@ export const listHistoryUser = (token, urlParams) => {
     return axios.get(urlParams, { headers: { 'x-access-token': token } })
 }
 
-export const listHistoryRenter = (token, params) => {
-    const ulrHistoryRenter = ulrHistory + `/renter?search=${params.search}&by=${params.by}&order=${params.order}&limit=3&page=${params.page}`
-    return axios.get(ulrHistoryRenter, { headers: { 'x-access-token': token } })
+export const listHistoryRenter = (token, urlParams) => {
+    return axios.get(urlParams, { headers: { 'x-access-token': token } })
 }
 
-export const returnEdit = (token, body, id) => {
-    const urlReturnEdit = ulrHistory + `/${id}`
-    return axios.patch(urlReturnEdit, body, { headers: { 'x-access-token': token } })
+export const editHistory = (token, body, id) => {
+    const urleditHistory = ulrHistory + `/${id}`
+    return axios.patch(urleditHistory, body, { headers: { 'x-access-token': token } })
 }
 
 export const delHistoryUser = (token, body) => {

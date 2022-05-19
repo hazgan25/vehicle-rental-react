@@ -16,7 +16,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 import { vehicleSearchFilter } from '../../modules/utils/vehicle'
-import { listHistoryUser, returnEdit, delHistoryUser, delHistoryRenter, listHistoryRenter } from '../../modules/utils/history'
+import { listHistoryUser, editHistory, delHistoryUser } from '../../modules/utils/history'
 import formatRupiah from '../../modules/helper/formatRupiah'
 
 const urlVehicles = process.env.REACT_APP_HOST + '/vehicles'
@@ -28,7 +28,7 @@ const History = () => {
     const location = useLocation()
 
     const { auth } = state
-    const { token, userData } = auth
+    const { token } = auth
 
     const [search, setSearch] = useState('')
     const [by, setBy] = useState('id')
@@ -41,13 +41,6 @@ const History = () => {
     const [rating, setRating] = useState()
     const [input, setInput] = useState('')
 
-    const [searchUser, setSearchUser] = useState('')
-    const [byUser, setByUser] = useState('id')
-    const [pageUser, setPageUser] = useState(1)
-    const [historyRenter, setHistoryRenter] = useState([])
-    const [mentaRenter, setMetaRenter] = useState([])
-    const [checkDelRenter, setCheckDelRenter] = useState([])
-
     const [newArrival, setNewArrival] = useState([])
     const [historyUser, setHistoryUser] = useState([])
     const [meta, setMeta] = useState([])
@@ -56,6 +49,11 @@ const History = () => {
     const NewUlrHistoryUser = `/history?search=${search}&by=${by}&order=${order}`
 
     useEffect(() => {
+        if (by === 'id') {
+            setOrder('asc')
+        } else {
+            setOrder('desc')
+        }
         if (token) {
             listHistoryUser(token, ulrHistoryUser)
                 .then((res) => {
@@ -66,25 +64,7 @@ const History = () => {
                     console.log(err)
                 })
 
-            if (userData.role === 'owner') {
-                const params = {
-                    search: searchUser,
-                    order: 'desc',
-                    by: byUser,
-                    page: pageUser
-                }
-                listHistoryRenter(token, params)
-                    .then((res) => {
-                        setHistoryRenter(res.data.result.data)
-                        setMetaRenter(res.data.result.meta)
-                    })
-                    .catch(({ ...err }) => {
-                        console.log(err)
-                    })
-            }
-
-            let limitArival = 2
-            if (userData.role === 'owner') limitArival = 5
+            const limitArival = 2
             const urlNewArrival = `${urlVehicles}?search=&type=&location=&by=id&order=desc&limit=${limitArival}`
 
             vehicleSearchFilter(urlNewArrival)
@@ -94,14 +74,8 @@ const History = () => {
                 .catch(({ ...err }) => {
                     console.log(err)
                 })
-
-            if (by === 'vehicles') {
-                setOrder('asc')
-            } else {
-                setOrder('desc')
-            }
         }
-    }, [token, ulrHistoryUser, by, searchUser, byUser, pageUser, userData.role])
+    }, [token, ulrHistoryUser, by])
 
     const searchFilterHandler = () => {
         setPage(1)
@@ -114,7 +88,7 @@ const History = () => {
             'rating': rating,
             'testimony': input
         }
-        returnEdit(token, body, returnEditUser)
+        editHistory(token, body, returnEditUser)
             .then((res) => {
                 setIsModal(false)
                 setIsRetunEdit(false)
@@ -143,15 +117,6 @@ const History = () => {
             const arrCheck = [...checkDel]
             arrCheck.splice(e.target.checked, 1)
             setCheckDel(arrCheck)
-        }
-    }
-
-    const checkDelRenterHandler = (e) => {
-        if (e.target.checked === true) setCheckDelRenter([...checkDelRenter, e.target.value])
-        if (e.target.checked === false) {
-            const arrCheck = [...checkDelRenter]
-            arrCheck.splice(e.target.checked, 1)
-            setCheckDelRenter(arrCheck)
         }
     }
 
@@ -188,24 +153,7 @@ const History = () => {
                     .catch(({ ...err }) => {
                         console.log(err)
                     })
-                if (userData.role === 'owner') {
-                    const params = {
-                        search: searchUser,
-                        order: 'desc',
-                        by: byUser,
-                        page: pageUser
-                    }
-                    listHistoryRenter(token, params)
-                        .then((res) => {
-                            setHistoryRenter(res.data.result.data)
-                            setMetaRenter(res.data.result.meta)
-                        })
-                        .catch(({ ...err }) => {
-                            console.log(err)
-                        })
-                }
-            })
-            .catch(({ ...err }) => {
+            }).catch(({ ...err }) => {
                 Swal.fire(
                     'There an error?',
                     `${err.response.data.err}`,
@@ -213,88 +161,6 @@ const History = () => {
                 )
                 setIsModal(false)
             })
-    }
-
-    const deleteItemRenterHandler = () => {
-        if (checkDelRenter.length === 0) {
-            toast.error(`Have to choose first`, {
-                position: "top-center",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            })
-        } else {
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-danger',
-                    cancelButton: 'btn btn-secondary'
-                },
-                buttonsStyling: true
-            })
-
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure do you want to delete selected item?',
-                text: "if you cancel everything will be back like everything",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Confirm',
-                cancelButtonText: 'Cancel!',
-                reverseButtons: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    delHistoryRenter(token, checkDelRenter)
-                        .then((res) => {
-                            Swal.fire(
-                                `Process Complete`,
-                                `${res.data.result.msg}`,
-                                'success'
-                            )
-                            const params = {
-                                search: searchUser,
-                                order: 'desc',
-                                by: byUser,
-                                page: pageUser
-                            }
-                            listHistoryRenter(token, params)
-                                .then((res) => {
-                                    setHistoryRenter(res.data.result.data)
-                                    setMetaRenter(res.data.result.meta)
-                                })
-                                .catch(({ ...err }) => {
-                                    console.log(err)
-                                })
-                            listHistoryUser(token, ulrHistoryUser)
-                                .then((res) => {
-                                    setHistoryUser(res.data.result.data)
-                                    setMeta(res.data.result.meta)
-                                })
-                                .catch(({ ...err }) => {
-                                    console.log(err)
-                                })
-                        })
-                        .catch(({ ...err }) => {
-                            Swal.fire(
-                                'There an error?',
-                                `${err.response.data.err}`,
-                                'error'
-                            )
-                        })
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire(
-                        'Cancelled',
-                        'ok data is still as before',
-                        'info',
-                    )
-                }
-
-
-            })
-        }
     }
 
     const viewMoreHandler = () => {
@@ -324,8 +190,8 @@ const History = () => {
                                 <input type={'text'} placeholder='Search Histroy' className={styles['history-search']} onChange={e => setSearch(e.target.value)} />
                                 <img src={searchIcon} alt='avatar' className={styles['search']} onClick={searchFilterHandler} />
                                 <select className={styles['box-select']} defaultValue='' onChange={e => setBy(e.target.value)}>
-                                    <option value={''} disabled>Filter</option>
-                                    <option value={'create_at'}>Default</option>
+                                    <option value={''} disabled>Sort</option>
+                                    <option value={'id'}>Default</option>
                                     <option value={'types'}>Type</option>
                                     <option value={'id'}>Date Added</option>
                                     <option value={'vehicles'}>Name</option>
@@ -348,11 +214,11 @@ const History = () => {
                                                                 <div className={styles['text-bold']}>{`Pre Payment : Rp. ${formatRupiah(data.payment)}`}</div>
                                                                 <div className={styles['text-history']} style={data.status === 'Not been returned' ? { color: 'red' } : { color: 'green' }}>{data.status}</div>
                                                             </div>
-                                                            <button className={styles['btn-return']} onClick={() => {
+                                                            <button className={styles['btn-return']} disabled={data.status === 'Not been returned' ? true : false} onClick={() => {
                                                                 setReturnEditUser(data.id)
                                                                 setIsModal(true)
                                                                 setIsRetunEdit(true)
-                                                            }} >{data.status === 'Not been returned' ? 'Return' : 'Edit Rating'}</button>
+                                                            }} >{data.status === 'Not been returned' ? 'Add Rating' : 'Edit Rating'}</button>
                                                             <input type={'checkbox'} className={styles['checkbox']} value={data.id} onChange={checkDelHandler} />
                                                         </div>
                                                     </React.Fragment>
@@ -381,8 +247,7 @@ const History = () => {
                                                     style={{
                                                         display: 'flex',
                                                         alignItems: 'center'
-                                                    }}
-                                                >
+                                                    }}>
                                                 </div>
                                             </div>
                                             <section
@@ -391,94 +256,6 @@ const History = () => {
                                                     justifyContent: 'center'
                                                 }}>
                                                 <h5>Transaction history is still empty</h5>
-                                            </section>
-                                        </React.Fragment>
-                                    )}
-                                    {userData.role === 'owner' && (
-                                        <React.Fragment>
-                                            <section style={{ marginTop: 23 }}>
-                                                <h6 style={{ textAlign: 'center' }}>User rental data</h6>
-                                                <input type={'text'} placeholder='Search Histroy Users' className={styles['history-search']} onChange={e => setSearchUser(e.target.value)} />
-                                                <img src={searchIcon} alt='avatar' className={styles['search']} />
-                                                <select className={styles['box-select']} defaultValue='' onChange={e => setByUser(e.target.value)} >
-                                                    <option value={''} disabled>Filter</option>
-                                                    <option value={'create_at'}>Default</option>
-                                                    <option value={'types'}>Type</option>
-                                                    <option value={'id'}>Date Added</option>
-                                                    <option value={'vehicles'}>Name</option>
-                                                </select>
-                                                <div style={{ marginTop: 23 }}>
-                                                    {
-                                                        historyRenter.length > 0 ? (
-                                                            <React.Fragment>
-                                                                {
-                                                                    Array.isArray(historyRenter) && historyRenter.length > 0 &&
-                                                                    historyRenter.map((data) => (
-                                                                        <React.Fragment key={data.id}>
-                                                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                                                                                <div>
-                                                                                    <img src={`${process.env.REACT_APP_HOST}/${data.image}`} alt='' className={styles['img-history']} style={{ position: 'absolute', zIndex: 1 }} />
-                                                                                    <img src={vehicleImgDefault} alt='' className={styles['img-history']} />
-                                                                                </div>
-                                                                                <div className={styles['box-text-renter']}>
-                                                                                    <div className={styles['text-bold']}>{data.name}</div>
-                                                                                    <div className={styles['text-history']}>{data.renter_time}</div>
-                                                                                    <div className={styles['text-bold']}>{`user : ${data.user}`}</div>
-                                                                                    <div className={styles['text-bold']}>{`Pre Payment : Rp. ${formatRupiah(data.payment)}`}</div>
-                                                                                    <div className={styles['text-history']} style={data.status === 'Not been returned' ? { color: 'red' } : { color: 'green' }}>{data.status}</div>
-                                                                                </div>
-                                                                                <input type={'checkbox'} className={styles['checkbox']} value={data.id} onChange={checkDelRenterHandler} />
-                                                                            </div>
-                                                                        </React.Fragment>
-                                                                    ))
-                                                                }
-                                                                <div className={styles['meta-flex']}>
-                                                                    <div className={styles['flex-beetwen']}>
-                                                                        <button className={styles['btn-prev']} onClick={() => {
-                                                                            if (mentaRenter.prev !== null) {
-                                                                                setPageUser(pageUser - 1)
-                                                                            }
-                                                                        }}>Prev</button>
-                                                                        <h3 className={styles['page-text']}>{meta.page}</h3>
-                                                                        <button className={styles['btn-next']} onClick={() => {
-                                                                            if (mentaRenter.next !== null) {
-                                                                                setPageUser(pageUser + 1)
-                                                                            }
-                                                                        }}>Next</button>
-                                                                    </div>
-                                                                </div>
-                                                                <section className={styles['meta-flex']} style={{ marginTop: 23 }}>
-                                                                    <p>{`Page ${mentaRenter.page} to remaining ${mentaRenter.totalPage - mentaRenter.page} from total page ${mentaRenter.totalPage}`}</p>
-                                                                </section>
-                                                                <button className={styles['btn-select-item']} onClick={deleteItemRenterHandler}>Delete selected item</button>
-                                                            </React.Fragment>
-                                                        ) : (
-                                                            <React.Fragment>
-                                                                <div style={{
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                }}>
-                                                                    <img alt='avatar' src={vehicleNotFound} className={styles['vehicle-notFound']} />
-                                                                    <div
-                                                                        style={{
-                                                                            display: 'flex',
-                                                                            alignItems: 'center'
-                                                                        }}
-                                                                    >
-                                                                    </div>
-                                                                </div>
-                                                                <section
-                                                                    style={{
-                                                                        display: 'flex',
-                                                                        justifyContent: 'center'
-                                                                    }}>
-                                                                    <h5>Transaction history is still empty</h5>
-                                                                </section>
-                                                            </React.Fragment>
-                                                        )
-                                                    }
-                                                </div>
-
                                             </section>
                                         </React.Fragment>
                                     )}
@@ -547,7 +324,7 @@ const History = () => {
                 }} size='md' aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header closeButton>
                         <Modal.Title id='contained-modal-title-vcenter'>
-                            {iseReturnEdit !== false ? 'Return Or Edit Rating' : 'Delete History'}
+                            {iseReturnEdit !== false ? 'Add Or Edit Rating' : 'Delete History'}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -606,6 +383,7 @@ const History = () => {
                     draggable
                     pauseOnHover
                 />
+
             </main>
         </Main>
     )

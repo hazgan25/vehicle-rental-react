@@ -19,6 +19,7 @@ import Payment from './pages/Payment'
 import AddVehicle from './pages/AddVehicle'
 import ViewMore from './pages/ViewMore'
 import History from './pages/History'
+import HistoryOrderRenter from './pages/HistoryOrderRenter'
 
 // private route
 import AuthRoutes from './components/AuthRoutes'
@@ -59,6 +60,7 @@ const main = () => {
                         <Route element={<PrivateRoutes />}>
                             <Route element={<OwnerRoutes />}>
                                 <Route path='vehicle/add' element={<AddVehicle />} />
+                                <Route path='history%20renter' element={<HistoryOrderRenter />} />
                             </Route>
                         </Route>
 

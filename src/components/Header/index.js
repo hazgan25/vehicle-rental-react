@@ -96,7 +96,6 @@ const Header = () => {
                     <span className={styles['circle-yellow']}></span>
                 </section>
 
-
                 <section className="collapse navbar-collapse" id="navbarNav">
                     <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
                         <li className={`nav-item ${styles['nav-item']}`}>
@@ -155,7 +154,13 @@ const Header = () => {
                                     </div>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><Link to='/edit/profile' className="dropdown-item">Edit Profile</Link></li>
-                                        <li><Link to='' className="dropdown-item" >Help</Link></li>
+                                        {console.log(userData.role)}
+                                        {userData.role === 'owner' ? (
+                                            <React.Fragment>
+                                                <li><Link className='dropdown-item' to={'/history%20renter?search=&filter=&by=id&order=desc'}>History Order</Link></li>
+                                            </React.Fragment>
+                                        ) : (<></>)}
+                                        <li><Link to='/help' className="dropdown-item" >Help</Link></li>
                                         <li><Link to='' className="dropdown-item" onClick={logoutHandler} >Log out</Link></li>
                                     </ul>
                                 </li>
