@@ -170,12 +170,14 @@ const History = () => {
     const prevHandler = () => {
         if (meta.prev !== null) {
             setPage(page - 1)
+            setCheckDel([])
             window.scrollTo(0, 0)
         }
     }
     const nextHandler = () => {
         if (meta.next !== null) {
             setPage(page + 1)
+            setCheckDel([])
             window.scrollTo(0, 0)
         }
     }

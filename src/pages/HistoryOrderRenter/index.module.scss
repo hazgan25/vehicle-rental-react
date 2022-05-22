@@ -152,16 +152,18 @@ main{
     background: #FFCD61;
 }
 
-
-// You can use a css counter - MDN
-
-table {
-  counter-reset: section;
+.text-table{
+    font-size: 8px;
 }
 
-.count:before {
-  counter-increment: section;
-  content: counter(section);
+.btn-return{
+    opacity: 0.8;
+    border: 0.8px solid #AFB0B9;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+.btn-return:active{
+    background: #FFCD61;
 }
 
 .btn-select-item{

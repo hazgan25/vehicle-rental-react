@@ -14,6 +14,11 @@ export const listHistoryRenter = (token, urlParams) => {
     return axios.get(urlParams, { headers: { 'x-access-token': token } })
 }
 
+export const returnHistory = (token, id) => {
+    const urlReturn = ulrHistory + `/${id}`
+    return axios.put(urlReturn, '', { headers: { 'x-access-token': token } })
+}
+
 export const editHistory = (token, body, id) => {
     const urleditHistory = ulrHistory + `/${id}`
     return axios.patch(urleditHistory, body, { headers: { 'x-access-token': token } })
