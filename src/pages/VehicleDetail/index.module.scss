@@ -1,221 +1,254 @@
 .back-home{
     display: flex;
-    width: 290px;
     align-items: center;
     justify-content: space-between;
 }
-
-.backArrow{
+.back-arrow{
     position: relative;
     left: 12px;
     height: 32px;
+    cursor: pointer;
 }
-
-.reservation-text{
+.item-text{
     font-size: 36px;
     font-weight: 700;
     line-height: 24px;
     color: #000000;
 }
 
-.flex-reservation{
+.flex-main{
+    @media (min-width:768px) {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+.img-flex{
     display: flex;
+    justify-content: center;
+    @media (min-width:768px) {
+    width: 70%;
+    // height: 100%;
+    }
+}
+.right-flex-main{
+    @media (min-width:768px) {
+        width: 45%;
+        margin-left: 5%;
+    }
 }
 
-.dekstop-mode-reservation-pos-rel{
-    position: relative;
-    left: 65px;
+.prev-img{
+    display: none;
+    @media (min-width:768px) {
+        display: inline;
+        position: absolute;
+        
+        cursor: pointer;
+
+        top: 80%;
+    }
+    @media (min-width:1024px) {
+        top: 107%;
+    }
+    @media (min-width:1280px) {
+        top: 99%;
+    }
+    @media (min-width:1440px) {
+        top: 53%;
+    }
+}
+.next-img{
+    display: none;
+    @media (min-width:768px) {
+        display: inline;
+        position: absolute;
+        cursor: pointer;
+
+        top: 40%;
+        left: -90%;
+
+        position: relative;
+        transform: scaleX(-1)
+    }
+    @media (min-width:1024px) {
+        top: 56%;
+    }
+    @media (min-width:1280px) {
+        top:77%
+    }
+    @media (min-width:1440px) {
+        top: 77%;
+    }
 }
 
-.vehicle-text-reservation{
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 900;
+.vehicle-text{
+    font-size: 48px;
+    font-weight: bold;
+}
+.location-text{
+    font-size: 32px;
+}
+.fourty-four-size{
+    font-size: 16px;
+    @media (min-width:768px) {
+    font-size: 24px;
+    }
+}
+
+.btn-plus{
+    width: 60px;
+    height: 60px;
+    background: rgba(203,203,212,0.2);
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    font-weight: bold;
     font-size: 48px;
     line-height: 25px;
-    /* or 52% */
 
-    display: flex;
-    align-items: center;
-
-    color: #042521;
-
-    mix-blend-mode: normal;
+    @media (min-width:768px) {
+        width: 80px;
+        height: 80px;   
+    }
 }
-
-.location-text-reservation{
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 24px;
-    /* or 67% */
-
-    display: flex;
-    align-items: center;
-
-    color: #393939;
-
-    mix-blend-mode: normal;
+.btn-plus:active{
+    background: #FFCD61;
 }
+.btn-min{
+    width: 60px;
+    height: 60px;
+    background: rgba(203,203,212,0.2);
+    border-radius: 10px;
 
-.img-reservation{
-    width: 696px;
-    height: 616px;
-}
-
-.no-prepayment-reservation{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
-    /* identical to box height, or 100% */
-
-    display: flex;
-    align-items: center;
-
-    color: #9B0A0A;
-}
-
-.flex-quantity{
-    display: flex;
-    justify-content: space-between;
-}
-
-.box-min{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 79px;
-    height: 80px;
 
     cursor: pointer;
 
-    border-radius: 10px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-
-.min{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 900;
+    font-weight: bold;
     font-size: 48px;
-    
-    color: #000000;
+    line-height: 25px;
+
+    @media (min-width:768px) {
+        width: 80px;
+        height: 80px;   
+    }
 }
-
-.box-plus{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 79px;
-    height: 80px;
-
-    cursor: pointer;
-
-    border-radius: 10px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-
-.plus{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 48px;
-
-    color: #000000;
-}
-
-.box-color{
-    background: #EFEFEF;
-}
-
-.box-color:active{
+.btn-min:active{
     background: #FFCD61;
 }
 
-.quantity{
+.carousel{
+    text-align: center;
+}
+
+.reservation-price{
+    display: flex;
+    justify-content: end;
+}
+
+.reservation-stock{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.quantity-text{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 48px;
-
-    color: #000000;
-}
-
-.reservation-date{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 25px;
     
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 25px;
+}
+
+.btn-select-reservation{
+    @media (min-width:768px) {
+        position: absolute;
+        top: 100%;
+    }
+    @media (min-width:1024px) {
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.btn-chat-admin{
+    background: #393939;
+    color: #FFCD61;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    width: 100%;
+    padding: 15px;
+
+    border-radius: 10px;
+    margin-top: 3%;
+
+    @media (min-width:1024px) {
+        margin-right: 2%;
+        width: 40%;
+    }
+}
+.btn-chat-admin:active{
+    background: #FFCD61;
     color: #393939;
 }
-.select-date-box{
-    display: flex;
-    align-items: center;
-    width: 399px;
-    height: 80px;
-    padding: 23px;
-    background: rgba(57, 57, 57, 0.1);
-    
-    border-radius: 10px;
-}
-.select-date-text{
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    
-    color: #80918E;
-}
-.forms-select-date{
-    position: absolute;
-    background: rgba(57, 57, 57, 0.1);
-    border-radius: 10px;
-    width: 399px;
-    height: 80px;
-
-    cursor: pointer;
-
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    color: #80918E;
-
-    bottom: 0;
-}
-
 .btn-reservation{
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    height: 89px;
-    width: auto;
-
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-
     background: #FFCD61;
-    cursor: pointer;
-
-    border-radius: 10px;
     color: #393939;
 
-    top: 100px;
+    font-size: 24px;
+    font-weight: bold;
+
+    width: 100%;
+    padding: 15px;
+
+    border-radius: 10px;
+    margin-top: 3%;
+    @media (min-width:1024px) {
+        margin-right: 2%;
+        width: 40%;
+    }
 }
 .btn-reservation:active{
     background: #393939;
     color: #FFCD61;
+}
+.btn-like{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #393939;
+    color: #FFCD61;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    width: 100%;
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-top: 3%;
+    @media (min-width:1024px) {
+        width: 17%;
+    }
+}
+.like-icon{
+    position: relative;
+    top:2px;
+
+    margin-right: 10px;
+}
+.btn-like:active{
+    background: #FFCD61;
+    color: #393939;
 }

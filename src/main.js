@@ -6,6 +6,7 @@ import { store, pStore } from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import NotFound from './pages/NotFound'
+import About from './pages/About'
 
 import VertificationAccount from './pages/VertificationAccount'
 import Home from './pages/Home'
@@ -15,6 +16,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import EditProfile from './pages/EditProfile'
 import VehicleType from './pages/VehicleType'
 import VehicleDetail from './pages/VehicleDetail'
+import Reservation from './pages/Reservation'
 import Payment from './pages/Payment'
 import AddVehicle from './pages/AddVehicle'
 import ViewMore from './pages/ViewMore'
@@ -41,6 +43,7 @@ const main = () => {
                         <Route path='view-more' element={<ViewMore />} />
                         <Route path='vehicle/detail/:id' element={<VehicleDetail />} />
                         <Route path='history' element={<History />} />
+                        <Route path='about' element={<About />} />
 
                         {/* route Auth */}
                         <Route element={<AuthRoutes />}>
@@ -53,6 +56,7 @@ const main = () => {
                         {/* Private Router */}
                         <Route element={<PrivateRoutes />}>
                             <Route path='edit/profile' element={<EditProfile />} />
+                            <Route path={`reservation/id=:id&quantity=:quantity`} element={<Reservation />} />
                             <Route path={`payment/vehicle=:id&location=:location&quantity=:quantity&day=:day&total=:totalPrice`} element={<Payment />} />
                         </Route>
 
