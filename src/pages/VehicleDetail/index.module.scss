@@ -42,44 +42,46 @@
 .prev-img{
     display: none;
     @media (min-width:768px) {
-        display: inline;
+        display: inline-block;
         position: absolute;
         
         cursor: pointer;
 
-        top: 80%;
+        top: 83%;
+        z-index: 2;
     }
     @media (min-width:1024px) {
-        top: 107%;
+        top: 109%;
     }
     @media (min-width:1280px) {
-        top: 99%;
+        top: 103%
     }
     @media (min-width:1440px) {
-        top: 53%;
+        top: 115%;
     }
 }
 .next-img{
     display: none;
     @media (min-width:768px) {
-        display: inline;
+        display: inline-block;
         position: absolute;
         cursor: pointer;
 
-        top: 40%;
-        left: -90%;
+        top: 83%;
+        right: 43%;
 
-        position: relative;
+        z-index: 2;
+
         transform: scaleX(-1)
     }
     @media (min-width:1024px) {
-        top: 56%;
+        top: 109%;
     }
     @media (min-width:1280px) {
-        top:77%
+        top: 103%
     }
     @media (min-width:1440px) {
-        top: 77%;
+        top: 115%;
     }
 }
 

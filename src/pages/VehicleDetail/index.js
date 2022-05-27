@@ -101,7 +101,11 @@ const VehicleDetail = () => {
                     <h3 className={styles['item-text']}>{dataVehicle.owner_id !== userData.id ? 'Detail' : 'Edit Item'}</h3>
                 </section>
 
-                {dataVehicle.owner_id !== userData.id ? (
+                {token && dataVehicle.owner_id === userData.id ? (
+                    <React.Fragment>
+                        <p>non user</p>
+                    </React.Fragment>
+                ) : (
                     <React.Fragment>
                         <section className={`mt-5 ${styles['flex-main']}`}>
                             <div className={styles['img-flex']}>
@@ -156,10 +160,6 @@ const VehicleDetail = () => {
                                 Like
                             </div>
                         </section>
-                    </React.Fragment>
-                ) : (
-                    <React.Fragment>
-                        <p>non user</p>
                     </React.Fragment>
                 )}
             </main>
