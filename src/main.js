@@ -21,6 +21,7 @@ import Payment from './pages/Payment'
 import AddVehicle from './pages/AddVehicle'
 import ViewMore from './pages/ViewMore'
 import History from './pages/History'
+import VehicleProduct from './pages/VehicleProduct'
 import HistoryOrderRenter from './pages/HistoryOrderRenter'
 
 // private route
@@ -64,6 +65,7 @@ const main = () => {
                         <Route element={<PrivateRoutes />}>
                             <Route element={<OwnerRoutes />}>
                                 <Route path='vehicle/add' element={<AddVehicle />} />
+                                <Route path='vehicle%20product' element={<VehicleProduct />} />
                                 <Route path='history%20renter' element={<HistoryOrderRenter />} />
                             </Route>
                         </Route>

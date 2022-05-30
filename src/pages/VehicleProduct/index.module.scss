@@ -1,0 +1,42 @@
+.flex-select{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    bottom: 20px;;
+}
+
+.box-select{
+    width: 23%;
+}
+
+.btn-flex{
+    justify-content: center;
+    display: none;
+}
+
+.btn-search{
+    position: relative;
+    bottom: 20px;
+    border: none;
+    background: #FFCD61;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+    height: 22px;
+    @media (min-width:375px) {
+        // width: 110px;
+        height: 32px;
+    }
+    @media (min-width:1024px) {        
+        height: 52px;
+        font-size: 16px;
+    }
+        margin-top: 18px;
+}
+.btn-search:active{
+    background: #393939;
+    color: #FFCD61;
+}

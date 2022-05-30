@@ -22,9 +22,16 @@ export const vehicleDelete = (id, token) => {
 
 export const vehicleTypeLimit = (params) => {
     const urlGetVehicles = urlVehicles + `?search=${params.search}&type=${params.type}&location=${params.location}&by=${params.by}&order=${params.order}&limit=${params.limit}&page=${params.page}`
+    console.log(urlGetVehicles)
     return axios.get(urlGetVehicles)
 }
 
 export const vehicleSearchFilter = (urlParams) => {
-    return axios.get(urlParams)
+    const urlVehicleSearchFilter = urlVehicles + `/${urlParams}`
+    return axios.get(urlVehicleSearchFilter)
+}
+
+export const vehicleSearchFilterByRenterId = (urlParams, token) => {
+    const urlVehicleSearchFilterByRenterId = urlVehicles + `/renter${urlParams}`
+    return axios.get(urlVehicleSearchFilterByRenterId, { headers: { 'x-access-token': token } })
 }

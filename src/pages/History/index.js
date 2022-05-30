@@ -19,9 +19,6 @@ import { vehicleSearchFilter } from '../../modules/utils/vehicle'
 import { listHistoryUser, editHistory, delHistoryUser } from '../../modules/utils/history'
 import formatRupiah from '../../modules/helper/formatRupiah'
 
-const urlVehicles = process.env.REACT_APP_HOST + '/vehicles'
-const ulrHistory = process.env.REACT_APP_HOST + '/history'
-
 const History = () => {
     const state = useSelector(state => state)
     const navigate = useNavigate()
@@ -45,7 +42,7 @@ const History = () => {
     const [historyUser, setHistoryUser] = useState([])
     const [meta, setMeta] = useState([])
 
-    const ulrHistoryUser = `${ulrHistory}${location.search}&limit=3&page=${page}`
+    const ulrHistoryUser = `${location.search}&limit=3&page=${page}`
     const NewUlrHistoryUser = `/history?search=${search}&by=${by}&order=${order}`
 
     useEffect(() => {
@@ -65,11 +62,12 @@ const History = () => {
                 })
 
             const limitArival = 2
-            const urlNewArrival = `${urlVehicles}?search=&type=&location=&by=id&order=desc&limit=${limitArival}`
+            const urlNewArrival = `?search=&type=&location=&by=id&order=desc&limit=${limitArival}`
 
             vehicleSearchFilter(urlNewArrival)
                 .then((res) => {
                     setNewArrival(res.data.result.data)
+                    console.log('ini new arrival', res)
                 })
                 .catch(({ ...err }) => {
                     console.log(err)

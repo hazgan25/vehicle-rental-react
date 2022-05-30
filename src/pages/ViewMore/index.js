@@ -13,8 +13,6 @@ import { getAllLocation } from '../../modules/utils/location'
 
 import { useDispatch } from 'react-redux'
 
-const urlVehicles = process.env.REACT_APP_HOST + '/vehicles'
-
 const ViewMore = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -31,7 +29,7 @@ const ViewMore = () => {
     const [order, setOrder] = useState('id')
     const [sort, setSort] = useState('desc')
 
-    const urlSearchFilter = urlVehicles + locationParams.search + `&limit=12&page=${vehiclePage}`
+    const urlSearchFilter = locationParams.search + `&limit=12&page=${vehiclePage}`
     const newUrlSearchFilter = `/view-more?search=${search}&type=${types}&location=${location}&by=${order}&order=${sort}`
     const remamagingData = meta.totalData - 12 * vehiclePage
 

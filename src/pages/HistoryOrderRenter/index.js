@@ -13,9 +13,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 import { listHistoryRenter, returnHistory, delHistoryRenter } from '../../modules/utils/history'
-
 import formatRupiah from '../../modules/helper/formatRupiah'
-const ulrHistory = process.env.REACT_APP_HOST + '/history/renter'
 
 const HistoryOrderRenter = () => {
     const state = useSelector(state => state)
@@ -30,14 +28,14 @@ const HistoryOrderRenter = () => {
     const [by, setBy] = useState('id')
     const [order, setOrder] = useState('asc')
     const [historyRenter, setHistoryRenter] = useState([])
-    const [mentaRenter, setMetaRenter] = useState([])
+    const [metaRenter, setMetaRenter] = useState([])
     const [checkDelRenter, setCheckDelRenter] = useState([])
     const [page, setPage] = useState(1)
     const [isModal, setIsModal] = useState(false)
     const [dataReturn, setDatareturn] = useState('')
     const [isReturn, setIsReturn] = useState(false)
 
-    const ulrHistoryRenter = `${ulrHistory}${location.search}&limit=5&page=${page}`
+    const ulrHistoryRenter = `${location.search}&limit=5&page=${page}`
     const NewUlrHistoryRenter = `/history%20renter?search=${search}&filter=${filter}&by=${by}&order=${order}`
 
     useEffect(() => {
@@ -48,6 +46,7 @@ const HistoryOrderRenter = () => {
         }
         listHistoryRenter(token, ulrHistoryRenter)
             .then((res) => {
+                console.log('ini res', res)
                 setHistoryRenter(res.data.result.data)
                 setMetaRenter(res.data.result.meta)
             })
@@ -63,14 +62,14 @@ const HistoryOrderRenter = () => {
     }
 
     const prevHandler = () => {
-        if (mentaRenter.prev !== null) {
+        if (metaRenter.prev !== null) {
             setPage(page - 1)
             setCheckDelRenter([])
             window.scrollTo(0, 0)
         }
     }
     const nextHandler = () => {
-        if (mentaRenter.next !== null) {
+        if (metaRenter.next !== null) {
             setPage(page + 1)
             setCheckDelRenter([])
             window.scrollTo(0, 0)
@@ -161,9 +160,10 @@ const HistoryOrderRenter = () => {
         <Main>
             <main className={`container ${styles['top-history']}`}>
                 <h3 style={{ textAlign: 'center' }}>Data of Tenant</h3>
+
                 <section>
                     <input type={'text'} placeholder='Search Histroy' className={styles['history-search']} onChange={e => setSearch(e.target.value)} />
-                    <img src={searchIcon} alt='avatar' className={styles['search']} />
+                    <img src={searchIcon} alt='avatar' className={styles['search']} onClick={searchFilterHandler} />
                     <select style={{ marginRight: 23 }} className={styles['box-select']} defaultValue='' onChange={e => setFilter(e.target.value)}>
                         <option value={''} disabled>Filter</option>
                         <option value={''}>Default</option>
@@ -179,11 +179,12 @@ const HistoryOrderRenter = () => {
                     </select>
                     <button className={styles['btn-search']} onClick={searchFilterHandler}>Search</button>
                 </section>
+
                 <section style={{ marginTop: 23 }}>
                     {historyRenter.length > 0 ? (
                         <React.Fragment>
                             <div style={{ overflowX: 'auto' }}>
-                                <table class="table table-warning table-striped">
+                                <table className="table table-warning table-striped">
                                     <thead>
                                         <tr>
                                             <th scope="col">Id. </th>
@@ -232,12 +233,12 @@ const HistoryOrderRenter = () => {
                             <div className={styles['meta-flex']}>
                                 <div className={styles['flex-beetwen']}>
                                     <button className={styles['btn-prev']} onClick={prevHandler}>Prev</button>
-                                    <h3 className={styles['page-text']}>{mentaRenter.page}</h3>
+                                    <h3 className={styles['page-text']}>{metaRenter.page}</h3>
                                     <button className={styles['btn-next']} onClick={nextHandler}>Next</button>
                                 </div>
                             </div>
                             <section className={styles['meta-flex']} style={{ marginTop: 23 }}>
-                                <p>{`Page ${mentaRenter.page} to remaining ${mentaRenter.totalPage - mentaRenter.page} from total page ${mentaRenter.totalPage}`}</p>
+                                <p>{`Page ${metaRenter.page} to remaining ${metaRenter.totalPage - metaRenter.page} from total page ${metaRenter.totalPage}`}</p>
                             </section>
                             <button className={styles['btn-select-item']} onClick={modalDeleteItem}>Delete selected item</button>
                         </React.Fragment>
@@ -260,7 +261,7 @@ const HistoryOrderRenter = () => {
                                     display: 'flex',
                                     justifyContent: 'center'
                                 }}>
-                                <h5>Transaction history is still empty</h5>
+                                <h5>Transaction history is empty</h5>
                             </section>
                         </React.Fragment>
                     )}

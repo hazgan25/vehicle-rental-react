@@ -156,7 +156,8 @@ const Header = () => {
                                         <li><Link to='/edit/profile' className="dropdown-item">Edit Profile</Link></li>
                                         {userData.role === 'owner' ? (
                                             <React.Fragment>
-                                                <li><Link className='dropdown-item' to={'/history%20renter?search=&filter=&by=id&order=desc'}>History Order</Link></li>
+                                                <li><Link className='dropdown-item' to={'/vehicle%20product?search=&type=&location=&by=id&order=desc'}>Vehicles Product</Link></li>
+                                                <li><Link className='dropdown-item' to={'/history%20renter?search=&filter=&by=id&order=desc'}>Historys Order</Link></li>
                                             </React.Fragment>
                                         ) : (<></>)}
                                         <li><Link to='/help' className="dropdown-item" >Help</Link></li>

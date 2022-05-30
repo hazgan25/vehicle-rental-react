@@ -7,11 +7,13 @@ export const reservationPayment = (id, token, body) => {
 }
 
 export const listHistoryUser = (token, urlParams) => {
-    return axios.get(urlParams, { headers: { 'x-access-token': token } })
+    const urlListHistoryUser = ulrHistory + `/${urlParams}`
+    return axios.get(urlListHistoryUser, { headers: { 'x-access-token': token } })
 }
 
 export const listHistoryRenter = (token, urlParams) => {
-    return axios.get(urlParams, { headers: { 'x-access-token': token } })
+    const urlListHistoryRenter = ulrHistory + `/renter/${urlParams}`
+    return axios.get(urlListHistoryRenter, { headers: { 'x-access-token': token } })
 }
 
 export const returnHistory = (token, id) => {
