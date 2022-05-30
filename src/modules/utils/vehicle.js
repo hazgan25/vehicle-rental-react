@@ -10,6 +10,16 @@ export const vehicleDetail = (id) => {
     return axios.get(urlVehicleDetail)
 }
 
+export const vehicleEdit = (id, body, token) => {
+    const urlVehicleEdit = urlVehicles + `/${id}`
+    return axios.patch(urlVehicleEdit, body, { headers: { 'x-access-token': token } })
+}
+
+export const vehicleDelete = (id, token) => {
+    const urlVehicleDelete = urlVehicles + `?id=${id}`
+    return axios.delete(urlVehicleDelete, { headers: { 'x-access-token': token } })
+}
+
 export const vehicleTypeLimit = (params) => {
     const urlGetVehicles = urlVehicles + `?search=${params.search}&type=${params.type}&location=${params.location}&by=${params.by}&order=${params.order}&limit=${params.limit}&page=${params.page}`
     return axios.get(urlGetVehicles)

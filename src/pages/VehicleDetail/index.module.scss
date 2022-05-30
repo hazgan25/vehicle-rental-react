@@ -1,3 +1,7 @@
+main{
+    scroll-behavior: smooth;
+}
+
 .back-home{
     display: flex;
     align-items: center;
@@ -17,7 +21,7 @@
 }
 
 .flex-main{
-    @media (min-width:768px) {
+    @media (min-width:1024px) {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -251,6 +255,253 @@
     margin-right: 10px;
 }
 .btn-like:active{
+    background: #FFCD61;
+    color: #393939;
+}
+
+// owner css
+.edit-left{
+    width: 100%;
+    height: 100%;
+    @media (min-width:1024px) {
+        width: 48%;
+    }
+}
+.edit-right{
+    width: 100%;
+    margin-top: 5%;
+    @media (min-width:1024px) {
+        margin-top: 0;
+        width: 48%;
+    }
+}
+
+.img-edit-main{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 10px;
+}
+.edit-img-flex{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.img-size-bottom1{
+    width: 99%;
+    height: auto;
+
+    border-radius: 10px;
+}
+.img-size-bottom2{
+    width: 99%;
+
+    border-radius: 10px;
+
+}
+.change-img-button-main{
+    position: absolute;
+    width: 92%;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: end;
+
+    @media (min-width:768px) {
+        width: 90%;
+    }
+    @media (min-width:1024px) {
+        width: 42%;
+    }
+    @media (min-width:2560px) {
+        width: 24%;
+    }
+}
+.change-img-button{
+    position: absolute;
+    width: 44%;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: end;
+
+    @media (min-width:1024px) {
+        width: 20%;
+    }
+    @media (min-width:2560px) {
+        width: 11%;
+    }
+}
+.btn-change-img-main{
+    border-radius: 50%;
+    border: none;
+
+    background: #FFCD61;
+
+    font-weight: bold;
+}
+.btn-change-img{
+    border-radius: 50%;
+    border: none;
+
+    font-weight: bold;
+
+    background: #FFCD61;
+}
+
+.input-edit{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
+
+    font-family: 'Nunito';
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+}
+.input-edit::placeholder{
+    color: #8091BE !important;
+}
+.input-edit-box{
+    width: 100%;
+    background: #F5F5F6;
+    border: none;
+    border-radius: 10px;
+    padding: 22px;
+
+    font-family: 'Nunito';
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+}
+.input-edit-box::placeholder{
+    color: #8091BE !important;
+}
+
+.label-text{
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #393939;
+}
+
+.stock-flex{
+    display: flex;
+    justify-content: space-between;
+}
+.box-flex{
+    display: flex;
+    width: 193px;
+    justify-content: space-between;
+}
+.box-plus{
+    font-size: 24px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    background: rgba($color: #CBCBD4, $alpha: 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+.box-plus:active{
+    background: rgba($color: #FFCD61, $alpha: 1.0);
+}
+.box-min{
+    font-size: 24px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    background: rgba($color: #CBCBD4, $alpha: 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+.box-min:active{
+    background: rgba($color: #FFCD61, $alpha: 1.0);
+}
+
+.btn-flex{
+    @media (min-width:768px) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.btn-item-to{
+    width: 100%;
+    padding: 20px;
+
+    background: #393939;
+    color: #FFCD61;
+    border-radius: 10px;
+
+    font-size: 24px;
+    font-weight: 700px;
+
+    cursor: pointer;
+
+    @media (min-width:768px) {
+        width: 30%;
+    }
+}
+.btn-save-change{
+    width: 100%;
+    padding: 20px;
+
+    background: #FFCD61;
+    color: #393939;
+    border-radius: 10px;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-top: 23px;
+
+    cursor: pointer;
+
+    @media (min-width:768px) {
+        margin-top: 0;
+        width: 40%;
+    }
+}
+.btn-save-change:active{
+    background: #393939;
+    color: #FFCD61;
+}
+.btn-delete{
+    width: 100%;
+    padding: 20px;
+
+    background: #393939;
+    color: #FFCD61;
+    border-radius: 10px;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-top: 23px;
+
+    cursor: pointer;
+
+    @media (min-width:768px) {
+        margin-top: 0;
+        width: 20%;
+    }
+}
+.btn-delete:active{
     background: #FFCD61;
     color: #393939;
 }

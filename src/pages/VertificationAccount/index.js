@@ -14,12 +14,11 @@ const VertificationAccount = () => {
 
     useEffect(() => {
         verify(params)
-            .then((res) => {
-                console.log(res)
+            .then(() => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success Vertification',
-                    text: `>your account has been successfully verified, please login again on the web or mobile application`
+                    text: `your account has been successfully verified, please login again on the web or mobile application`
                 })
             })
             .catch(() => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './index.module.scss'
-import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { vehicleDetail } from '../../modules/utils/vehicle'
@@ -24,8 +24,6 @@ const Reservation = () => {
     const [dataVehicle, setDataVehicle] = useState({})
     const [vehicleImgArr, setVehicleImgArr] = useState([])
     const [img1, setImg1] = useState('')
-    const [img2, setImg2] = useState('')
-    const [img3, setImg3] = useState('')
     const [quantity, setQuantity] = useState(1)
     const [selectDate, setSelectDate] = useState(1)
 
@@ -62,14 +60,6 @@ const Reservation = () => {
         if (dataVehicle !== {} && vehicleImgArr[0] && vehicleImgArr[0] !== {}) {
             const image1 = vehicleImgArr[0].images
             setImg1(image1)
-        }
-        if (dataVehicle !== {} && vehicleImgArr[1] && vehicleImgArr[1] !== {}) {
-            const image2 = vehicleImgArr[1].images
-            setImg2(image2)
-        }
-        if (dataVehicle !== {} && vehicleImgArr[2] && vehicleImgArr[2] !== {}) {
-            const image3 = vehicleImgArr[2].images
-            setImg3(image3)
         }
     }, [dataVehicle, vehicleImgArr])
 

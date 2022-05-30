@@ -35,7 +35,7 @@
     position: relative;
     width: 140px;
     height: 207px;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
 
     cursor: pointer;
@@ -48,7 +48,7 @@
     position: absolute;
     width: 140px;
     height: 207px;
-    background-size: cover;
+    object-fit: cover;
     background-position: center;
 
     cursor: pointer;

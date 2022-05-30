@@ -154,7 +154,6 @@ const Header = () => {
                                     </div>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><Link to='/edit/profile' className="dropdown-item">Edit Profile</Link></li>
-                                        {console.log(userData.role)}
                                         {userData.role === 'owner' ? (
                                             <React.Fragment>
                                                 <li><Link className='dropdown-item' to={'/history%20renter?search=&filter=&by=id&order=desc'}>History Order</Link></li>
