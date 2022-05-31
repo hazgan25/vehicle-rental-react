@@ -70,8 +70,8 @@ npm i
 
 <li>Setups Environment File</li>
 <p>
-Create file name .env on the folder project
-Create an .env file name in the project folder, then fill in the variables like this :
+Create file name .env.local on the folder project
+Create an .env.local file name in the project folder, then fill in the variables like this :
 </p>
 
 <table>
