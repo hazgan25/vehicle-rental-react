@@ -35,7 +35,7 @@ const History = () => {
     const [returnEditUser, setReturnEditUser] = useState('')
     const [iseReturnEdit, setIsRetunEdit] = useState(false)
     const [isModal, setIsModal] = useState(false)
-    const [rating, setRating] = useState()
+    const [rating, setRating] = useState('')
     const [input, setInput] = useState('')
 
     const [newArrival, setNewArrival] = useState([])
@@ -80,7 +80,7 @@ const History = () => {
         window.scrollTo(0, 0)
     }
 
-    const returnEditHandler = () => {
+    const AddEditRatingTestiHandler = () => {
         const body = {
             'rating': rating,
             'testimony': input
@@ -90,12 +90,14 @@ const History = () => {
                 setIsModal(false)
                 setIsRetunEdit(false)
                 Swal.fire(
-                    'Succes Return Or Edit',
+                    'Succes Add Or Edit Rating & Testimony',
                     `${res.data.result.msg}`,
                     'success'
                 )
                 listHistoryUser(token, ulrHistoryUser)
                     .then((res) => {
+                        setRating('')
+                        setInput('')
                         setHistoryUser(res.data.result.data)
                         setMeta(res.data.result.meta)
                     })
@@ -104,7 +106,15 @@ const History = () => {
                     })
             })
             .catch(({ ...err }) => {
-                console.log(err)
+                toast.error(`${err.response.data.err}`, {
+                    position: "top-center",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
             })
     }
 
@@ -217,7 +227,7 @@ const History = () => {
                                                                 setReturnEditUser(data.id)
                                                                 setIsModal(true)
                                                                 setIsRetunEdit(true)
-                                                            }} >{data.status === 'Not been returned' ? 'Add Rating' : 'Edit Rating'}</button>
+                                                            }} >{data.rating === null ? 'Add Rating' : 'Edit Rating'}</button>
                                                             <input type={'checkbox'} className={styles['checkbox']} value={data.id} onChange={checkDelHandler} />
                                                         </div>
                                                     </React.Fragment>
@@ -360,7 +370,7 @@ const History = () => {
                                     setIsModal(false)
                                     setIsRetunEdit(false)
                                 }} >Cancel</Button>
-                                <Button className='btn-warning w-25' onClick={returnEditHandler}>Yes</Button>
+                                <Button className='btn-warning w-25' onClick={AddEditRatingTestiHandler}>Yes</Button>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>

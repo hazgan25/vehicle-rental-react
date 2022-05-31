@@ -135,7 +135,7 @@ const VehicleDetail = () => {
                 text: 'out of stock'
             })
         } else {
-            navigate(`/reservation/id=${dataVehicle.id}&quantity=${stockReservation}`)
+            navigate(`/reservation/vehicle=${dataVehicle.id}&quantity=${stockReservation}`)
         }
         if (!token) {
             Swal.fire({

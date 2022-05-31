@@ -59,8 +59,8 @@ const main = () => {
                         {/* Private Router */}
                         <Route element={<PrivateRoutes />}>
                             <Route path='edit/profile' element={<EditProfile />} />
-                            <Route path={`reservation/id=:id&quantity=:quantity`} element={<Reservation />} />
-                            <Route path={`payment/vehicle=:id&location=:location&quantity=:quantity&day=:day&total=:totalPrice`} element={<Payment />} />
+                            <Route path={`reservation/vehicle=:id&quantity=:quantity`} element={<Reservation />} />
+                            <Route path={`payment/vehicle=:id&quantity=:quantity&day=:day&price%20perday=:priceDay&totalPrice=:total`} element={<Payment />} />
                         </Route>
 
                         {/* private owner */}

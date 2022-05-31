@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import styles from './index.module.scss'
-import stylesReservation from '../VehicleDetail/index.module.scss'
-
-import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-
-import { locationByName } from '../../modules/utils/location'
-import { vehicleDetail } from '../../modules/utils/vehicle'
-import { reservationPayment } from '../../modules/utils/history'
-
 import Main from '../../components/Main'
+import styles from './index.module.scss'
+
 import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 import arrowBack from '../../assets/svg/arrowBack.svg'
+
+import { useParams, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
+import { vehicleDetail } from '../../modules/utils/vehicle'
+import { reservationPayment } from '../../modules/utils/history'
 
 import formatRupiah from '../../modules/helper/formatRupiah'
 import Swal from 'sweetalert2'
@@ -21,60 +19,53 @@ const Payment = () => {
     const params = useParams()
     const navigate = useNavigate()
 
-    const [vehicleData, setVehicleData] = useState([])
-    const [vehiclePrice, setVehiclePrice] = useState(0)
+    const { token, userData } = state.auth
 
-    const { auth } = state
-    const { token, userData } = auth
-    const { name, phone, email } = userData
+    const [vehicleData, setVehicleData] = useState({})
+    const [showImg, setShowImg] = useState('')
 
-    const { id, day, location, quantity, totalPrice } = params
-    const { vehicle, price, types, owner_id } = vehicleData
-
-    let quantityArr = []
-    for (let i = 0; i < quantity; i++) {
-        quantityArr.push(i)
-    }
-
-    const optionsDate = {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-    }
-    const date = new Date()
-    const dateNow = date.toLocaleDateString('en-US', optionsDate)
+    const { id, day, priceDay, quantity, total } = params
 
     useEffect(() => {
-        locationByName(location, token)
-            .then((res) => {
-                if (location !== res.data.result[0].name) {
-                    navigate(-1)
-                }
-            })
-            .catch(({ ...err }) => {
-                if (err) {
-                    navigate(-1)
-                }
-            })
-
         vehicleDetail(id)
             .then((res) => {
                 setVehicleData(res.data.result)
-            })
-            .catch(({ ...err }) => {
+                setShowImg(res.data.result.images[0].images)
+                if (res.data.result.price !== parseInt(priceDay)) navigate(-1)
+                if (parseInt(total) !== res.data.result.price * parseInt(day) * parseInt(quantity)) navigate(-1)
+            }).catch((...err) => {
                 if (err) {
                     navigate(-1)
                 }
             })
+    }, [id, day, priceDay, quantity, total, navigate])
 
-        if (isNaN(totalPrice) === true || isNaN(quantity) === true || isNaN(day) === true) navigate(-1)
-        if (price !== undefined) setVehiclePrice(price)
-    }, [location, navigate, token, id, totalPrice, price, day, quantity])
+    useEffect(() => {
+        if (userData === vehicleData.owner_id) navigate(-1)
+    }, [userData, vehicleData.owner_id, navigate])
 
-    const handlePayment = () => {
+    const bookingCode = (length) => {
+        let result = '';
+        let randomCode = `${token}${vehicleData.vehicle}${quantity}${day}`
+        let randomCodeLength = randomCode.length
+        for (let i = 0; i < length; i++) {
+            result += randomCode.charAt(Math.floor(Math.random() *
+                randomCodeLength))
+        }
+        return result
+    }
+
+    const bookingCodeText = bookingCode(8)
+
+    const quantityArr = []
+    for (let i = 0; i < parseInt(quantity); i++) {
+        quantityArr.push(i)
+    }
+
+    const paymentHandler = () => {
         const body = {
             date: day,
-            quantity: quantity
+            quantity: quantity,
         }
         reservationPayment(id, token, body)
             .then((res) => {
@@ -82,7 +73,7 @@ const Payment = () => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Success Payment',
-                        text: `success payment rental ${vehicle}`
+                        text: `success payment rental ${vehicleData.vehicle}`
                     })
                     navigate('/')
                 }
@@ -94,75 +85,78 @@ const Payment = () => {
 
     return (
         <Main>
-            {userData && userData.id !== owner_id ? (
-                <React.Fragment>
-                    <main className='container mt-3' style={{ marginBottom: 180 }}>
-                        <section className={styles['back-home']}>
-                            <img src={arrowBack} alt='avatar' className={styles['backArrow']} style={{ cursor: 'pointer' }} onClick={() => { navigate(-1) }} />
-                            <h3 className={styles['payment-text']} style={{ left: 23 }}>Payment</h3>
-                        </section>
+            <main className='container mt-3 mb-3'>
+                <section className={styles['back-home']}>
+                    <img src={arrowBack} alt='avatar' className={styles['backArrow']} style={{ cursor: 'pointer' }} onClick={() => { navigate(-1) }} />
+                    <h3 className={styles['payment-text']} style={{ left: 23 }}>Payment</h3>
+                </section>
 
-                        <section className={`container mt-5 ${styles['flex-payment']}`}>
-                            <img src={vehicleImgDefault} alt='avater' className={styles['img-payment']} style={{ position: 'absolute' }} />
-                            <img src={vehicleImgDefault} alt='avater' className={styles['img-payment']} />
-                            <div className={styles['dekstop-mode-payment-pos-rel']}>
-                                <h3 className={stylesReservation['vehicle-text-reservation']}>{vehicle}</h3>
-                                <h4 className={`mt-5 ${stylesReservation['location-text-reservation']}`}>{location}</h4>
-                                <h5 className={`mt-4 ${stylesReservation['no-prepayment-reservation']}`}>No Prepayment</h5>
-                                <h5 className={`mt-5 ${styles['code-text']}`}>#FG1209878YZS</h5>
-                                <button className={styles['btn-copy']}>Copy booking code</button>
-                            </div>
-                        </section>
+                <section className={`mt-4 ${styles['flex-one']}`}>
+                    <div className={styles['left']}>
+                        <img src={`${process.env.REACT_APP_HOST}/${showImg}`} className={styles['img']}
+                            onError={(e) => {
+                                e.currentTarget.onerror = null
+                                e.currentTarget.src = `${vehicleImgDefault}`
+                            }} alt='avatar' />
+                    </div>
+                    <div className={styles['right']}>
+                        <h3 className={styles['vehicle-text']}>{vehicleData.vehicle}</h3>
+                        <h4 className={styles['location-text']}>{vehicleData.location}</h4>
+                        <h5 className={`mt-4 ${styles['prepayment-text']}`}>No Prepayment</h5>
+                        <h5 className={`mt-4 ${styles['code-text']}`}>{bookingCodeText}</h5>
+                        <button className={`mt-4 ${styles['btn-booking']}`}>Copy booking code</button>
+                    </div>
+                </section>
 
-                        <section className={`container mt-5 ${stylesReservation['flex-reservation']}`}>
-                            <div>
-                                <div className='box-payment-left'>
-                                    <p className={styles['payment-bold']}>{`Quantity : ${quantity} ${types}`}</p>
-                                </div>
+                <section className={`mt-4 ${styles['flex-one']}`}>
+                    <div className={`${styles['left']} ${styles['box-text']}`}>
+                        <p style={{ textAlign: 'center' }} className={styles['box-text-bold']}>{`Quantity : ${quantity} ${vehicleData.types}`}</p>
+                    </div>
+                    <div className={`${styles['right']} ${styles['box-text']}`} style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                        <p className={styles['box-text-bold']}>{`Reservation Date : `}</p>
+                        <p className={styles['box-normal-text']}>{`${day} day`}</p>
+                    </div>
+                </section>
 
-                                <div className={`mt-4 ${styles['box-noflex-left']}`}>
-                                    <p className={styles['payment-bold']}>Order Detail :</p>
-                                    {quantityArr.map((data) => (
-                                        <React.Fragment key={data}>
-                                            <p>{`1 ${types} : Rp. ${formatRupiah(vehiclePrice)}`}</p>
-                                        </React.Fragment>
-                                    ))}
-                                    <p className={styles['payment-bold']}>{`total : Rp. ${formatRupiah(totalPrice)}`}</p>
-                                </div>
-                            </div>
+                <section className={`mt-4 ${styles['flex-one']}`}>
+                    <div className={`${styles['left']} ${styles['box-text']}`}>
+                        <p className={styles['box-text-bold']}>Order Detail :</p>
+                        <p className={styles['box-normal-text']}>{`${quantity} ${vehicleData.types} : Rp.${formatRupiah(vehicleData.price * parseInt(quantity))}`}</p>
+                        <p className={styles['box-normal-text']}>{`during ${day} day : Rp.${formatRupiah(vehicleData.price * parseInt(day))}`}</p>
+                        <p className={styles['box-text-bold']}>
+                            Total :
+                            <span className={styles['box-normal-text']}>{` Rp.${formatRupiah(total)}`}</span>
+                        </p>
+                    </div>
+                    <div className={`${styles['right']} ${styles['box-text']}`}>
+                        <p className={styles['box-text-bold']}>Identity :</p>
+                        <p className={styles['box-normal-text']}>{userData.name === '' ? 'User' : userData.name}
+                            <span className={styles['box-normal-text']}>{` ( ${userData.phone === '' ? 'No number Phone' : userData.phone} )`}</span>
+                        </p>
+                        <p className={styles['box-normal-text']}>{userData.email}</p>
+                    </div>
+                </section>
 
-                            <div className={stylesReservation['dekstop-mode-reservation-pos-rel']}>
-                                <div className={styles['box-payment-flex']}>
-                                    <p className={styles['payment-bold']}>Reservation Date :</p>
-                                    <p>{`${dateNow} for ${day} day`}</p>
-                                </div>
-                                <div className={`mt-4 ${styles['box-payment-noFlex']}`}>
-                                    <p className={styles['payment-bold']}>Identity :</p>
-                                    <p>{`${name === null || name === '' ? 'no name' : name} (${phone === null || phone === '' ? 'no number phone' : phone})`}</p>
-                                    <p>{email}</p>
-                                </div>
-                            </div>
-                        </section>
+                <section className={`mt-4 ${styles['flex-two']}`}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <h5 className={`${styles['code-text']}`}>Payment Code : </h5>
+                    </div>
+                    <div className={`${styles['box-text-two']}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <p className={styles['box-text-bold']}>{bookingCodeText}</p>
+                        <button className={styles['btn-copy']}>Copy</button>
+                    </div>
+                    <select className={`${styles['box-text-two']} ${styles['prepayment-text']} ${styles['temp-select']}`}
+                        defaultValue=''>
+                        <option value={''} disabled>Select Payment Method</option>
+                        <option value={'cash'}>Cash</option>
+                        <option value={'transfer'}>Transfer</option>
+                    </select>
+                </section>
 
-                        <section className={`container ${stylesReservation['flex-reservation']} ${styles['code-flex']}`}>
-                            <p>{``}</p>
-                            <p className={styles['payment-bold']}>{`Payment Code : `}</p>
-                            <div className={styles['box-code']}>
-                                #FG1209878YZS
-                            </div>
-                        </section>
-
-                        <button className={`mt-5 ${styles['btn-payment']}`} onClick={handlePayment}>
-                            Finish Payment
-                        </button>
-
-                    </main>
-                </React.Fragment>
-            ) : (
-                <>
-                    <p>ini owner</p>
-                </>
-            )}
+                <button className={`mt-4 ${styles['btn-finish']}`} onClick={paymentHandler}>
+                    Finish Payment
+                </button>
+            </main>
         </Main>
     )
 }
