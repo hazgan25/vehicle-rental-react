@@ -1,6 +1,6 @@
 .back-home{
     display: flex;
-    width: 290px;
+    width: 260px;
     align-items: center;
     justify-content: space-between;
 }
@@ -9,6 +9,8 @@
     position: relative;
     left: 12px;
     height: 32px;
+
+    cursor: pointer;
 }
 
 .reservation-text{
@@ -19,37 +21,54 @@
 }
 
 .flex-reservation{
-    display: flex;
+    @media (min-width:768px) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.right-flex-reservation{
+    @media (min-width:768px) {
+        width: 48%;
+    }
+}
+.left-flex-reservation{
+    margin-top: 10%;
+    @media (min-width:768px) {
+        margin-top: 0;
+        width: 48%;
+    }
 }
 
-.dekstop-mode-reservation-pos-rel{
-    position: relative;
-    left: 65px;
+.img-reservation{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 10px;
 }
 
-.vehicle-text-reservation{
+.vehicle-text-vehicle-name{
     font-family: 'Playfair Display';
     font-style: normal;
     font-weight: 900;
     font-size: 48px;
-    line-height: 25px;
-    /* or 52% */
-
     display: flex;
     align-items: center;
 
     color: #042521;
 
     mix-blend-mode: normal;
+    @media (min-width:768px) {
+        line-height: 25px;
+    }
 }
-
-.location-text-reservation{
+.location-text{
     font-family: 'Playfair Display';
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
     line-height: 24px;
-    /* or 67% */
 
     display: flex;
     align-items: center;
@@ -58,19 +77,12 @@
 
     mix-blend-mode: normal;
 }
-
-.img-reservation{
-    width: 696px;
-    height: 556px;
-}
-
-.no-prepayment-reservation{
+.no-prepayment-text{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 24px;
-    /* identical to box height, or 100% */
 
     display: flex;
     align-items: center;
@@ -82,7 +94,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 .box-min{
     display: flex;
     justify-content: center;
@@ -90,21 +101,22 @@
     width: 79px;
     height: 80px;
 
-    cursor: pointer;
-
-    border-radius: 10px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-
-.min{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 900;
     font-size: 48px;
     
     color: #000000;
-}
 
+    cursor: pointer;
+
+    border: none;
+    border-radius: 10px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.box-min:active{
+    background: #FFCD61;
+}
 .box-plus{
     display: flex;
     justify-content: center;
@@ -112,29 +124,22 @@
     width: 79px;
     height: 80px;
 
-    cursor: pointer;
-
-    border-radius: 10px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-
-.plus{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 900;
     font-size: 48px;
-
+    
     color: #000000;
-}
 
-.box-color{
-    background: #EFEFEF;
-}
+    cursor: pointer;
 
-.box-color:active{
+    border: none;
+    border-radius: 10px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.box-plus:active{
     background: #FFCD61;
 }
-
 .quantity{
     display: flex;
     justify-content: center;
@@ -149,7 +154,7 @@
     color: #000000;
 }
 
-.reservation-date{
+.reservation-date-text{
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
@@ -159,9 +164,7 @@
     color: #393939;
 }
 .select-date-box{
-    display: flex;
-    align-items: center;
-    width: 399px;
+    width: 100%;
     height: 80px;
     padding: 23px;
     background: rgba(57, 57, 57, 0.1);
@@ -177,10 +180,9 @@
     color: #80918E;
 }
 .forms-select-date{
-    position: absolute;
     background: rgba(57, 57, 57, 0.1);
     border-radius: 10px;
-    width: 399px;
+    width: 100%;
     height: 80px;
 
     cursor: pointer;
@@ -192,30 +194,4 @@
     color: #80918E;
 
     bottom: 0;
-}
-
-.btn-reservation{
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    height: 89px;
-    width: auto;
-
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-
-    background: #FFCD61;
-    cursor: pointer;
-
-    border-radius: 10px;
-    color: #393939;
-
-    top: 100px;
-}
-.btn-reservation:active{
-    background: #393939;
-    color: #FFCD61;
 }

@@ -26,10 +26,30 @@ const VehicleType = () => {
 
     useEffect(() => {
         dispatch(listVehiclePopularAction(paramsPopulerVehicle))
+            .catch((err) => {
+                if (err) {
+                    navigate('/error%20server')
+                }
+            })
         dispatch(listVehicleCarAction(paramCarVehicle))
+            .catch((err) => {
+                if (err) {
+                    navigate('/error%20server')
+                }
+            })
         dispatch(listVehicleMotorbikeAction(paramMotorbikeVehicle))
+            .catch((err) => {
+                if (err) {
+                    navigate('/error%20server')
+                }
+            })
         dispatch(listVehicleBikeAction(paramBikeVehicle))
-    }, [dispatch])
+            .catch((err) => {
+                if (err) {
+                    navigate('/error%20server')
+                }
+            })
+    }, [dispatch, navigate])
 
     const searchHandler = () => {
         navigate(`/view-more?search=${search}&type=&location=`)

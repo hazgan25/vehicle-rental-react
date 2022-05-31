@@ -470,7 +470,7 @@ const VehicleDetail = () => {
                                 <p className={styles['fourty-four-size']} style={{ color: 'red' }}>No Prepayment</p>
                                 <p className={`text-secondary ${styles['fourty-four-size']}`}>Capacity : {dataVehicle.types_id === 1 ? '4' : dataVehicle.types_id === 2 ? '2' : '1'} person</p>
                                 <p className={`text-secondary ${styles['fourty-four-size']}`}>Type : {dataVehicle.types_id === 1 ? 'Car' : dataVehicle.types_id === 2 ? 'Motorbike' : 'Bike'}</p>
-                                <p className={`text-secondary ${styles['fourty-four-size']}`}>Reservation before 2 PM</p>
+                                <p className={`text-secondary ${styles['fourty-four-size']}`}>{dataVehicle.description}</p>
                                 <h3 className={styles['reservation-price']}>{`Rp. ${formatRupiah(vehiclePriceReservation)}/day`}</h3>
                                 <div className='mt-5' style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <div className={styles['btn-plus']} onClick={plusStockReservation}>

@@ -67,7 +67,6 @@ const History = () => {
             vehicleSearchFilter(urlNewArrival)
                 .then((res) => {
                     setNewArrival(res.data.result.data)
-                    console.log('ini new arrival', res)
                 })
                 .catch(({ ...err }) => {
                     console.log(err)

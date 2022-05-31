@@ -21,7 +21,7 @@ main{
 }
 
 .flex-main{
-    @media (min-width:1024px) {
+    @media (min-width:768px) {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -51,7 +51,7 @@ main{
         
         cursor: pointer;
 
-        top: 83%;
+        top: 64%;
         z-index: 2;
     }
     @media (min-width:1024px) {
@@ -71,7 +71,7 @@ main{
         position: absolute;
         cursor: pointer;
 
-        top: 83%;
+        top: 64%;
         right: 43%;
 
         z-index: 2;
@@ -174,12 +174,18 @@ main{
 .btn-select-reservation{
     @media (min-width:768px) {
         position: absolute;
-        top: 100%;
+        top: 80%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
     }
     @media (min-width:1024px) {
         position: relative;
 
+        width: auto;
+
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
     }
 }

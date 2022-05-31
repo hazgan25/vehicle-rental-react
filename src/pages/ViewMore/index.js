@@ -39,12 +39,12 @@ const ViewMore = () => {
                 setVehileArr(res.value.data.result.data)
                 setMeta(res.value.data.result.meta)
             })
-            .catch(({ ...err }) => {
-                console.log(err)
+            .catch((err) => {
+                if (err) {
+                    navigate('/error%20server')
+                }
             })
-
-
-    }, [urlSearchFilter, dispatch])
+    }, [urlSearchFilter, dispatch, navigate])
 
     useEffect(() => {
         getAllLocation()

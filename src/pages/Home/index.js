@@ -17,7 +17,6 @@ import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 import { listVehiclePopularAction } from '../../redux/actions/listVehicles'
 import { paramsPopulerVehicle } from '../../modules/helper/listVehicle'
 
-
 const Home = () => {
     const state = useSelector(state => state)
     const navigate = useNavigate()
@@ -33,16 +32,24 @@ const Home = () => {
     const { listPopularVehicle } = listVehicle
 
     const dispatch = useDispatch()
+    console.log('ini state', state)
 
     useEffect(() => {
         getAllLocation()
             .then((res) => {
                 setLocationArr(res.data.result)
             })
-            .catch((...err) => console.log(err))
+            .catch((...err) =>
+                console.log(err)
+            )
 
         dispatch(listVehiclePopularAction(paramsPopulerVehicle))
-    }, [dispatch])
+            .catch((err) => {
+                if (err) {
+                    navigate('/error%20server')
+                }
+            })
+    }, [dispatch, navigate])
 
     const viewAllPopularHandler = () => {
         navigate(`/view-more?search=&type=&location=&by=rating&order=desc`)

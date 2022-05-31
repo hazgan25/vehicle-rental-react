@@ -28,6 +28,7 @@ import HistoryOrderRenter from './pages/HistoryOrderRenter'
 import AuthRoutes from './components/AuthRoutes'
 import PrivateRoutes from './components/PrivateRoutes'
 import OwnerRoutes from './components/OwnerRoutes'
+import ErrorServer from './pages/ErrorServer'
 
 const main = () => {
 
@@ -45,6 +46,7 @@ const main = () => {
                         <Route path='vehicle/detail/:id' element={<VehicleDetail />} />
                         <Route path='history' element={<History />} />
                         <Route path='about' element={<About />} />
+                        <Route path='error%20server' element={<ErrorServer />} />
 
                         {/* route Auth */}
                         <Route element={<AuthRoutes />}>
