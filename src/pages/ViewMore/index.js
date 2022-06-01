@@ -8,10 +8,11 @@ import vehicleImgDefault from '../../assets/img/vehicle-default.png'
 import vehicleNotFound from '../../assets/img/vehiclenotfound.png'
 
 import { useLocation, useNavigate } from 'react-router-dom'
-import { listVechileAction } from '../../redux/actions/listVehicles'
+import { listVechileAction, listVehiclePopularAction } from '../../redux/actions/listVehicles'
 import { getAllLocation } from '../../modules/utils/location'
 
 import { useDispatch } from 'react-redux'
+import { paramsPopulerVehicle } from '../../modules/helper/listVehicle'
 
 const ViewMore = () => {
     const dispatch = useDispatch()
@@ -41,7 +42,12 @@ const ViewMore = () => {
             })
             .catch((err) => {
                 if (err) {
-                    navigate('/error%20server')
+                    dispatch(listVehiclePopularAction(paramsPopulerVehicle))
+                        .catch(({ ...err }) => {
+                            if (err) {
+                                navigate('/error%20server')
+                            }
+                        })
                 }
             })
     }, [urlSearchFilter, dispatch, navigate])
@@ -119,6 +125,8 @@ const ViewMore = () => {
                         <option value={'desc'}>Descending</option>
                     </select>
                 </section>
+
+                <button className={`mt-4 ${styles['btn-search-filter']}`} onClick={searchFilterHandler}>Search</button>
 
                 {vehicleArr.length !== 0 ? (
                     <React.Fragment>

@@ -79,6 +79,22 @@ main{
     margin-top: 5px;
 }
 
+.btn-search-filter{
+    background: #FFCD61;
+    color: #393939;
+    width: 100%;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+}
+.btn-search-filter:active{
+    background: #393939;
+    color: #FFCD61;
+}
+
 .all-vehicle{
     display: flex;
     flex-wrap: wrap;

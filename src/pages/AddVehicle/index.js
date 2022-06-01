@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import styles from './index.module.scss'
 import Main from '../../components/Main'
+import styles from './index.module.scss'
 
 import Swal from 'sweetalert2'
 import { Modal, Button } from 'react-bootstrap'
 import { ToastContainer, toast } from 'react-toastify'
+
 
 import arrowBack from '../../assets/svg/arrowBack.svg'
 import addItem from '../../assets/img/addImgDefault.jpg'
@@ -192,20 +193,24 @@ const AddVehicle = () => {
                     <h3 className={styles['add-new-item-text']}>Add new item</h3>
                 </section>
 
-                <section className={styles['flex-main']} >
-                    <div>
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <input type={'file'} className={styles['img-input-one']} onChange={e => imageHandler1(e)} />
-                        </div>
-                        <img src={showImgVehicle1} alt='avatar' className={styles['img-one']} />
-                        <div className={styles['flex-img']}>
-                            <img src={showImgVehicle2} alt='avatar' className={styles['img-two']} />
-                            <input type={'file'} className={styles['img-input-two']} onChange={e => imageHandler2(e)} />
-                            <img src={showImgVehicle3} alt='avatar' className={styles['img-three']} />
-                            <input type={'file'} className={styles['img-input-three']} onChange={e => imageHandler3(e)} />
+                <section className={`mt-4 ${styles['flex-main']}`}>
+                    <div className={styles['left']}>
+                        <label for='file-input-1' className={styles['label-img-one']} >
+                            <img src={showImgVehicle1} alt='avatar' className={styles['img-one']} />
+                            <input type={'file'} style={{ display: 'none' }} id='file-input-1' onChange={e => imageHandler1(e)} />
+                        </label>
+                        <div className={styles['img-flex']}>
+                            <label for='file-input-2' className={styles['label-img-two']}>
+                                <img src={showImgVehicle2} alt='avatar' className={styles['img-two']} />
+                                <input type={'file'} style={{ display: 'none' }} id='file-input-2' onChange={e => imageHandler2(e)} />
+                            </label>
+                            <label for='file-input-3' className={styles['label-img-two']}>
+                                <img src={showImgVehicle3} alt='avatar' className={styles['img-two']} />
+                                <input type={'file'} style={{ display: 'none' }} id='file-input-3' onChange={e => imageHandler3(e)} />
+                            </label>
                         </div>
                     </div>
-                    <div className={styles['form-right']}>
+                    <div className={styles['right']}>
                         <input type={'text'} placeholder='Name Vehicle' className={styles['input']} onChange={e => setVehicleName(e.target.value)} />
                         <select className={styles['input']} defaultValue='' style={{ color: '#8091BE' }} onChange={e => setSelectLocation(e.target.value)}>
                             <option value={''} disabled={true}>Location</option>
@@ -279,6 +284,7 @@ const AddVehicle = () => {
                     draggable
                     pauseOnHover
                 />
+
             </main>
         </Main>
     )

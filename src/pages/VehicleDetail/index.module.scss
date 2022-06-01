@@ -28,67 +28,7 @@ main{
     }
 }
 
-.img-flex{
-    display: flex;
-    justify-content: center;
-    @media (min-width:768px) {
-    width: 70%;
-    // height: 100%;
-    }
-}
-.right-flex-main{
-    @media (min-width:768px) {
-        width: 45%;
-        margin-left: 5%;
-    }
-}
-
-.prev-img{
-    display: none;
-    @media (min-width:768px) {
-        display: inline-block;
-        position: absolute;
-        
-        cursor: pointer;
-
-        top: 64%;
-        z-index: 2;
-    }
-    @media (min-width:1024px) {
-        top: 109%;
-    }
-    @media (min-width:1280px) {
-        top: 103%
-    }
-    @media (min-width:1440px) {
-        top: 115%;
-    }
-}
-.next-img{
-    display: none;
-    @media (min-width:768px) {
-        display: inline-block;
-        position: absolute;
-        cursor: pointer;
-
-        top: 64%;
-        right: 43%;
-
-        z-index: 2;
-
-        transform: scaleX(-1)
-    }
-    @media (min-width:1024px) {
-        top: 109%;
-    }
-    @media (min-width:1280px) {
-        top: 103%
-    }
-    @media (min-width:1440px) {
-        top: 115%;
-    }
-}
-
+// rightuser css
 .vehicle-text{
     font-size: 48px;
     font-weight: bold;
@@ -152,34 +92,9 @@ main{
     background: #FFCD61;
 }
 
-.carousel{
-    text-align: center;
-}
-
-.reservation-price{
-    display: flex;
-    justify-content: end;
-}
-
-.reservation-stock{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 25px;
-}
-
+// user Css bottom
 .btn-select-reservation{
     @media (min-width:768px) {
-        position: absolute;
-        top: 80%;
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-    }
-    @media (min-width:1024px) {
         position: relative;
 
         width: auto;
@@ -268,47 +183,84 @@ main{
 // owner css
 .edit-left{
     width: 100%;
-    height: 100%;
-    @media (min-width:1024px) {
+    @media (min-width:768px) {
         width: 48%;
+        height: 100%;
     }
 }
 .edit-right{
     width: 100%;
     margin-top: 5%;
-    @media (min-width:1024px) {
+    @media (min-width:768px) {
         margin-top: 0;
         width: 48%;
     }
 }
 
+// owner css left
+.label-img-edit-main{
+    width: 100%;
+}
 .img-edit-main{
     width: 100%;
-    height: 100%;
+    height: 220px;
     object-fit: cover;
-    object-position: center;
-
     border-radius: 10px;
-}
-.edit-img-flex{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-}
-.img-size-bottom1{
-    width: 99%;
-    height: auto;
-
-    border-radius: 10px;
-}
-.img-size-bottom2{
-    width: 99%;
-
-    border-radius: 10px;
-
+    @media (min-width:768px) {
+    object-fit: cover;
+    height: 310px;
+    }
 }
 .change-img-button-main{
+    position: absolute;
+    width: 92%;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: end;
+
+    @media (min-width:768px) {
+        width: 90%;
+    }
+    @media (min-width:1024px) {
+        width: 42%;
+    }
+    @media (min-width:2560px) {
+        width: 24%;
+    }
+}
+.btn-change-img-main{
+    border-radius: 50%;
+    border: none;
+
+    background: #FFCD61;
+
+    font-weight: bold;
+}
+.edit-img-flex{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    @media (min-width:768px) {
+        margin-top: 45px;
+    }
+}
+.label-img-edit-two{
+    width: 49%;
+}
+.img-edit-two{
+    width: 100%;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 10px;
+    @media (min-width:768px) {
+        height: 160px;
+    }
+    @media (min-width:1024px) {
+        height: 150px;
+    }
+}
+.change-img-button{
     position: absolute;
     width: 92%;
     margin-top: 5px;
@@ -341,14 +293,6 @@ main{
         width: 11%;
     }
 }
-.btn-change-img-main{
-    border-radius: 50%;
-    border: none;
-
-    background: #FFCD61;
-
-    font-weight: bold;
-}
 .btn-change-img{
     border-radius: 50%;
     border: none;
@@ -358,6 +302,7 @@ main{
     background: #FFCD61;
 }
 
+// owner css right
 .input-edit{
     width: 100%;
     border: none;
@@ -440,6 +385,7 @@ main{
     background: rgba($color: #FFCD61, $alpha: 1.0);
 }
 
+// owner css bottom
 .btn-flex{
     @media (min-width:768px) {
         display: flex;

@@ -1,7 +1,3 @@
-// ::placeholder{
-//     color: #8091BE !important;
-// }
-
 .back-home{
     display: flex;
     width: 290px;
@@ -12,79 +8,66 @@
     left: 12px;
     height: 32px;
 }
-.add-new-item-text{
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #000000;
-}
 
 .flex-main{
-    margin-top: 17px;
+    @media(min-width:768px){
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.left{
+    @media (min-width:768px) {
+        width: 48%;
+        height: 100%;
+    }
+}
+.right{
+    height: 100%;
+    @media (min-width:768px) {
+        width: 48%;
+        height: 100%;
+    }
+}
+
+.label-img-one{
+    width: 100%;
 }
 .img-one{
     width: 100%;
+    height: 220px;
+    object-fit: cover;
     border-radius: 10px;
-}
-.img-input-one{
-    position: absolute;
-    // background: #FFCD61;
-    opacity: 0;
-    height: 31%;
-    width: 53%;
-    cursor: pointer;
-    top: 30%;
-}
-.img-two{
-    width: 46%;
-    // height: 30%;
-    border-radius: 10px;
-}
-.img-input-two{
-    position: absolute;
-    background: #FFCD61;
-    opacity: 0;
-    height: 11%;
-    width: 15%;
-    cursor: pointer;
-    margin-left: 15%;
-    margin-top: 5%;
     @media (min-width:768px) {
-        margin-left:10%;
-    }
-    @media (min-width:1280px) {
-        margin-left:5%;
+    object-fit: cover;
+    height: 320px;
     }
 }
-.img-three{
-    width: 46%;
-    border-radius: 10px;
-}
-.img-input-three{
-    position: absolute;
-    background: #FFCD61;
-    opacity: 0;
-    height: 11%;
-    width: 15%;
-    margin-top: 5%;
-    margin-left: 65%;
-    cursor: pointer;
-    @media (min-width: 768px){
-        margin-left: 39%;
-    }
-    @media (min-width:1280px) {
-        margin-left:30%;
-    }
-}
-.flex-img{
+.img-flex{
     display: flex;
     margin-top: 20px;
     justify-content: space-between;
+    @media (min-width:768px) {
+        margin-top: 45px;
+    }
 }
 
-.form-right{
-    margin-top: 12px;
+.img-two-label{
+    width: 49%;
 }
+.img-two{
+    width: 100%;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 10px;
+    @media (min-width:768px) {
+        height: 100px;
+    }
+    @media (min-width:1024px) {
+        height: 130px;
+    }
+}
+
+// left
 .input{
     position: relative;
     border: none;
@@ -92,6 +75,10 @@
     padding-bottom: 10px;
     width: 100%;
     margin-bottom: 23px;
+    margin-top: 23px;
+    @media (min-width:768px) {
+        margin-top: 0;
+    }
 }
 .input::placeholder{
     color: #8091BE !important;
@@ -117,7 +104,6 @@
 .input-box::placeholder{
     color: #8091BE !important;
 }
-
 .stock-flex{
     display: flex;
     justify-content: space-between;
@@ -126,6 +112,12 @@
     display: flex;
     width: 193px;
     justify-content: space-between;
+    @media (min-width:768px) {
+        width: 112px;
+    }
+    @media (min-width:1024px) {
+        width: 193px;
+    }
 }
 .box-plus{
     font-size: 24px;
@@ -160,6 +152,13 @@
     background: rgba($color: #FFCD61, $alpha: 1.0);
 }
 
+.btn-flex{
+    @media (min-width:768px) {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 23px;
+    }
+}
 .btn-item-to{
     width: 100%;
     padding: 20px;
@@ -172,6 +171,9 @@
     font-weight: 700px;
 
     cursor: pointer;
+    @media (min-width:768px) {
+        width: 40%;
+    }
 }
 .btn-save-item{
     width: 100%;
@@ -187,81 +189,12 @@
     font-weight: bold;
 
     cursor: pointer;
+    @media (min-width:768px) {
+        margin-top: 0;
+        width: 57%;
+    }
 }
 .btn-save-item:active{
     background: #393939;
     color: #FFCD61;
-}
-
-@media(min-width:768px){
-    .flex-main{
-        display: flex;
-        justify-content: space-between;
-        margin-top: 117px;
-    }
-    .img-one{
-        width: 95%;
-        height: 62%;
-    }
-    .img-input-one{
-        width: 29%;
-        height: 20%;
-        top: 50%;
-    }
-    .img-three{
-        position: relative;
-        right: 5%;
-    }
-
-    .form-right{
-        margin-top: 0;
-        width: 55%;
-    }
-    .input{
-    width: 100%;
-    }
-    .box-flex{
-        width: 112px;
-    }
-
-    .btn-flex{
-        display: flex;
-        justify-content: space-between;
-        margin-top: 3%;
-    }
-    .btn-item-to{
-        width: 40%;
-    }
-    .btn-save-item{
-        width: 57%;
-        margin-top: 0;
-    }
-}
-
-@media(min-width:1024px){
-    .box-flex{
-        width: 193px;
-    }
-    .input{
-        margin-bottom: 10%;
-    }
-    .label{
-        margin-bottom: 10%;
-    }
-    .input-box{
-        margin-bottom: 10%;
-    }
-    .img-input-one{
-        top: 40%;
-        @media(min-width:1280px){
-            top:70%;
-            height: 30%;
-        }
-        @media (min-width:1440px) {
-            top: 35%;
-        }
-        @media(min-width:2560px){
-            top: 10%;
-        }
-    }
 }

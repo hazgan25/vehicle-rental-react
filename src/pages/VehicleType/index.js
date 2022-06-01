@@ -70,8 +70,10 @@ const VehicleType = () => {
     return (
         <Main>
             <main className={`container ${styles['top-vehicle-type']}`}>
-                <input type={'text'} placeholder='Search vehicle (ex. type vehicle, vehicle name, location name)' className={styles['search-vehicle']} onChange={e => setSearch(e.target.value)} />
-                <img src={searchIcon} alt='avatar' className={styles['search']} onClick={searchHandler} />
+                <form onSubmit={searchHandler}>
+                    <input type={'text'} placeholder='Search vehicle (ex. type vehicle, vehicle name, location name)' className={styles['search-vehicle']} onChange={e => setSearch(e.target.value)} />
+                    <img src={searchIcon} alt='avatar' className={styles['search']} onClick={searchHandler} />
+                </form>
 
                 <section className='container'>
                     <div className='row justify-content-between'>
