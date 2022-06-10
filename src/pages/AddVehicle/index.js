@@ -6,7 +6,6 @@ import Swal from 'sweetalert2'
 import { Modal, Button } from 'react-bootstrap'
 import { ToastContainer, toast } from 'react-toastify'
 
-
 import arrowBack from '../../assets/svg/arrowBack.svg'
 import addItem from '../../assets/img/addImgDefault.jpg'
 import addMore from '../../assets/img/add-more.png'
