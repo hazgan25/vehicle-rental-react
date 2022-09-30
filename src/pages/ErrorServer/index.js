@@ -35,7 +35,7 @@ const ErrorServer = () => {
                                 but it can be reactivated automatically during a 2 month sleep period
                             </li>
                         </ul>
-                        <h4 className={styles['err-about-text']}>if you still want to try exploring the vehicle rental website/mobile app you can remind me to change my backup REST API : <a href="mailto:hazgnxv@gmail.com?subject=Server/Website Vehicle Rental is Error 500" className={styles['orange-text']}>Send Message to remind/notify (by email)</a></h4>
+                        <h4 className={styles['err-about-text']}>if you still want to try exploring the vehicle rental website you can remind me to change my backup REST API : <a href="mailto:hazgnxv@gmail.com?subject=Server/Website Vehicle Rental is Error 500" className={styles['orange-text']}>Send Message to remind/notify (by email)</a></h4>
                         <a href='https://en.wikipedia.org/?title=500_error&redirect=no' target="_blank" rel="noopener noreferrer">
                             <button className={styles['btn-see']}>See About Error</button>
                         </a>
