@@ -41,6 +41,24 @@
     text-align: center;
 }
 
+.err-about-text{
+    position: relative;
+    font-weight: bold;
+    font-size: 18px;
+
+    top: 22px;
+
+    color: #fff;
+}
+
+.orange-text{
+    color: #FFCD61;
+}
+
+.orange-text:hover{
+    color: #393939;
+}
+
 .btn-see{
     position: relative;
     font-family: Nunito;
