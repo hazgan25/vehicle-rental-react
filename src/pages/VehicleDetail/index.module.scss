@@ -1,459 +1,459 @@
-main{
-    scroll-behavior: smooth;
+main {
+  scroll-behavior: smooth;
 }
 
-.back-home{
+.back-home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.back-arrow {
+  position: relative;
+  left: 12px;
+  height: 32px;
+  cursor: pointer;
+}
+.item-text {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #000000;
+}
+
+.flex-main {
+  @media (min-width: 768px) {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-.back-arrow{
-    position: relative;
-    left: 12px;
-    height: 32px;
-    cursor: pointer;
-}
-.item-text{
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 24px;
-    color: #000000;
-}
-
-.flex-main{
-    @media (min-width:768px) {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
+    width: 100%;
+  }
 }
 
 // rightuser css
-.vehicle-text{
-    font-size: 48px;
-    font-weight: bold;
+.vehicle-text {
+  font-size: 48px;
+  font-weight: bold;
 }
-.location-text{
-    font-size: 32px;
+.location-text {
+  font-size: 32px;
 }
-.fourty-four-size{
-    font-size: 16px;
-    @media (min-width:768px) {
+.fourty-four-size {
+  font-size: 16px;
+  @media (min-width: 768px) {
     font-size: 24px;
-    }
+  }
 }
 
-.btn-plus{
-    width: 60px;
-    height: 60px;
-    background: rgba(203,203,212,0.2);
-    border-radius: 10px;
+.btn-plus {
+  width: 60px;
+  height: 60px;
+  background: rgba(203, 203, 212, 0.2);
+  border-radius: 10px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 25px;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 25px;
 
-    @media (min-width:768px) {
-        width: 80px;
-        height: 80px;   
-    }
+  @media (min-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
 }
-.btn-plus:active{
-    background: #FFCD61;
+.btn-plus:active {
+  background: #ffcd61;
 }
-.btn-min{
-    width: 60px;
-    height: 60px;
-    background: rgba(203,203,212,0.2);
-    border-radius: 10px;
+.btn-min {
+  width: 60px;
+  height: 60px;
+  background: rgba(203, 203, 212, 0.2);
+  border-radius: 10px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 25px;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 25px;
 
-    @media (min-width:768px) {
-        width: 80px;
-        height: 80px;   
-    }
+  @media (min-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
 }
-.btn-min:active{
-    background: #FFCD61;
+.btn-min:active {
+  background: #ffcd61;
 }
 
 // user Css bottom
-.btn-select-reservation{
-    @media (min-width:768px) {
-        position: relative;
-
-        width: auto;
-
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-.btn-chat-admin{
-    background: #393939;
-    color: #FFCD61;
-
-    font-size: 24px;
-    font-weight: bold;
-
-    width: 100%;
-    padding: 15px;
-
-    border-radius: 10px;
-    margin-top: 3%;
-
-    @media (min-width:1024px) {
-        margin-right: 2%;
-        width: 40%;
-    }
-}
-.btn-chat-admin:active{
-    background: #FFCD61;
-    color: #393939;
-}
-.btn-reservation{
-    background: #FFCD61;
-    color: #393939;
-
-    font-size: 24px;
-    font-weight: bold;
-
-    width: 100%;
-    padding: 15px;
-
-    border-radius: 10px;
-    margin-top: 3%;
-    @media (min-width:1024px) {
-        margin-right: 2%;
-        width: 40%;
-    }
-}
-.btn-reservation:active{
-    background: #393939;
-    color: #FFCD61;
-}
-.btn-like{
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: #393939;
-    color: #FFCD61;
-
-    font-size: 24px;
-    font-weight: bold;
-
-    width: 100%;
-    padding: 15px;
-
-    border-radius: 10px;
-
-    margin-top: 3%;
-    @media (min-width:1024px) {
-        width: 17%;
-    }
-}
-.like-icon{
+.btn-select-reservation {
+  @media (min-width: 768px) {
     position: relative;
-    top:2px;
 
-    margin-right: 10px;
+    width: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
-.btn-like:active{
-    background: #FFCD61;
-    color: #393939;
+.btn-chat-admin {
+  background: #393939;
+  color: #ffcd61;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  width: 100%;
+  padding: 15px;
+
+  border-radius: 10px;
+  margin-top: 3%;
+
+  @media (min-width: 1024px) {
+    margin-right: 2%;
+    width: 40%;
+  }
+}
+.btn-chat-admin:active {
+  background: #ffcd61;
+  color: #393939;
+}
+.btn-reservation {
+  background: #ffcd61;
+  color: #393939;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  width: 100%;
+  padding: 15px;
+
+  border-radius: 10px;
+  margin-top: 3%;
+  @media (min-width: 1024px) {
+    margin-right: 2%;
+    width: 40%;
+  }
+}
+.btn-reservation:active {
+  background: #393939;
+  color: #ffcd61;
+}
+.btn-like {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #393939;
+  color: #ffcd61;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  width: 100%;
+  padding: 15px;
+
+  border-radius: 10px;
+
+  margin-top: 3%;
+  @media (min-width: 1024px) {
+    width: 17%;
+  }
+}
+.like-icon {
+  position: relative;
+  top: 2px;
+
+  margin-right: 10px;
+}
+.btn-like:active {
+  background: #ffcd61;
+  color: #393939;
 }
 
 // owner css
-.edit-left{
-    width: 100%;
-    @media (min-width:768px) {
-        width: 48%;
-        height: 100%;
-    }
+.edit-left {
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 48%;
+    height: 100%;
+  }
 }
-.edit-right{
-    width: 100%;
-    margin-top: 5%;
-    @media (min-width:768px) {
-        margin-top: 0;
-        width: 48%;
-    }
+.edit-right {
+  width: 100%;
+  margin-top: 5%;
+  @media (min-width: 768px) {
+    margin-top: 0;
+    width: 48%;
+  }
 }
 
 // owner css left
-.label-img-edit-main{
-    width: 100%;
+.label-img-edit-main {
+  width: 100%;
 }
-.img-edit-main{
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    @media (min-width:768px) {
+.img-edit-main {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  @media (min-width: 768px) {
     object-fit: cover;
     height: 310px;
-    }
+  }
 }
-.change-img-button-main{
-    position: absolute;
-    width: 92%;
-    margin-top: 5px;
+.change-img-button-main {
+  position: absolute;
+  width: 92%;
+  margin-top: 5px;
 
-    display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 
-    @media (min-width:768px) {
-        width: 90%;
-    }
-    @media (min-width:1024px) {
-        width: 42%;
-    }
-    @media (min-width:2560px) {
-        width: 24%;
-    }
+  @media (min-width: 768px) {
+    width: 90%;
+  }
+  @media (min-width: 1024px) {
+    width: 42%;
+  }
+  @media (min-width: 2560px) {
+    width: 24%;
+  }
 }
-.btn-change-img-main{
-    border-radius: 50%;
-    border: none;
+.btn-change-img-main {
+  border-radius: 50%;
+  border: none;
 
-    background: #FFCD61;
+  background: #ffcd61;
 
-    font-weight: bold;
+  font-weight: bold;
 }
-.edit-img-flex{
-    display: flex;
-    margin-top: 20px;
-    justify-content: space-between;
-    @media (min-width:768px) {
-        margin-top: 45px;
-    }
+.edit-img-flex {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  @media (min-width: 768px) {
+    margin-top: 45px;
+  }
 }
-.label-img-edit-two{
-    width: 49%;
+.label-img-edit-two {
+  width: 49%;
 }
-.img-edit-two{
-    width: 100%;
-    height: 85px;
-    object-fit: cover;
-    border-radius: 10px;
-    @media (min-width:768px) {
-        height: 160px;
-    }
-    @media (min-width:1024px) {
-        height: 150px;
-    }
+.img-edit-two {
+  width: 100%;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 10px;
+  @media (min-width: 768px) {
+    height: 160px;
+  }
+  @media (min-width: 1024px) {
+    height: 150px;
+  }
 }
-.change-img-button{
-    position: absolute;
-    width: 92%;
-    margin-top: 5px;
+.change-img-button {
+  position: absolute;
+  width: 92%;
+  margin-top: 5px;
 
-    display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 
-    @media (min-width:768px) {
-        width: 90%;
-    }
-    @media (min-width:1024px) {
-        width: 42%;
-    }
-    @media (min-width:2560px) {
-        width: 24%;
-    }
+  @media (min-width: 768px) {
+    width: 90%;
+  }
+  @media (min-width: 1024px) {
+    width: 42%;
+  }
+  @media (min-width: 2560px) {
+    width: 24%;
+  }
 }
-.change-img-button{
-    position: absolute;
-    width: 44%;
-    margin-top: 5px;
+.change-img-button {
+  position: absolute;
+  width: 44%;
+  margin-top: 5px;
 
-    display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 
-    @media (min-width:1024px) {
-        width: 20%;
-    }
-    @media (min-width:2560px) {
-        width: 11%;
-    }
+  @media (min-width: 1024px) {
+    width: 20%;
+  }
+  @media (min-width: 2560px) {
+    width: 11%;
+  }
 }
-.btn-change-img{
-    border-radius: 50%;
-    border: none;
+.btn-change-img {
+  border-radius: 50%;
+  border: none;
 
-    font-weight: bold;
+  font-weight: bold;
 
-    background: #FFCD61;
+  background: #ffcd61;
 }
 
 // owner css right
-.input-edit{
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #000000;
-    padding-bottom: 10px;
+.input-edit {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 10px;
 
-    font-family: 'Nunito';
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 24px;
+  font-family: "Nunito";
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
 }
-.input-edit::placeholder{
-    color: #8091BE !important;
+.input-edit::placeholder {
+  color: #8091be !important;
 }
-.input-edit-box{
-    width: 100%;
-    background: #F5F5F6;
-    border: none;
-    border-radius: 10px;
-    padding: 22px;
+.input-edit-box {
+  width: 100%;
+  background: #f5f5f6;
+  border: none;
+  border-radius: 10px;
+  padding: 22px;
 
-    font-family: 'Nunito';
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 24px;
+  font-family: "Nunito";
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
 }
-.input-edit-box::placeholder{
-    color: #8091BE !important;
-}
-
-.label-text{
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
-
-    color: #393939;
+.input-edit-box::placeholder {
+  color: #8091be !important;
 }
 
-.stock-flex{
-    display: flex;
-    justify-content: space-between;
-}
-.box-flex{
-    display: flex;
-    width: 193px;
-    justify-content: space-between;
-}
-.box-plus{
-    font-size: 24px;
-    font-weight: bold;
-    width: 30px;
-    height: 30px;
-    background: rgba($color: #CBCBD4, $alpha: 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
+.label-text {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
 
-    cursor: pointer;
+  color: #393939;
 }
-.box-plus:active{
-    background: rgba($color: #FFCD61, $alpha: 1.0);
-}
-.box-min{
-    font-size: 24px;
-    font-weight: bold;
-    width: 30px;
-    height: 30px;
-    background: rgba($color: #CBCBD4, $alpha: 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
 
-    cursor: pointer;
+.stock-flex {
+  display: flex;
+  justify-content: space-between;
 }
-.box-min:active{
-    background: rgba($color: #FFCD61, $alpha: 1.0);
+.box-flex {
+  display: flex;
+  width: 193px;
+  justify-content: space-between;
+}
+.box-plus {
+  font-size: 24px;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  background: rgba($color: #cbcbd4, $alpha: 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+.box-plus:active {
+  background: rgba($color: #ffcd61, $alpha: 1);
+}
+.box-min {
+  font-size: 24px;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  background: rgba($color: #cbcbd4, $alpha: 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+.box-min:active {
+  background: rgba($color: #ffcd61, $alpha: 1);
 }
 
 // owner css bottom
-.btn-flex{
-    @media (min-width:768px) {
-        display: flex;
-        justify-content: space-between;
-    }
+.btn-flex {
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
-.btn-item-to{
-    width: 100%;
-    padding: 20px;
+.btn-item-to {
+  width: 100%;
+  padding: 20px;
 
-    background: #393939;
-    color: #FFCD61;
-    border-radius: 10px;
+  background: #393939;
+  color: #ffcd61;
+  border-radius: 10px;
 
-    font-size: 24px;
-    font-weight: 700px;
+  font-size: 24px;
+  font-weight: 700px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    @media (min-width:768px) {
-        width: 30%;
-    }
+  @media (min-width: 768px) {
+    width: 30%;
+  }
 }
-.btn-save-change{
-    width: 100%;
-    padding: 20px;
+.btn-save-change {
+  width: 100%;
+  padding: 20px;
 
-    background: #FFCD61;
-    color: #393939;
-    border-radius: 10px;
+  background: #ffcd61;
+  color: #393939;
+  border-radius: 10px;
 
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 
-    margin-top: 23px;
+  margin-top: 23px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    @media (min-width:768px) {
-        margin-top: 0;
-        width: 40%;
-    }
+  @media (min-width: 768px) {
+    margin-top: 0;
+    width: 40%;
+  }
 }
-.btn-save-change:active{
-    background: #393939;
-    color: #FFCD61;
+.btn-save-change:active {
+  background: #393939;
+  color: #ffcd61;
 }
-.btn-delete{
-    width: 100%;
-    padding: 20px;
+.btn-delete {
+  width: 100%;
+  padding: 20px;
 
-    background: #393939;
-    color: #FFCD61;
-    border-radius: 10px;
+  background: #393939;
+  color: #ffcd61;
+  border-radius: 10px;
 
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 
-    margin-top: 23px;
+  margin-top: 23px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    @media (min-width:768px) {
-        margin-top: 0;
-        width: 20%;
-    }
+  @media (min-width: 768px) {
+    margin-top: 0;
+    width: 20%;
+  }
 }
-.btn-delete:active{
-    background: #FFCD61;
-    color: #393939;
+.btn-delete:active {
+  background: #ffcd61;
+  color: #393939;
 }
