@@ -131,7 +131,7 @@ const Testimonial = () => {
                     </div>
                     <div
                       style={{
-                        backgroundImage: `url(${imgTesti})`,
+                        backgroundImage: `url(${process.env.REACT_APP_HOST}/${imgTesti})`,
                       }}
                       className={styles["testimony-img"]}
                     >

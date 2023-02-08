@@ -30,7 +30,7 @@ const Header = () => {
         .then((res) => {
           if (res) {
             if (image !== null) {
-              setShowImg(`${image}`);
+              setShowImg(`${process.env.REACT_APP_HOST}/${image}`);
             }
           }
         })

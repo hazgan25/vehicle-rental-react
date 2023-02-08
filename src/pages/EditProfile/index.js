@@ -44,7 +44,7 @@ const EditProfile = () => {
     if (gender === "male") setSelectGender(1);
     if (gender === "female") setSelectGender(2);
     if (gender === "confidential") setSelectGender(3);
-    if (image !== null) setShowImg(`${image}`);
+    if (image !== null) setShowImg(`${process.env.REACT_APP_HOST}/${image}`);
     if (dob !== null) setUserDob(dob);
     if (address !== null) setUserAddress(address);
     setUserEmail(email);
@@ -185,7 +185,7 @@ const EditProfile = () => {
     if (gender === "female") setSelectGender(2);
     if (gender === "confidential") setSelectGender(3);
     if (image !== null) {
-      setShowImg(`${image}`);
+      setShowImg(`${process.env.REACT_APP_HOST}/${image}`);
     } else {
       setShowImg(profileDefaultImg);
     }
